@@ -1,0 +1,296 @@
+{
+  "Brand": {
+    "name": "Nawah",
+    "badge": "Family Platform"
+  },
+  "Navigation": {
+    "home": "Home",
+    "features": "Features",
+    "howItWorks": "How it Works",
+    "support": "Support",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "download": "Get App"
+  },
+  "Hero": {
+    "name": "NAWAH",
+    "badge": "All-In-One Family Platform",
+    "headline": "Your Family, Organized in One Place",
+    "subtext": "Chat, plan events, manage tasks, and save memories — all in one app.",
+    "cta": "Download App",
+    "appStorePre": "Download on the",
+    "appStore": "App Store",
+    "playStorePre": "Get it on",
+    "playStore": "Google Play"
+  },
+  "Problem": {
+    "title": "Too Many Apps for Family Life?",
+    "description": "Stop jumping between chat apps, shared calendars, and scattered notes. Nawah brings everything your family needs under one roof.",
+    "chat": "Chat",
+    "calendar": "Calendar",
+    "notes": "Notes",
+    "photos": "Photos",
+    "tasks": "Tasks"
+  },
+  "Features": {
+    "badge": "Features",
+    "title": "Everything you need",
+    "chat": "Family Chat",
+    "chatDesc": "Group and private messaging designed for your inner circle.",
+    "events": "Events & Attendance",
+    "eventsDesc": "Never miss a family gathering. See who's coming in real-time.",
+    "tasks": "Tasks & Lists",
+    "tasksDesc": "Shared grocery lists, chores, and to-dos everyone can check off.",
+    "vault": "Memory Vault",
+    "vaultDesc": "Safely store family photos, videos, and important documents.",
+    "ai": "AI Assistant",
+    "aiDesc": "Integrated smart assistant to help organize and plan."
+  },
+  "HowItWorks": {
+    "badge": "How It Works",
+    "title": "How It Works",
+    "step1": "Create your family",
+    "step1Desc": "Set up a secure, private space just for your loved ones.",
+    "step2": "Invite members",
+    "step2Desc": "Add family members with a simple link or QR code.",
+    "step3": "Start organizing",
+    "step3Desc": "Chat, plan events, and manage tasks effortlessly."
+  },
+  "Cta": {
+    "title": "Start your family hub today",
+    "subtext": "Available on iOS and Android — free to download.",
+    "button": "Download on the App Store"
+  },
+  "Footer": {
+    "tagline": "Your private space for family harmony, preserved memories, and intelligent daily organization.",
+    "legal": "Legal",
+    "help": "Help",
+    "contact": "Contact Us",
+    "storeTitle": "Download",
+    "allRights": "All rights reserved.",
+    "taglineBottom": "Designed for calmer family coordination."
+  },
+  "Support": {
+    "title": "Technical Support",
+    "subtitle": "We're here to help you organize your family life better.",
+    "howCanWeHelp": "How can we help you?",
+    "intro": "At Nawah, we are committed to providing the best experience for your family. If you are experiencing an issue with the app or have a question, please review the information below or contact us directly.",
+    "technicalSupport": "Technical Support",
+    "technicalSupportDesc": "For technical issues, bug reports, or general inquiries:",
+    "emailSupport": "Email: support@nawahfamily.com",
+    "business": "Business & Public Relations",
+    "businessDesc": "For partnership opportunities or media inquiries:",
+    "emailInfo": "Email: info@nawahfamily.com",
+    "faqTitle": "Frequently Asked Questions",
+    "q1": "How do I invite my family?",
+    "a1": "Once you create a family, you will see a unique \"Join Code\" in the Family Settings. Share this code with your family members so they can enter it in the app and join your private group.",
+    "q2": "Is my data private?",
+    "a2": "Yes. Your family data is encrypted and visible only to the members of the families you join. We do not sell your data and we do not use third-party tracking tools. See our Privacy Policy for more details.",
+    "q3": "Can I use Nawah for multiple families?",
+    "a3": "Absolutely. You can create separate families for your immediate household, extended relatives, or even for managing a shared residence.",
+    "deletionTitle": "Nawah – Account Deletion",
+    "deletionDesc": "To delete your account and all associated data:",
+    "deletionStep1": "Open the Nawah app",
+    "deletionStep2": "Go to Settings → Account → Delete Account",
+    "deletionStep3": "Confirm the deletion process",
+    "deletionWarning": "Your account and all associated data (profile, family data, chat messages, photos, events, tasks) will be permanently and immediately deleted. This action cannot be undone."
+  },
+  "Privacy": {
+    "title": "Privacy Policy",
+    "subtitle": "Nawah — Intelligent Family Organization",
+    "effectiveDate": "Effective date: 1 May 2026  ·  Last updated: 1 May 2026",
+    "tableLabels": {
+      "permission": "Permission",
+      "why": "Why we ask",
+      "provider": "Provider",
+      "purpose": "Purpose",
+      "data": "Data shared"
+    },
+    "introduction": "This Privacy Policy explains how Nawah (\"we\", \"our\", or \"the app\") collects, uses, stores, and protects your personal information when you use the Nawah mobile application. By creating an account or using Nawah, you agree to the practices described below.\n\nNawah is a family-organization app. Most data you create — chat messages, calendar events, tasks, lists, announcements, polls, vault items, and shared location — is shared with the other members of the families you join. You should treat anything you post inside a family as visible to every member of that family.",
+    "sections": {
+      "s1": {
+        "title": "1. Introduction",
+        "content": "This Privacy Policy explains how Nawah collects, uses, and protects your data."
+      },
+      "s2": {
+        "title": "2. Information We Collect",
+        "content": "2.1 Information you provide directly\n\nAccount information. Your email address, password (stored only as a one-way hash by Firebase Authentication), and display name. A profile photo is optional.\n\nFamily content. Chat messages, photos, videos, voice notes, calendar events, tasks, shared lists, polls, announcements, vault items (photos, PDFs, videos, rich-text notes), and any other content you create inside a family.\n\nVoice dictation. Audio you record to dictate messages or requests to the AI Assistant.\n\nReports and blocks. If you report a message or block another user, we record that action so our moderation team can review it and so blocking can be enforced.\n\n2.2 Information collected automatically\n\nDevice information. Operating system, app version, language, and a Firebase Cloud Messaging token used solely to send push notifications you have enabled.\n\nApproximate and precise location. Only when you have enabled the family map feature and granted \"When In Use\" location permission. Location is shared with your family while the app is open and is not collected in the background.\n\nAuthentication metadata. Sign-in timestamps and a Firebase user ID used to associate you with your data.\n\n2.3 Information we do not collect\n\nWe do not track you across other apps or websites. The app's privacy manifest declares NSPrivacyTracking = false.\n\nWe do not use third-party advertising networks.\n\nWe do not use Firebase Analytics, Crashlytics, or any third-party analytics or tracking SDKs.\n\nWe do not collect your phone number, postal address, contacts, date of birth, gender, or browsing history."
+      },
+      "s3": {
+        "title": "3. How We Use Your Information",
+        "content": "To create and authenticate your account.\n\nTo deliver the app's core features — sharing content with the families you join, syncing events to your device calendar, displaying your family on the map, and processing your requests to the AI Assistant.\n\nTo send you push notifications you have opted in to (chat messages, task assignments, calendar reminders, announcements, polls).\n\nTo enforce our Terms of Service, including reviewing reported content and acting on user blocks.\n\nTo diagnose technical problems and prevent fraud and abuse."
+      },
+      "s4": {
+        "title": "4. Permissions We Request",
+        "table": [
+          [
+            "Camera",
+            "To take photos and videos to send in chat."
+          ],
+          [
+            "Photo Library",
+            "To select existing photos and videos to send in chat."
+          ],
+          [
+            "Microphone",
+            "To record voice notes in chat and dictate messages to the AI assistant."
+          ],
+          [
+            "Speech Recognition",
+            "To transcribe voice dictation into text for the AI assistant."
+          ],
+          [
+            "Location (When In Use)",
+            "To show your position to your family on the family map. We do not request background location."
+          ],
+          [
+            "Calendar (Full Access)",
+            "To read your selected device calendar and write Nawah family events into it."
+          ],
+          [
+            "Notifications",
+            "To deliver push alerts you have enabled."
+          ]
+        ]
+      },
+      "s5": {
+        "title": "5. How Your Information Is Shared",
+        "content": "5.1 With other family members\n\nContent you create inside a family — messages, events, tasks, lists, polls, announcements, vault items, and your live location while the family map is enabled — is visible to every member of that family. Your display name and profile photo are visible to other members so they can identify you in shared content.\n\n5.2 With service providers\n\nWe use the following providers to operate the app. Each receives only the data needed to deliver its service:",
+        "providers": [
+          [
+            "Google Firebase (Authentication, Firestore, Storage, Cloud Functions, App Check, Cloud Messaging)",
+            "Account authentication, primary database, push notifications, abuse prevention.",
+            "Your account information, your family content, your device's FCM token."
+          ],
+          [
+            "Cloudflare R2",
+            "Object storage for vault files (photos, PDFs, videos).",
+            "The file bytes you upload to a family vault. Access is granted via short-lived signed URLs (24-hour maximum)."
+          ],
+          [
+            "Google Gemini API",
+            "Powers the AI Assistant tab.",
+            "The request may include the user's prompt, recent AI conversation history, limited account/family context (name, UID, role, active family ID, and member roles), and tool results needed to answer the user's request. Tool results can include relevant events, tasks, shared lists, announcements, or shared locations."
+          ],
+          [
+            "Google Maps",
+            "Renders the family map.",
+            "Location coordinates required to render the map view on your device."
+          ]
+        ],
+        "footer": "5.3 We do not sell your data\n\nWe do not sell, rent, or trade your personal information to third parties for advertising or marketing.\n\n5.4 Legal disclosures\n\nWe may disclose your information if required by law, valid legal process, or to protect the rights, property, or safety of our users or others. We will resist requests we believe to be overbroad and will notify affected users where legally permitted."
+      },
+      "s6": {
+        "title": "6. Data Storage and Security",
+        "content": "Account data and family content are stored in Google Firebase (Firestore and Cloud Storage), encrypted at rest by Google.\n\nVault file uploads are stored in Cloudflare R2, encrypted at rest.\n\nAll network communication uses TLS (HTTPS).\n\nFirebase App Check is used to reduce abuse from unauthorized clients.\n\nWe do not implement custom or proprietary cryptography. The app qualifies for the standard U.S. encryption export exemption.\n\nNo system is perfectly secure. While we take reasonable measures to protect your information, we cannot guarantee absolute security."
+      },
+      "s7": {
+        "title": "7. Push Notifications",
+        "content": "We send push notifications via Firebase Cloud Messaging for events such as new chat messages, task assignments, calendar reminders, announcements, and polls. Notification payloads contain a short title and body (truncated to 120 characters) and the IDs needed to open the right screen. You can disable notifications globally in your device settings or per-category in Settings → Notifications inside the app."
+      },
+      "s8": {
+        "title": "8. Your Choices and Rights",
+        "content": "Access and correction. You can view and edit your profile from inside the app at any time.\n\nAccount deletion. You can delete your account from More → Settings → Danger Zone → Delete Account. Deletion permanently removes your profile, blocked list, notification preferences, FCM tokens, your shared location, and your family memberships, and deletes your Firebase Authentication record. Messages you sent and items you added to family vaults remain visible to the family but will no longer show your name. Family creators must transfer or delete their families before deleting their account; the app guides you through this.\n\nReporting and blocking. You can report any chat message via long-press, and you can block any family member at any time. Blocked users can be reviewed and unblocked from Settings → Blocked Users.\n\nPermission control. You can revoke camera, microphone, photo, calendar, location, and notification permissions from your device's system settings at any time. The app will continue to work with reduced functionality."
+      },
+      "s9": {
+        "title": "9. Data Retention",
+        "content": "We retain your account information and family content for as long as your account is active. When you delete your account, we delete the items listed in section 8 immediately. Content you contributed to families you have left or to families that continue to exist after your deletion is retained as part of those families' shared history; it is no longer attributed to your account once your user record is removed.\n\nVault file access URLs expire automatically after 24 hours and are regenerated on demand."
+      },
+      "s10": {
+        "title": "10. International Transfers",
+        "content": "Our service providers (Google and Cloudflare) operate globally, and your data may be processed in countries other than the one in which you reside, including the United States. Each provider applies its own safeguards for cross-border transfers, including, where applicable, the European Commission's Standard Contractual Clauses."
+      },
+      "s11": {
+        "title": "11. Children",
+        "content": "Nawah is intended for use by adults and families together. The app is not directed to children under 13 (or the equivalent minimum age in your jurisdiction), and we do not knowingly collect personal information from children under that age. If you believe a child has provided us with personal information without parental consent, please contact us at the address below and we will delete it."
+      },
+      "s12": {
+        "title": "12. Changes to This Policy",
+        "content": "We may update this Privacy Policy from time to time. When we make material changes we will update the \"Last updated\" date above and, where appropriate, notify you in the app. Continued use of Nawah after a change constitutes acceptance of the updated policy."
+      },
+      "s13": {
+        "title": "13. Contact Us",
+        "content": "If you have questions, concerns, or requests about this Privacy Policy or your data, contact us at:\n\nEmail: privacy@nawahfamily.com"
+      }
+    }
+  },
+  "Terms": {
+    "title": "Terms of Service",
+    "subtitle": "Nawah — Intelligent Family Organization",
+    "effectiveDate": "Effective date: 1 May 2026  ·  Last updated: 1 May 2026",
+    "sections": {
+      "s1": {
+        "title": "1. Agreement",
+        "content": "These Terms of Service (\"Terms\") form a binding agreement between you and Nawah (\"we\", \"our\", or \"the Service\") governing your access to and use of the Nawah mobile application and related services. By creating an account, ticking the agreement checkbox at registration, or otherwise using the Service, you agree to these Terms and to our Privacy Policy. If you do not agree, do not use the Service."
+      },
+      "s2": {
+        "title": "2. Eligibility",
+        "content": "You must be at least 13 years old, or the minimum age of digital consent in your country, to create an account.\n\nIf you are a minor, you may only use the Service under the supervision of a parent or legal guardian who agrees to these Terms on your behalf.\n\nYou must provide accurate registration information and keep it up to date.\n\nYou are responsible for safeguarding your password and for all activity that occurs under your account."
+      },
+      "s3": {
+        "title": "3. Description of the Service",
+        "content": "Nawah is a family-organization app. After creating an account, you can create or join one or more \"families\" — private groups of users who share content with one another. Inside a family you can:\n\n• send chat messages, photos, videos, and voice notes;\n• create and assign tasks, calendar events, shared lists, polls, and announcements;\n• upload files (photos, PDFs, videos, notes) to a shared family vault;\n• share your live location on a family map while the app is open;\n• ask the AI Assistant for planning help.\n\nContent you create inside a family is visible to every current member of that family. Treat anything you post in a family as shared with the whole family."
+      },
+      "s4": {
+        "title": "4. Acceptable Use and Objectionable Content",
+        "content": "Zero tolerance for objectionable content and abusive behavior. When you accepted these Terms at registration you agreed to the rules in this section. Violations may result in immediate content removal and account termination without prior notice.\n\nYou agree not to use the Service to post, upload, share, or transmit any content that:\n\n• is unlawful, fraudulent, defamatory, threatening, or violates the rights of others;\n• is sexually explicit, pornographic, or sexualizes minors in any way;\n• depicts or promotes graphic violence, self-harm, suicide, or cruelty;\n• harasses, bullies, intimidates, or stalks any person, including other family members;\n• incites or promotes hatred, discrimination, or violence on the basis of race, ethnicity, national origin, religion, gender, gender identity, sexual orientation, disability, or age;\n• contains malware, spyware, viruses, or any code designed to disrupt or harm the Service;\n• infringes any patent, trademark, trade secret, copyright, or other intellectual property right;\n• misrepresents your identity or impersonates another person;\n• involves spam, unsolicited commercial messages, pyramid schemes, or chain letters;\n• violates any applicable law or regulation.\n\nYou also agree not to:\n\n• attempt to gain unauthorized access to any account, family, or part of the Service;\n• scrape, copy, or reverse-engineer the Service except as expressly permitted by law;\n• interfere with the operation of the Service, including by overloading our infrastructure or our service providers;\n• use the Service to abuse, threaten, or harass our staff, moderators, or service providers."
+      },
+      "s5": {
+        "title": "5. Reporting, Blocking, and Moderation",
+        "content": "Every chat message has a long-press menu with Report and Block user actions. You can review and unblock blocked users at any time from Settings → Blocked Users.\n\nReports are routed to our moderation team and reviewed within 24 hours. We may, at our sole discretion and without prior notice:\n\n• remove or hide content that we believe violates these Terms;\n• suspend or permanently terminate the account of any user who violates these Terms;\n• cooperate with law-enforcement authorities where required by law.\n\nWe are not obligated to monitor all content, but we reserve the right to do so. We are not responsible for content you encounter that is created by other users."
+      },
+      "s6": {
+        "title": "6. Your Content",
+        "content": "You retain ownership of the content you submit to Nawah (\"Your Content\"). By submitting Your Content you grant us a worldwide, non-exclusive, royalty-free licence to host, store, transmit, display, and create derivative works of Your Content solely as needed to operate, maintain, secure, and improve the Service. This licence ends when you remove Your Content, except that backups and copies retained as part of family history (see Privacy Policy section 9) may persist.\n\nYou represent and warrant that you own Your Content or have all rights necessary to share it on the Service, and that Your Content does not violate these Terms or any applicable law."
+      },
+      "s7": {
+        "title": "7. Family Membership and Roles",
+        "content": "The user who creates a family is its creator and is responsible for managing membership, including inviting members and removing them when appropriate.\n\nJoining a family requires a join code shared by the family creator. Family creators can rotate or disable the join code at any time from Manage Family.\n\nIf you are removed from a family, you immediately lose access to that family's content. Content you contributed remains visible to the family.\n\nFamily creators must transfer or delete their families before deleting their account."
+      },
+      "s8": {
+        "title": "8. AI Assistant",
+        "content": "The AI Assistant uses Google Gemini to generate suggestions and help draft tasks, events, and lists. You acknowledge that:\n\n• responses are generated by AI and may be inaccurate, incomplete, or out of date — you should verify important details;\n• the AI does not make changes to your data without your explicit confirmation;\n• prompts you submit are sent to Google for processing as described in the Privacy Policy.\n\nDo not rely on the AI Assistant for medical, legal, financial, or other professional advice."
+      },
+      "s9": {
+        "title": "9. Account Termination",
+        "content": "You may delete your account at any time from More → Settings → Danger Zone → Delete Account. The effects of deletion are described in the Privacy Policy.\n\nWe may suspend or terminate your access to the Service, with or without notice, if we believe that you have violated these Terms, that your use of the Service poses a risk to other users or to our infrastructure, or that we are required to do so by law."
+      },
+      "s10": {
+        "title": "10. Fees",
+        "content": "The Service is currently provided free of charge. If we introduce paid features, we will give you advance notice and an opportunity to review the applicable pricing and terms before any charge is incurred."
+      },
+      "s11": {
+        "title": "11. Intellectual Property",
+        "content": "The Service, including its software, design, text, graphics, logos, and trademarks (other than Your Content), is owned by Nawah or its licensors and is protected by copyright, trademark, and other intellectual-property laws. We grant you a personal, non-transferable, revocable licence to use the Service in accordance with these Terms."
+      },
+      "s12": {
+        "title": "12. Third-Party Services",
+        "content": "The Service relies on third-party providers (including Google Firebase, Google Maps, Google Gemini, and Cloudflare R2) listed in the Privacy Policy. Your use of those providers' services through Nawah is also subject to their terms. We are not responsible for the practices of third-party providers."
+      },
+      "s13": {
+        "title": "13. Disclaimers",
+        "content": "The Service is provided \"as is\" and \"as available\" without warranties of any kind, express or implied, including warranties of merchantability, fitness for a particular purpose, non-infringement, and uninterrupted or error-free operation. We do not warrant that any defects will be corrected or that the Service will meet your requirements.\n\nNawah is not a substitute for emergency services. Do not rely on the Service to communicate emergencies. If you are in danger, contact local emergency services directly."
+      },
+      "s14": {
+        "title": "14. Limitation of Liability",
+        "content": "To the maximum extent permitted by law, neither Nawah nor its officers, employees, agents, or service providers shall be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, revenue, data, goodwill, or other intangible losses, arising out of or in connection with your use of the Service.\n\nOur total aggregate liability for any claim arising out of or relating to these Terms or the Service shall not exceed the greater of (a) the amount you paid us, if any, in the twelve (12) months preceding the claim, or (b) US$50."
+      },
+      "s15": {
+        "title": "15. Indemnification",
+        "content": "You agree to indemnify and hold harmless Nawah and its officers, employees, agents, and service providers from and against any claims, liabilities, damages, losses, and expenses, including reasonable legal fees, arising out of or in connection with (a) Your Content, (b) your use of the Service, or (c) your violation of these Terms or any applicable law."
+      },
+      "s16": {
+        "title": "16. Governing Law",
+        "content": "These Terms are governed by the laws of the Kingdom of Saudi Arabia, without regard to its conflict-of-laws principles. Any dispute arising out of or relating to these Terms or the Service shall be brought exclusively in the competent courts of Riyadh, Saudi Arabia, and you consent to the personal jurisdiction of those courts. Nothing in this section limits any non-waivable rights you may have under the consumer-protection law of your country of residence."
+      },
+      "s17": {
+        "title": "17. Changes to These Terms",
+        "content": "We may update these Terms from time to time. When we make material changes we will update the \"Last updated\" date above and, where appropriate, notify you in the app. Continued use of the Service after a change constitutes acceptance of the updated Terms. If you do not agree to the updated Terms, you must stop using the Service and may delete your account."
+      },
+      "s18": {
+        "title": "18. Contact",
+        "content": "Questions about these Terms? Contact us at:\n\nEmail: legal@nawahfamily.com"
+      }
+    }
+  }
+}
