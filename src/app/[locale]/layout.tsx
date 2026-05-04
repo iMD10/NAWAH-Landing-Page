@@ -86,6 +86,14 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir} suppressHydrationWarning>
+      <head>
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('theme');if(t==='dark'||t==='light'){document.documentElement.classList.remove('light','dark');document.documentElement.classList.add(t);}}catch(e){}`,
+          }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${openSans.variable} ${ibmPlexSansArabic.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
         suppressHydrationWarning
