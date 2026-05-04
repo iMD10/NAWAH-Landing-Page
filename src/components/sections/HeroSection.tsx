@@ -20,8 +20,8 @@ const GlowOrb = ({
   return (
     <motion.div
       className="absolute rounded-full pointer-events-none"
-      style={{ filter: "blur(110px)", ...style }}
-      animate={shouldReduce ? {} : { y: [0, -50, 0], x: [0, 28, 0], scale: [1, 1.2, 1] }}
+      style={{ filter: "blur(60px)", willChange: "transform", ...style }}
+      animate={shouldReduce ? {} : { y: [0, -40, 0], x: [0, 20, 0] }}
       transition={{ duration, repeat: Infinity, repeatType: "reverse", delay, ease: "easeInOut" }}
     />
   );
@@ -34,7 +34,8 @@ const LogoObject = () => {
   return (
     <motion.div
       className="relative flex items-center justify-center w-full h-full"
-      animate={shouldReduce ? {} : { y: [0, -22, 0] }}
+      style={{ willChange: "transform" }}
+      animate={shouldReduce ? {} : { y: [0, -18, 0] }}
       transition={{ duration: 7, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
     >
       {/* Outer atmospheric glow */}
@@ -45,7 +46,8 @@ const LogoObject = () => {
           height: "95%",
           background:
             "radial-gradient(circle, var(--border-blue) 0%, var(--border-purple) 50%, transparent 75%)",
-          filter: "blur(44px)",
+          filter: "blur(28px)",
+          transform: "translateZ(0)",
         }}
       />
 
@@ -56,10 +58,11 @@ const LogoObject = () => {
           width: "72%",
           aspectRatio: "1 / 1",
           borderRadius: "26%",
-          boxShadow: "0 24px 70px var(--border-blue), 0 0 120px var(--border-subtle)",
+          boxShadow: "0 24px 70px var(--border-blue), 0 0 60px var(--border-subtle)",
+          willChange: "transform",
         }}
-        animate={shouldReduce ? {} : { rotateY: [0, 4, -4, 0], rotateX: [0, 2, -2, 0] }}
-        transition={{ duration: 9, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
+        animate={shouldReduce ? {} : { rotateY: [0, 3, -3, 0] }}
+        transition={{ duration: 10, repeat: Infinity, repeatType: "reverse", ease: "easeInOut" }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
@@ -88,10 +91,11 @@ const LogoObject = () => {
           right: "10%",
           background:
             "radial-gradient(circle at 35% 30%, rgba(255,255,255,0.9), var(--icon-lavender) 50%, var(--icon-lavender) 100%)",
-          boxShadow: "0 0 16px var(--border-purple), 0 0 32px var(--border-subtle)",
+          boxShadow: "0 0 12px var(--border-purple)",
           border: "1px solid rgba(255,255,255,0.3)",
+          willChange: "transform",
         }}
-        animate={shouldReduce ? {} : { y: [0, -14, 0], x: [0, 6, 0] }}
+        animate={shouldReduce ? {} : { y: [0, -12, 0] }}
         transition={{ duration: 5, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 1 }}
       >
         <div
@@ -114,9 +118,10 @@ const LogoObject = () => {
           left: "8%",
           background:
             "radial-gradient(circle at 35% 30%, rgba(255,255,255,0.8), var(--icon-sky) 60%, var(--color-blue) 100%)",
-          boxShadow: "0 0 12px var(--border-blue), 0 0 24px var(--border-subtle)",
+          boxShadow: "0 0 10px var(--border-blue)",
+          willChange: "transform",
         }}
-        animate={shouldReduce ? {} : { y: [0, 12, 0], x: [0, -5, 0] }}
+        animate={shouldReduce ? {} : { y: [0, 10, 0] }}
         transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", ease: "easeInOut", delay: 2.5 }}
       >
         <div
@@ -177,8 +182,8 @@ const FloatDeco = ({
   return (
     <motion.div
       className="absolute pointer-events-none"
-      style={style}
-      animate={shouldReduce ? {} : { y: [0, -14, 0], rotate: [0, 6, -6, 0] }}
+      style={{ willChange: "transform", ...style }}
+      animate={shouldReduce ? {} : { y: [0, -10, 0] }}
       transition={{ duration: 6, repeat: Infinity, repeatType: "reverse", delay, ease: "easeInOut" }}
     >
       {children}
@@ -209,8 +214,7 @@ const PhoneMockup = ({
         borderRadius: "min(2.8rem, 8vw)",
         border: "1px solid var(--border-purple)",
         background: "var(--bg-card-alt)",
-        backdropFilter: "blur(20px)",
-        boxShadow: "0 40px 80px -20px rgba(0,0,0,0.2), 0 0 40px var(--border-blue)",
+        boxShadow: "0 40px 80px -20px rgba(0,0,0,0.25), 0 0 30px var(--border-blue)",
         ...style
       }}
     >
@@ -226,6 +230,7 @@ const PhoneMockup = ({
           src={src}
           alt={alt}
           fill
+          sizes="min(240px, 45vw)"
           className="object-cover"
           priority={priority}
         />

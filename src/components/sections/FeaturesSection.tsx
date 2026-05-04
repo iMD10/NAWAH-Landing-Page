@@ -104,7 +104,7 @@ export default function FeaturesSection() {
               style={{
                 background: feature.gradient,
                 border: `1px solid ${feature.border}`,
-                backdropFilter: "blur(20px)",
+                willChange: "transform",
               }}
             >
               {/* Decorative glow */}
@@ -146,6 +146,7 @@ export default function FeaturesSection() {
                   src={`/screenshots/${feature.id}.png`}
                   alt={t(feature.id)}
                   fill
+                  sizes="200px"
                   className="object-cover object-top opacity-90 transition-opacity duration-500 group-hover:opacity-100"
                   priority={i < 3}
                 />

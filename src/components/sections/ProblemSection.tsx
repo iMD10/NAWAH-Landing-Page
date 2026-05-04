@@ -30,18 +30,18 @@ export default function ProblemSection() {
         style={{
           background: "var(--bg-card)",
           border: "1px solid var(--border-blue)",
-          backdropFilter: "blur(24px)",
           boxShadow: "0 40px 80px -20px rgba(0,0,0,0.2), inset 0 1px 0 var(--border-subtle)",
+          willChange: "transform",
         }}
       >
         {/* Glow blobs */}
         <div
           className="absolute top-0 right-0 w-72 h-72 -mr-20 -mt-20 rounded-full pointer-events-none blur-3xl opacity-20"
-          style={{ background: "var(--icon-lavender)" }}
+          style={{ background: "var(--icon-lavender)", transform: "translateZ(0)" }}
         />
         <div
           className="absolute bottom-0 left-0 w-72 h-72 -ml-20 -mb-20 rounded-full pointer-events-none blur-3xl opacity-15"
-          style={{ background: "var(--icon-sky)" }}
+          style={{ background: "var(--icon-sky)", transform: "translateZ(0)" }}
         />
         <div
           className="absolute top-0 left-0 right-0 h-px"

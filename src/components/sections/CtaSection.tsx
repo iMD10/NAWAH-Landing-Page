@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export default function CtaSection() {
   const t = useTranslations("Cta");
   const tHero = useTranslations("Hero");
+  const shouldReduce = useReducedMotion();
 
   return (
     <section id="download" className="py-24 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
@@ -30,18 +31,19 @@ export default function CtaSection() {
         {/* Glow blobs */}
         <div
           className="absolute top-0 right-0 w-[500px] h-[500px] -mr-40 -mt-40 rounded-full pointer-events-none blur-3xl opacity-20"
-          style={{ background: "var(--icon-sky)" }}
+          style={{ background: "var(--icon-sky)", transform: "translateZ(0)" }}
         />
         <div
           className="absolute bottom-0 left-0 w-[500px] h-[500px] -ml-40 -mb-40 rounded-full pointer-events-none blur-3xl opacity-15"
-          style={{ background: "var(--icon-lavender)" }}
+          style={{ background: "var(--icon-lavender)", transform: "translateZ(0)" }}
         />
 
         {/* Decorative rotating shapes */}
         <motion.div
-          animate={{ rotate: [0, 360] }}
+          animate={shouldReduce ? {} : { rotate: [0, 360] }}
           transition={{ duration: 22, repeat: Infinity, ease: "linear" }}
           className="absolute top-8 right-16 opacity-20"
+          style={{ willChange: "transform" }}
         >
           <svg className="w-10 h-10" viewBox="0 0 24 24">
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
@@ -49,9 +51,10 @@ export default function CtaSection() {
           </svg>
         </motion.div>
         <motion.div
-          animate={{ rotate: [360, 0] }}
+          animate={shouldReduce ? {} : { rotate: [360, 0] }}
           transition={{ duration: 16, repeat: Infinity, ease: "linear" }}
           className="absolute bottom-10 left-14 opacity-15"
+          style={{ willChange: "transform" }}
         >
           <svg className="w-7 h-7" viewBox="0 0 24 24">
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
