@@ -27,7 +27,6 @@ const GlowOrb = ({
   );
 };
 
-
 /* ── 3D logo-like object replacing the GLB model ── */
 const LogoObject = () => {
   const shouldReduce = useReducedMotion();
@@ -187,6 +186,57 @@ const FloatDeco = ({
   );
 };
 
+/* ── Phone Mockup Component ── */
+const PhoneMockup = ({ 
+  src, 
+  alt, 
+  className = "", 
+  style = {},
+  priority = false 
+}: { 
+  src: string; 
+  alt: string; 
+  className?: string;
+  style?: React.CSSProperties;
+  priority?: boolean;
+}) => {
+  return (
+    <div
+      className={`relative overflow-hidden ${className}`}
+      style={{
+        width: "min(240px, 45vw)",
+        aspectRatio: "9 / 19.5",
+        borderRadius: "min(2.8rem, 8vw)",
+        border: "1px solid var(--border-purple)",
+        background: "var(--bg-card-alt)",
+        backdropFilter: "blur(20px)",
+        boxShadow: "0 40px 80px -20px rgba(0,0,0,0.2), 0 0 40px var(--border-blue)",
+        ...style
+      }}
+    >
+      {/* Thinner, smaller notch */}
+      <div 
+        className="absolute top-2 left-1/2 -translate-x-1/2 w-[25%] h-[2%] bg-black rounded-full z-30" 
+        style={{ opacity: 0.9 }}
+      />
+      
+      {/* Screen Content */}
+      <div className="absolute inset-0 z-10">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          className="object-cover"
+          priority={priority}
+        />
+      </div>
+      
+      {/* Glossy overlay */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none z-20" />
+    </div>
+  );
+};
+
 export default function HeroSection() {
   const t = useTranslations("Hero");
   const containerRef = useRef(null);
@@ -226,7 +276,6 @@ export default function HeroSection() {
 
       {/* ── Decorative floating shapes ── */}
       <div className="absolute inset-0 z-0 pointer-events-none hidden md:block">
-        {/* Iridescent glass sphere */}
         <FloatDeco style={{ top: "18%", left: "10%", width: 120, height: 120 }} delay={0}>
           <div
             className="w-full h-full rounded-full"
@@ -239,7 +288,6 @@ export default function HeroSection() {
           />
         </FloatDeco>
 
-        {/* Soft chrome ribbon (simulated with CSS) */}
         <FloatDeco style={{ bottom: "20%", right: "8%", width: 180, height: 40, transform: "rotate(-15deg)" }} delay={1}>
           <div
             className="w-full h-full rounded-full"
@@ -251,7 +299,6 @@ export default function HeroSection() {
           />
         </FloatDeco>
 
-        {/* Connected node accent */}
         <FloatDeco style={{ top: "45%", right: "12%", width: 80, height: 80 }} delay={2}>
           <div className="relative w-full h-full">
             <div className="absolute top-1/2 left-0 w-full h-px" style={{ background: "linear-gradient(90deg, transparent, var(--shimmer-line), transparent)" }} />
@@ -260,7 +307,6 @@ export default function HeroSection() {
           </div>
         </FloatDeco>
 
-        {/* Liquid gradient pebble */}
         <FloatDeco style={{ bottom: "35%", left: "5%", width: 60, height: 45 }} delay={1.5}>
           <div
             className="w-full h-full"
@@ -281,10 +327,7 @@ export default function HeroSection() {
         className="relative z-10 w-full max-w-7xl mx-auto px-6 pt-24 pb-12
                    flex flex-col md:flex-row items-center justify-between gap-10 md:gap-6"
       >
-        {/* Left: text */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left flex-1 max-w-xl">
-
-          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -309,7 +352,6 @@ export default function HeroSection() {
             </span>
           </motion.div>
 
-          {/* Headline — uses translation for Arabic */}
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -324,7 +366,6 @@ export default function HeroSection() {
             {t("name")}
           </motion.h1>
 
-          {/* Sub-headline */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -335,7 +376,6 @@ export default function HeroSection() {
             {t("headline")}
           </motion.h2>
 
-          {/* Body */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -346,7 +386,6 @@ export default function HeroSection() {
             {t("subtext")}
           </motion.p>
 
-          {/* CTA buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -395,11 +434,8 @@ export default function HeroSection() {
               </div>
             </a>
           </motion.div>
-
-
         </div>
 
-        {/* Right: Premium 3D abstract art */}
         <motion.div
           className="relative flex-1 flex items-center justify-center w-full"
           style={{ maxWidth: 500, aspectRatio: "1 / 1" }}
@@ -411,37 +447,54 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
 
-      {/* ── Phone mockup ── */}
-      <motion.div
-        initial={{ opacity: 0, y: 80 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, delay: 0.7 }}
-        className="relative z-10 mt-4 mb-16 mx-auto px-6"
-      >
-        <div
-          className="relative mx-auto overflow-hidden"
-          style={{
-            width: 260,
-            aspectRatio: "9 / 19.5",
-            borderRadius: "3rem",
-            border: "1px solid var(--border-purple)",
-            background: "var(--bg-card-alt)",
-            backdropFilter: "blur(20px)",
-            boxShadow: "0 40px 80px -20px rgba(0,0,0,0.2), 0 0 50px var(--border-blue)",
-          }}
+      {/* ── Triple Phone mockup ── */}
+      <div className="relative z-10 mt-12 mb-24 w-full max-w-5xl mx-auto px-6 h-[320px] sm:h-[480px] flex items-center justify-center">
+        {/* Left Screen */}
+        <motion.div
+          initial={{ opacity: 0, x: -80, y: 40, rotate: -12 }}
+          whileInView={{ opacity: 1, x: 0, y: 0, rotate: -12 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          className="absolute left-[2%] md:left-[10%] z-0 translate-x-[-15%] sm:translate-x-0"
         >
-          <div className="absolute top-3 left-1/2 -translate-x-1/2 w-24 h-6 bg-black rounded-full z-30" />
-          <Image
-            src="/screenshots/hero-main.png"
-            alt="Nawah App Preview"
-            fill
-            className="object-cover"
-            priority
+          <PhoneMockup 
+            src="/screenshots/chat.png" 
+            alt="Chat feature" 
+            style={{ transform: "scale(0.75) sm:scale(0.82)", opacity: 0.85 }}
           />
-        </div>
-      </motion.div>
+        </motion.div>
 
-      {/* Bottom fade */}
+        {/* Right Screen */}
+        <motion.div
+          initial={{ opacity: 0, x: 80, y: 40, rotate: 12 }}
+          whileInView={{ opacity: 1, x: 0, y: 0, rotate: 12 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
+          className="absolute right-[2%] md:right-[10%] z-0 translate-x-[15%] sm:translate-x-0"
+        >
+          <PhoneMockup 
+            src="/screenshots/events.png" 
+            alt="Events feature" 
+            style={{ transform: "scale(0.75) sm:scale(0.82)", opacity: 0.85 }}
+          />
+        </motion.div>
+
+        {/* Center Screen (Main) */}
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          className="relative z-10 scale-[0.9] sm:scale-100"
+        >
+          <PhoneMockup 
+            src="/screenshots/hero-main.png" 
+            alt="Nawah Home" 
+            priority={true}
+          />
+        </motion.div>
+      </div>
+
       <div
         className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
         style={{ background: "linear-gradient(to bottom, transparent, var(--background))" }}

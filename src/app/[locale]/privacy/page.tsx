@@ -12,12 +12,12 @@ export default async function PrivacyPage() {
   const sections = t.raw("sections");
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-24 sm:px-6 lg:px-8">
-      <div className="glass rounded-3xl p-8 md:p-16 overflow-hidden">
-        <h1 className="text-4xl md:text-5xl font-heading font-bold mb-2 text-foreground break-words">
+    <div className="max-w-4xl mx-auto px-4 py-12 md:py-24 sm:px-6 lg:px-8 w-full overflow-x-hidden">
+      <div className="glass rounded-3xl p-5 sm:p-8 md:p-16">
+        <h1 className="text-3xl md:text-5xl font-heading font-bold mb-2 text-foreground break-words">
           {t("title")}
         </h1>
-        <p className="text-xl text-foreground/60 font-medium mb-4">
+        <p className="text-lg md:text-xl text-foreground/60 font-medium mb-4">
           {t("subtitle")}
         </p>
         <p className="text-sm text-slate-500 mb-12">{t("effectiveDate")}</p>
@@ -29,7 +29,7 @@ export default async function PrivacyPage() {
 
           {Object.entries(sections).map(([key, section]: [string, any]) => (
             <section key={key} id={key} className="scroll-mt-24 mb-12">
-              <h2 className="text-2xl font-bold mb-6 text-foreground border-s-4 border-primary ps-4 break-words">
+              <h2 className="text-xl md:text-2xl font-bold mb-6 text-foreground border-s-4 border-primary ps-4 break-words">
                 {section.title}
               </h2>
               {section.content && (
@@ -39,7 +39,7 @@ export default async function PrivacyPage() {
               )}
               
               {section.table && (
-                <div className="overflow-x-auto my-6 bg-foreground/5 rounded-2xl p-4 -mx-2">
+                <div className="overflow-x-auto my-6 bg-foreground/5 rounded-2xl p-4">
                   <table className="min-w-full text-start border-collapse">
                     <thead>
                       <tr className="border-b border-foreground/10 text-foreground">
@@ -60,7 +60,7 @@ export default async function PrivacyPage() {
               )}
 
               {section.providers && (
-                <div className="overflow-x-auto my-6 bg-foreground/5 rounded-2xl p-4 -mx-2">
+                <div className="overflow-x-auto my-6 bg-foreground/5 rounded-2xl p-4">
                   <table className="min-w-full text-start border-collapse">
                     <thead>
                       <tr className="border-b border-foreground/10 text-foreground">
