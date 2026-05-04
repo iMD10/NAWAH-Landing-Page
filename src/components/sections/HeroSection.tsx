@@ -455,12 +455,12 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, x: 0, y: 0, rotate: -12 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-          className="absolute left-[2%] md:left-[10%] z-0 translate-x-[-15%] sm:translate-x-0"
+          className="absolute left-[2%] md:left-[10%] z-0 translate-x-[-15%] sm:translate-x-0 scale-[0.7] sm:scale-[0.85]"
         >
           <PhoneMockup 
             src="/screenshots/chat.png" 
             alt="Chat feature" 
-            style={{ transform: "scale(0.75) sm:scale(0.82)", opacity: 0.85 }}
+            style={{ opacity: 0.85 }}
           />
         </motion.div>
 
@@ -470,12 +470,12 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, x: 0, y: 0, rotate: 12 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
-          className="absolute right-[2%] md:right-[10%] z-0 translate-x-[15%] sm:translate-x-0"
+          className="absolute right-[2%] md:right-[10%] z-0 translate-x-[15%] sm:translate-x-0 scale-[0.7] sm:scale-[0.85]"
         >
           <PhoneMockup 
             src="/screenshots/events.png" 
             alt="Events feature" 
-            style={{ transform: "scale(0.75) sm:scale(0.82)", opacity: 0.85 }}
+            style={{ opacity: 0.85 }}
           />
         </motion.div>
 
@@ -485,7 +485,7 @@ export default function HeroSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
-          className="relative z-10 scale-[0.9] sm:scale-100"
+          className="relative z-10 scale-[0.85] sm:scale-100"
         >
           <PhoneMockup 
             src="/screenshots/hero-main.png" 
