@@ -124,10 +124,10 @@ export default function FeaturesSection() {
                 <Icon className="w-6 h-6" style={{ color: feature.iconColor }} />
               </div>
 
-              <h3 className="text-xl font-bold mb-2 relative z-10" style={{ color: "var(--text-1)" }}>
+              <h3 className="text-xl font-bold mb-2 relative z-10 max-w-[55%]" style={{ color: "var(--text-1)" }}>
                 {t(feature.id)}
               </h3>
-              <p className="text-sm leading-relaxed text-balance mb-6 relative z-10 opacity-70 max-w-[75%]" style={{ color: "var(--text-1)" }}>
+              <p className="text-sm leading-relaxed text-balance mb-6 relative z-10 opacity-70 max-w-[55%]" style={{ color: "var(--text-1)" }}>
                 {t(`${feature.id}Desc`)}
               </p>
 

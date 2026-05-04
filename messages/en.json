@@ -16,7 +16,7 @@
     "name": "NAWAH",
     "badge": "All-In-One Family Platform",
     "headline": "Your Family, Organized in One Place",
-    "subtext": "Chat, plan events, manage tasks, and save memories — all in one app.",
+    "subtext": "Chat, plan events, manage tasks, and save memories. All in one app.",
     "cta": "Download App",
     "appStorePre": "Download on the",
     "appStore": "App Store",
@@ -58,7 +58,7 @@
   },
   "Cta": {
     "title": "Start your family hub today",
-    "subtext": "Available on iOS and Android — free to download.",
+    "subtext": "Available on iOS and Android. Free to download.",
     "button": "Download on the App Store"
   },
   "Footer": {
