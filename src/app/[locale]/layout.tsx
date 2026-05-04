@@ -28,6 +28,10 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   display: "swap",
 });
 
+export const viewport = {
+  themeColor: "#2789D3",
+};
+
 export const metadata: Metadata = {
   title: "Nawah | Your Family, Organized in One Place",
   description:
@@ -54,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nawah — All-In-One Family Platform",
     description:
-      "Chat, plan events, manage tasks, and save memories — all in one app.",
+      "Chat, plan founders, manage tasks, and save memories — all in one app.",
     images: ["/og-image.png"],
     creator: "@nawahapp",
   },
@@ -62,7 +66,6 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  themeColor: "#2789D3",
 };
 
 export default async function RootLayout({
@@ -85,11 +88,12 @@ export default async function RootLayout({
     <html lang={locale} dir={dir} suppressHydrationWarning>
       <body
         className={`${inter.variable} ${openSans.variable} ${ibmPlexSansArabic.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        suppressHydrationWarning
       >
         <ThemeProvider>
           <NextIntlClientProvider messages={messages}>
             <Navbar />
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 flex flex-col">{children}</main>
             <Footer />
           </NextIntlClientProvider>
         </ThemeProvider>

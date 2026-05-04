@@ -2,28 +2,24 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { UserPlus, Users, Sparkles, Image as ImageIcon } from "lucide-react";
+import { UserPlus, Users, Sparkles } from "lucide-react";
 
 const steps = [
   {
     id: "step1",
     Icon: Sparkles,
-    gradient: "var(--bg-badge)",
     glow: "var(--border-blue)",
     iconColor: "var(--text-badge)",
   },
   {
     id: "step2",
     Icon: UserPlus,
-    gradient: "var(--bg-badge)",
     glow: "var(--border-purple)",
     iconColor: "var(--text-badge)",
   },
   {
     id: "step3",
     Icon: Users,
-    gradient: "var(--bg-badge)",
     glow: "var(--border-purple)",
     iconColor: "var(--text-badge)",
   },
@@ -64,7 +60,7 @@ export default function HowItWorksSection() {
 
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 relative z-10">
-          {steps.map(({ id, Icon, gradient, glow, iconColor }, index) => (
+          {steps.map(({ id, Icon, glow, iconColor }, index) => (
             <motion.div
               key={id}
               initial={{ opacity: 0, y: 30 }}
