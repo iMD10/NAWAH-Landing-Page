@@ -292,7 +292,7 @@ export default function HeroSection() {
             className="mb-6"
           >
             <span
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold tracking-[0.2em] uppercase"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold uppercase"
               style={{
                 color: "var(--text-badge)",
                 background: "var(--bg-badge)",

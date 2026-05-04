@@ -12,11 +12,11 @@ export default function ProblemSection() {
   const isAr = locale === "ar";
 
   const apps = [
-    { name: t("chat"),     color: "#4B9EF9", icon: "💬" },
+    { name: t("chat"), color: "#4B9EF9", icon: "💬" },
     { name: t("calendar"), color: "#4285F4", icon: "📅" },
-    { name: t("notes"),    color: "#FFD60A", icon: "📝" },
-    { name: t("photos"),  color: "#FF6B6B", icon: "🖼️" },
-    { name: t("tasks"),   color: "#FF9500", icon: "✅" },
+    { name: t("notes"), color: "#FFD60A", icon: "📝" },
+    { name: t("photos"), color: "#FF6B6B", icon: "🖼️" },
+    { name: t("tasks"), color: "#FF9500", icon: "✅" },
   ];
 
   return (
@@ -86,9 +86,8 @@ export default function ProblemSection() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className={`flex items-center justify-center transition-transform duration-500 ${
-                isAr ? "md:rotate-180" : ""
-              } rotate-90 md:rotate-0`}
+              className={`flex items-center justify-center transition-transform duration-500 ${isAr ? "md:rotate-180" : ""
+                } rotate-90 md:rotate-0`}
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" style={{ color: "var(--icon-sky)" }} strokeWidth={2.5} viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />

@@ -77,7 +77,7 @@ export default function FeaturesSection() {
         className="text-center mb-16"
       >
         <span
-          className="inline-block text-xs font-bold tracking-[0.22em] uppercase mb-4 px-4 py-1.5 rounded-full"
+          className="inline-block text-xs font-bold uppercase mb-4 px-4 py-1.5 rounded-full"
           style={{ color: "var(--text-badge)", background: "var(--bg-badge)", border: "1px solid var(--border-badge)" }}
         >
           {t("badge")}
@@ -132,12 +132,11 @@ export default function FeaturesSection() {
               </p>
 
               {/* Peeking UI */}
-              <div 
-                className={`absolute -bottom-16 w-[200px] aspect-[9/19] rounded-[2rem] shadow-2xl transition-transform duration-500 overflow-hidden ${
-                  locale === "ar" 
-                    ? "left-[-2.5rem] -rotate-12 group-hover:-translate-y-6 group-hover:-rotate-6" 
+              <div
+                className={`absolute -bottom-16 w-[200px] aspect-[9/19] rounded-[2rem] shadow-2xl transition-transform duration-500 overflow-hidden ${locale === "ar"
+                    ? "left-[-2.5rem] -rotate-12 group-hover:-translate-y-6 group-hover:-rotate-6"
                     : "right-[-2.5rem] rotate-12 group-hover:-translate-y-6 group-hover:rotate-6"
-                }`}
+                  }`}
                 style={{ border: "1px solid var(--border-purple)", background: "var(--bg-card-alt)" }}
               >
                 <div className="absolute top-0 left-0 right-0 h-10 flex items-center justify-center z-20">

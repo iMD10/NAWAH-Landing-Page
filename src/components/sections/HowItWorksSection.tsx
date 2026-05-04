@@ -38,7 +38,7 @@ export default function HowItWorksSection() {
         className="text-center mb-20"
       >
         <span
-          className="inline-block text-xs font-bold tracking-[0.22em] uppercase mb-4 px-4 py-1.5 rounded-full"
+          className="inline-block text-xs font-bold   uppercase mb-4 px-4 py-1.5 rounded-full"
           style={{ color: "var(--text-badge)", background: "var(--bg-badge)", border: "1px solid var(--border-badge)" }}
         >
           {t("badge")}

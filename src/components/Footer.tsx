@@ -3,7 +3,7 @@ import { useTranslations } from "next-intl";
 import logoImg from "@/app/logo.png";
 
 const sectionHeadingClass =
-  "text-[11px] font-bold uppercase tracking-[0.22em]";
+  "text-[11px] font-bold uppercase  ";
 
 const navLinkClass =
   "text-sm transition-colors hover:text-[color:var(--text-nav-hover)]";
@@ -80,7 +80,7 @@ export default function Footer() {
                   {tBrand("name")}
                 </p>
                 <p
-                  className="text-xs uppercase tracking-[0.2em]"
+                  className="text-xs uppercase"
                   style={{ color: "var(--text-4)" }}
                 >
                   {tBrand("badge")}
@@ -142,24 +142,24 @@ export default function Footer() {
                   style={
                     link.primary
                       ? {
-                          background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
-                          color: "#ffffff",
-                          boxShadow: "0 12px 36px var(--border-blue)",
-                          backgroundClip: "padding-box",
-                        }
+                        background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
+                        color: "#ffffff",
+                        boxShadow: "0 12px 36px var(--border-blue)",
+                        backgroundClip: "padding-box",
+                      }
                       : {
-                          background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
-                          color: "#ffffff",
-                          boxShadow: "0 8px 24px var(--border-blue)",
-                          backgroundClip: "padding-box",
-                        }
+                        background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
+                        color: "#ffffff",
+                        boxShadow: "0 8px 24px var(--border-blue)",
+                        backgroundClip: "padding-box",
+                      }
                   }
                 >
                   <svg className="h-6 w-6 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
                     {link.icon}
                   </svg>
                   <div>
-                    <p className="text-[10px] uppercase tracking-[0.16em] opacity-70">
+                    <p className="text-[10px] uppercase  opacity-70">
                       {link.eyebrow}
                     </p>
                     <p className="text-sm font-bold leading-tight">{link.label}</p>
