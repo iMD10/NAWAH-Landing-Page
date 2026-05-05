@@ -32,6 +32,10 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       person_profiles: "identified_only",
       capture_pageview: false,
       capture_pageleave: true,
+      disable_toolbar: true,
+      session_recording: {
+        maskAllInputs: false,
+      },
     });
   }, []);
 
