@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { PostHogProvider } from "@/components/PostHogProvider";
 import "../globals.css";
 
 const inter = Inter({
@@ -98,13 +99,15 @@ export default async function RootLayout({
         className={`${inter.variable} ${openSans.variable} ${ibmPlexSansArabic.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
         suppressHydrationWarning
       >
-        <ThemeProvider>
-          <NextIntlClientProvider messages={messages}>
-            <Navbar />
-            <main className="flex-1 flex flex-col w-full relative overflow-x-hidden">{children}</main>
-            <Footer />
-          </NextIntlClientProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider>
+            <NextIntlClientProvider messages={messages}>
+              <Navbar />
+              <main className="flex-1 flex flex-col w-full relative overflow-x-hidden">{children}</main>
+              <Footer />
+            </NextIntlClientProvider>
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );
