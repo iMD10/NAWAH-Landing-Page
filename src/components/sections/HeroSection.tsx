@@ -398,7 +398,7 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
           >
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/tr/app/%D9%86%D9%88%D8%A7%D8%A9-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6764706130"
               target="_blank"
               rel="noopener noreferrer"
               className="group flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 hover:scale-105"
@@ -418,11 +418,8 @@ export default function HeroSection() {
               </div>
             </a>
 
-            <a
-              href="https://play.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 hover:scale-105"
+            <div
+              className="flex items-center gap-3 px-8 py-4 rounded-full font-bold text-sm transition-all duration-300 opacity-60 cursor-not-allowed"
               style={{
                 background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
                 color: "#ffffff",
@@ -435,9 +432,9 @@ export default function HeroSection() {
               </svg>
               <div>
                 <div className="text-[10px] opacity-60 leading-none">{t("playStorePre")}</div>
-                <div className="text-sm font-bold leading-tight">{t("playStore")}</div>
+                <div className="text-sm font-bold leading-tight">{t("playStoreComingSoon")}</div>
               </div>
-            </a>
+            </div>
           </motion.div>
         </div>
 

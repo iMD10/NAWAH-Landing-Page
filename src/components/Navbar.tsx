@@ -85,7 +85,7 @@ export default function Navbar() {
             </div>
 
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/tr/app/%D9%86%D9%88%D8%A7%D8%A9-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6764706130"
               target="_blank"
               rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 hover:scale-105"
@@ -149,7 +149,7 @@ export default function Navbar() {
 
           <div className="mt-4 px-3">
             <a
-              href="https://apps.apple.com"
+              href="https://apps.apple.com/tr/app/%D9%86%D9%88%D8%A7%D8%A9-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6764706130"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center w-full py-4 font-bold rounded-2xl"

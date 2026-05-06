@@ -77,7 +77,7 @@ export default function CtaSection() {
         {/* Store buttons */}
         <div className="relative z-10 flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
           <a
-            href="https://apps.apple.com"
+            href="https://apps.apple.com/tr/app/%D9%86%D9%88%D8%A7%D8%A9-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6764706130"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105 min-w-[200px]"
@@ -97,11 +97,8 @@ export default function CtaSection() {
             </div>
           </a>
 
-          <a
-            href="https://play.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:scale-105 min-w-[200px]"
+          <div
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 opacity-60 cursor-not-allowed min-w-[200px]"
             style={{
               background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
               color: "#ffffff",
@@ -114,9 +111,9 @@ export default function CtaSection() {
             </svg>
             <div className="text-left">
               <div className="text-[10px] opacity-60 leading-none">{tHero("playStorePre")}</div>
-              <div className="text-base font-bold leading-tight">{tHero("playStore")}</div>
+              <div className="text-base font-bold leading-tight">{tHero("playStoreComingSoon")}</div>
             </div>
-          </a>
+          </div>
         </div>
 
 

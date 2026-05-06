@@ -21,7 +21,8 @@
     "appStorePre": "Download on the",
     "appStore": "App Store",
     "playStorePre": "Get it on",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "playStoreComingSoon": "Coming Soon"
   },
   "Problem": {
     "title": "Too Many Apps for Family Life?",

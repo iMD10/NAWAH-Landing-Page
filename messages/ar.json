@@ -21,7 +21,8 @@
     "appStorePre": "حمّله من",
     "appStore": "App Store",
     "playStorePre": "حمّله من",
-    "playStore": "Google Play"
+    "playStore": "Google Play",
+    "playStoreComingSoon": "قريباً"
   },
   "Problem": {
     "title": "تعبت من تشتت عائلتك بين التطبيقات؟",
