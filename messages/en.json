@@ -92,7 +92,7 @@
     "deletionTitle": "Nawah – Account Deletion",
     "deletionDesc": "To delete your account and all associated data:",
     "deletionStep1": "Open the Nawah app",
-    "deletionStep2": "Go to Settings → Account → Delete Account",
+    "deletionStep2": "Go to More → Settings → Danger Zone → Delete Account",
     "deletionStep3": "Confirm the deletion process",
     "deletionWarning": "Your account and all associated data (profile, family data, chat messages, photos, events, tasks) will be permanently and immediately deleted. This action cannot be undone."
   },
