@@ -99,7 +99,7 @@
   "Privacy": {
     "title": "Privacy Policy",
     "subtitle": "Nawah — Intelligent Family Organization",
-    "effectiveDate": "Effective date: 1 May 2026  ·  Last updated: 1 May 2026",
+    "effectiveDate": "Effective date: 1 May 2026  ·  Last updated: 7 May 2026",
     "tableLabels": {
       "permission": "Permission",
       "why": "Why we ask",
@@ -115,7 +115,7 @@
       },
       "s2": {
         "title": "2. Information We Collect",
-        "content": "2.1 Information you provide directly\n\nAccount information. Your email address, password (stored only as a one-way hash by Firebase Authentication), and display name. A profile photo is optional.\n\nFamily content. Chat messages, photos, videos, voice notes, calendar events, tasks, shared lists, polls, announcements, vault items (photos, PDFs, videos, rich-text notes), and any other content you create inside a family.\n\nVoice dictation. Audio you record to dictate messages or requests to the AI Assistant.\n\nReports and blocks. If you report a message or block another user, we record that action so our moderation team can review it and so blocking can be enforced.\n\n2.2 Information collected automatically\n\nDevice information. Operating system, app version, language, and a Firebase Cloud Messaging token used solely to send push notifications you have enabled.\n\nApproximate and precise location. Only when you have enabled the family map feature and granted \"When In Use\" location permission. Location is shared with your family while the app is open and is not collected in the background.\n\nAuthentication metadata. Sign-in timestamps and a Firebase user ID used to associate you with your data.\n\n2.3 Information we do not collect\n\nWe do not track you across other apps or websites. The app's privacy manifest declares NSPrivacyTracking = false.\n\nWe do not use third-party advertising networks.\n\nWe do not use Firebase Analytics, Crashlytics, or any third-party analytics or tracking SDKs.\n\nWe do not collect your phone number, postal address, contacts, date of birth, gender, or browsing history."
+        "content": "2.1 Information you provide directly\n\nAccount information. Your email address, password (stored only as a one-way hash by Firebase Authentication), and display name. A profile photo is optional.\n\nFamily content. Chat messages, photos, videos, voice notes, calendar events, tasks, shared lists, polls, announcements, vault items (photos, PDFs, videos, rich-text notes), and any other content you create inside a family.\n\nVoice dictation. Audio you record to dictate messages or requests to the AI Assistant.\n\nReports and blocks. If you report a message or block another user, we record that action so our moderation team can review it and so blocking can be enforced.\n\n2.2 Information collected automatically\n\nDevice information. Operating system, app version, language, and a Firebase Cloud Messaging token used solely to send push notifications you have enabled.\n\nApproximate and precise location. Only when you have enabled the family map feature and granted \"When In Use\" location permission. Location is shared with your family while the app is open and is not collected in the background.\n\nAuthentication metadata. Sign-in timestamps and a Firebase user ID used to associate you with your data.\n\nCrash reports. If the app crashes, Firebase Crashlytics automatically collects a crash report containing the exception type, stack trace, device model, OS version, app version, and the state of the app at the time of the crash. Crash reports do not include your name, email address, or family content.\n\n2.3 Information we do not collect\n\nWe do not track you across other apps or websites. The app's privacy manifest declares NSPrivacyTracking = false.\n\nWe do not use third-party advertising networks.\n\nWe do not use Firebase Analytics or any advertising or behavioural tracking SDKs.\n\nWe do not collect your phone number, postal address, contacts, date of birth, gender, or browsing history."
       },
       "s3": {
         "title": "3. How We Use Your Information",
@@ -162,6 +162,11 @@
             "Google Firebase (Authentication, Firestore, Storage, Cloud Functions, App Check, Cloud Messaging)",
             "Account authentication, primary database, push notifications, abuse prevention.",
             "Your account information, your family content, your device's FCM token."
+          ],
+          [
+            "Firebase Crashlytics",
+            "Crash reporting to help us diagnose and fix app stability issues.",
+            "Crash reports containing exception type, stack trace, device model, OS version, app version, and app state at the time of the crash. No personal identifiers or family content are included."
           ],
           [
             "Cloudflare R2",
