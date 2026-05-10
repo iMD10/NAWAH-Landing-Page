@@ -3,6 +3,11 @@
 import { useEffect, useState } from 'react';
 import { Apple, Play, Languages } from 'lucide-react';
 import logoImg from '../../logo.png';
+import en from '../../../../messages/en.json';
+import ar from '../../../../messages/ar.json';
+
+type Locale = 'en' | 'ar';
+const messages = { en, ar };
 
 export default function JoinPage({ params }: { params: Promise<{ code: string }> }) {
   const [code, setCode] = useState<string>('');
