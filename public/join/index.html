@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FB943F">
+<title>Join a family on Nawah</title>
+<style>
+  :root { --primary: #FB943F; --bg: #fff8f1; --ink: #1f1c19; --muted: #6b6258; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased; }
+  main { max-width: 420px; margin: 0 auto; padding: 48px 24px 64px; text-align: center; }
+  .logo { width: 88px; height: 88px; border-radius: 22px;
+    background: var(--primary); margin: 0 auto 24px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 700; font-size: 36px; }
+  h1 { font-size: 24px; margin: 0 0 8px; line-height: 1.25; }
+  p { color: var(--muted); margin: 0 0 24px; line-height: 1.5; }
+  .code { display: inline-block; padding: 12px 18px; border-radius: 12px;
+    background: #fff; border: 1px solid #ead9c5; font-weight: 700;
+    font-size: 22px; letter-spacing: 4px; margin-bottom: 32px; }
+  .btn { display: block; width: 100%; padding: 14px 20px; border-radius: 14px;
+    background: var(--primary); color: #fff; text-decoration: none;
+    font-weight: 600; font-size: 16px; margin-bottom: 12px; }
+  .btn.secondary { background: #fff; color: var(--ink); border: 1px solid #ead9c5; }
+  .small { font-size: 13px; color: var(--muted); margin-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="logo">N</div>
+  <h1>You're invited to join a family on Nawah</h1>
+  <p>Tap the button below to open Nawah and join. If you don't have the app yet, install it first — your invite will be waiting.</p>
+
+  <div class="code" id="code">------</div>
+
+  <a id="open-app" class="btn" href="#">Open in Nawah</a>
+  <a id="ios-store" class="btn secondary" href="https://apps.apple.com/app/id6764706130">Get it on the App Store</a>
+  <a id="play-store" class="btn secondary" href="https://play.google.com/store/apps/details?id=app.nawah.family">Get it on Google Play</a>
+
+  <p class="small">Or open the Nawah app and enter the code above manually.</p>
+</main>
+
+<script>
+  var parts = window.location.pathname.split('/').filter(Boolean);
+  var code = (parts[1] || '').toUpperCase();
+  if (code) {
+    document.getElementById('code').textContent = code;
+    try { localStorage.setItem('pending_join_code', code); } catch (e) {}
+    document.getElementById('open-app').href = 'https://nawahfamily.com/join/' + code;
+  } else {
+    document.getElementById('open-app').style.display = 'none';
+  }
+  setTimeout(function () {
+    if (code) window.location.href = 'nawah://join/' + code;
+  }, 250);
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appIDs": ["TQFY32YR6N.app.nawah.family"],
+        "components": [
+          {
+            "/": "/join/*",
+            "comment": "Open invite links in the Nawah app"
+          }
+        ]
+      }
+    ]
+  }
+}
