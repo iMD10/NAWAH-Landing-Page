@@ -11,6 +11,13 @@ const nextConfig: NextConfig = {
     imageSizes: [120, 240, 480],
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        { source: '/.well-known/:path*', destination: '/.well-known/:path*' }
+      ]
+    };
+  },
 };
 
 export default withNextIntl(nextConfig);
