@@ -51,9 +51,13 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
       <div className="absolute top-8 right-8 z-20">
         <button 
           onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
-          className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-all text-sm backdrop-blur-xl shadow-lg"
+          className="flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-bold transition-all hover:scale-105 active:scale-95 shadow-xl border border-white/20"
+          style={{
+            background: 'linear-gradient(135deg, var(--color-navy), var(--color-blue))',
+            boxShadow: '0 8px 24px rgba(39, 137, 211, 0.3)'
+          }}
         >
-          <Languages size={18} />
+          <Languages size={20} />
           {locale === 'en' ? 'العربية' : 'English'}
         </button>
       </div>
