@@ -44,16 +44,16 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
 
   return (
     <main 
-      className="flex-1 flex flex-col items-center justify-center p-6 text-center relative" 
+      className="flex-1 flex flex-col items-center justify-center p-6 text-center relative min-h-screen" 
       style={{ background: 'var(--bg-hero)', direction: isRtl ? 'rtl' : 'ltr' }}
     >
       {/* Language Switcher */}
-      <div className="absolute top-6 right-6 z-20">
+      <div className="absolute top-8 right-8 z-20">
         <button 
           onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
-          className="flex items-center gap-2 px-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white/70 hover:text-white hover:bg-white/10 transition-all text-sm font-medium backdrop-blur-md"
+          className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-white/10 border border-white/20 text-white font-bold hover:bg-white/20 transition-all text-sm backdrop-blur-xl shadow-lg"
         >
-          <Languages size={16} />
+          <Languages size={18} />
           {locale === 'en' ? 'العربية' : 'English'}
         </button>
       </div>
@@ -64,19 +64,24 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-lavender/20 blur-[120px]" />
       </div>
 
-      <div className="relative z-10 max-w-md w-full glass-dark rounded-[40px] p-8 md:p-12 shadow-2xl border-white/10 overflow-hidden">
+      <div className="relative z-10 max-w-md w-full glass-dark rounded-[48px] p-10 md:p-14 shadow-2xl border-white/10 overflow-hidden">
         {/* Glow effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-primary blur-xl opacity-50" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-primary blur-2xl opacity-60" />
 
         <div 
-          className="w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-10 overflow-hidden p-2 shadow-2xl transform hover:scale-105 transition-transform"
+          className="w-24 h-24 rounded-[28px] flex items-center justify-center mx-auto mb-10 overflow-hidden shadow-2xl transform hover:scale-105 transition-all"
           style={{
             background: 'linear-gradient(135deg, var(--color-navy), var(--color-blue))',
-            boxShadow: '0 12px 32px rgba(39, 137, 211, 0.4)'
+            boxShadow: '0 20px 40px rgba(39, 137, 211, 0.4)',
+            border: '1px solid rgba(255, 255, 255, 0.1)'
           }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={logoImg.src} alt="Nawah Logo" className="w-full h-full object-contain" />
+          <img 
+            src={logoImg.src} 
+            alt="Nawah Logo" 
+            className="w-full h-full object-cover block"
+          />
         </div>
         
         <h1 className="text-3xl md:text-4xl font-heading font-bold mb-6 leading-tight text-white tracking-tight">
