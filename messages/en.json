@@ -298,5 +298,13 @@
         "content": "Questions about these Terms? Contact us at:\n\nEmail: legal@nawahfamily.com"
       }
     }
+  },
+  "Join": {
+    "title": "You're invited to join a family on Nawah",
+    "description": "Tap the button below to open Nawah and join. If you don't have the app yet, install it first. Your invite will be waiting.",
+    "button": "Open in Nawah",
+    "appStore": "App Store",
+    "playStore": "Google Play",
+    "manual": "Or open the Nawah app and enter the code manually."
   }
 }
