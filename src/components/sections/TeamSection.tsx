@@ -45,7 +45,7 @@ const members = [
     initials: "MB",
     photo: "/team/mohammed-b.jpg",
     linkedin: "https://www.linkedin.com/in/mohammed-albulaihy-8b19b4340/",
-    github: "#",
+    github: "https://github.com/MrM3ROF",
   },
   {
     id: "amer",
