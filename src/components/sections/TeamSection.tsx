@@ -131,13 +131,13 @@ export default function TeamSection() {
   const locale = useLocale();
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="text-center mb-16"
+        className="text-center mb-10"
       >
         <span
           className="inline-block text-xs font-bold uppercase mb-4 px-4 py-1.5 rounded-full tracking-widest"
