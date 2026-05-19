@@ -7,6 +7,7 @@
     "home": "Home",
     "features": "Features",
     "howItWorks": "How it Works",
+    "about": "About",
     "support": "Support",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
@@ -306,6 +307,14 @@
         "content": "Questions about these Terms? Contact us at:\n\nEmail: legal@nawahfamily.com"
       }
     }
+  },
+  "About": {
+    "metaTitle": "About",
+    "badge": "Meet the Team",
+    "title": "The Minds Behind Nawah",
+    "description": "We're five developers united by one idea: helping families stay connected and organized in one place. What started as a university project became a platform we're proud to share with families everywhere.",
+    "linkedinLabel": "LinkedIn profile",
+    "githubLabel": "GitHub profile"
   },
   "Join": {
     "title": "You're invited to join a family on Nawah",
