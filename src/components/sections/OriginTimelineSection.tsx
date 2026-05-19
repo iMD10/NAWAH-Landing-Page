@@ -23,6 +23,7 @@ export default function OriginTimelineSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
+          className="md:sticky md:top-24 md:self-start"
         >
           <span
             className="inline-block text-xs font-bold uppercase mb-4 px-4 py-1.5 rounded-full tracking-widest"
