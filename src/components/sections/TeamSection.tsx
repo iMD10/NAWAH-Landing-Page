@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function LinkedinIcon({ className }: { className?: string }) {
   return (
@@ -53,7 +53,7 @@ const members = [
     nameAr: "عامر السناني",
     initials: "AS",
     photo: "/team/amer.jpg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/amer-alsenani",
     github: "#",
   },
   {
@@ -62,7 +62,7 @@ const members = [
     nameAr: "إياد العرفج",
     initials: "EA",
     photo: "/team/eyad.jpg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/eyad-alarfaj-736512360/",
     github: "#",
   },
   {
@@ -71,7 +71,7 @@ const members = [
     nameAr: "محمد السيف",
     initials: "MS",
     photo: "/team/mohammed-s.jpg",
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/mohammedsalehalsaif/",
     github: "#",
   },
 ];
@@ -87,32 +87,41 @@ function MemberPhoto({
   initials: string;
   gradient: string;
 }) {
+  const [loaded, setLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, []);
+
+  const showInitials = hasError || !loaded;
 
   return (
     <div
-      className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 ring-2"
+      className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 relative"
       style={{
-        ringColor: "var(--border-blue)",
         boxShadow: "0 0 0 3px var(--border-blue), 0 8px 32px rgba(39,137,211,0.2)",
       }}
     >
-      {!hasError ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={src}
-          alt={name}
-          className="w-full h-full object-cover"
-          onError={() => setHasError(true)}
-        />
-      ) : (
-        <div
-          className="w-full h-full flex items-center justify-center text-white text-xl font-bold select-none"
-          style={{ background: gradient }}
-        >
-          {initials}
-        </div>
-      )}
+      <div
+        className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold select-none"
+        style={{ background: gradient }}
+      >
+        {initials}
+      </div>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        ref={imgRef}
+        src={src}
+        alt={name}
+        className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+        style={{ opacity: showInitials ? 0 : 1 }}
+        onLoad={() => setLoaded(true)}
+        onError={() => setHasError(true)}
+      />
     </div>
   );
 }
@@ -188,34 +197,38 @@ export default function TeamSection() {
             </h3>
 
             <div className="flex gap-2.5 relative z-10">
-              <a
-                href={member.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("linkedinLabel")}
-                className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
-                style={{
-                  background: "var(--bg-badge)",
-                  border: "1px solid var(--border-badge)",
-                  color: "var(--color-blue)",
-                }}
-              >
-                <LinkedinIcon className="w-4 h-4" />
-              </a>
-              <a
-                href={member.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={t("githubLabel")}
-                className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
-                style={{
-                  background: "var(--bg-badge)",
-                  border: "1px solid var(--border-badge)",
-                  color: "var(--text-2)",
-                }}
-              >
-                <GithubIcon className="w-4 h-4" />
-              </a>
+              {member.linkedin !== "#" && (
+                <a
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("linkedinLabel")}
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
+                  style={{
+                    background: "var(--bg-badge)",
+                    border: "1px solid var(--border-badge)",
+                    color: "var(--color-blue)",
+                  }}
+                >
+                  <LinkedinIcon className="w-4 h-4" />
+                </a>
+              )}
+              {member.github !== "#" && (
+                <a
+                  href={member.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("githubLabel")}
+                  className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
+                  style={{
+                    background: "var(--bg-badge)",
+                    border: "1px solid var(--border-badge)",
+                    color: "var(--text-2)",
+                  }}
+                >
+                  <GithubIcon className="w-4 h-4" />
+                </a>
+              )}
             </div>
           </motion.div>
         ))}
