@@ -101,7 +101,7 @@ function MemberPhoto({
 
   return (
     <div
-      className="w-24 h-24 rounded-full overflow-hidden flex-shrink-0 relative"
+      className="w-28 h-28 rounded-full overflow-hidden flex-shrink-0 relative"
       style={{
         boxShadow: "0 0 0 3px var(--border-blue), 0 8px 32px rgba(39,137,211,0.2)",
       }}
@@ -163,7 +163,7 @@ export default function TeamSection() {
         </p>
       </motion.div>
 
-      <div className="flex flex-wrap justify-center gap-5 lg:gap-6">
+      <div className="flex flex-wrap justify-center gap-10 lg:gap-14">
         {members.map((member, i) => (
           <motion.div
             key={member.id}
@@ -171,46 +171,39 @@ export default function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group relative flex flex-col items-center gap-4 p-7 rounded-[2rem] w-[200px] transition-all duration-300 hover:-translate-y-2"
-            style={{
-              background: "var(--bg-card)",
-              border: "1px solid var(--border-subtle)",
-            }}
+            className="group flex flex-col items-center gap-3"
           >
-            <div
-              className="absolute inset-0 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-              style={{ boxShadow: "0 0 0 1px var(--border-blue), 0 8px 40px var(--border-blue)" }}
-            />
-
-            <MemberPhoto
-              src={member.photo}
-              name={locale === "ar" ? member.nameAr : member.nameEn}
-              initials={member.initials}
-              gradient={memberGradients[i]}
-            />
+            <div className="relative transition-transform duration-300 group-hover:-translate-y-1">
+              <MemberPhoto
+                src={member.photo}
+                name={locale === "ar" ? member.nameAr : member.nameEn}
+                initials={member.initials}
+                gradient={memberGradients[i]}
+              />
+            </div>
 
             <h3
-              className="text-sm font-bold text-center leading-snug relative z-10"
+              className="text-sm font-bold text-center leading-snug"
               style={{ color: "var(--text-1)" }}
             >
               {locale === "ar" ? member.nameAr : member.nameEn}
             </h3>
 
-            <div className="flex gap-2.5 relative z-10">
+            <div className="flex gap-2">
               {member.linkedin !== "#" && (
                 <a
                   href={member.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("linkedinLabel")}
-                  className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
                   style={{
                     background: "var(--bg-badge)",
                     border: "1px solid var(--border-badge)",
                     color: "var(--color-blue)",
                   }}
                 >
-                  <LinkedinIcon className="w-4 h-4" />
+                  <LinkedinIcon className="w-3.5 h-3.5" />
                 </a>
               )}
               {member.github !== "#" && (
@@ -219,14 +212,14 @@ export default function TeamSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("githubLabel")}
-                  className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 hover:brightness-110"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
                   style={{
                     background: "var(--bg-badge)",
                     border: "1px solid var(--border-badge)",
                     color: "var(--text-2)",
                   }}
                 >
-                  <GithubIcon className="w-4 h-4" />
+                  <GithubIcon className="w-3.5 h-3.5" />
                 </a>
               )}
             </div>
