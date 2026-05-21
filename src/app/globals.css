@@ -157,6 +157,8 @@ html {
 [dir="rtl"] body,
 [dir="rtl"] * {
   font-family: var(--font-ibm-arabic), ui-sans-serif, system-ui, sans-serif;
+  /* Arabic is a connected script — letter-spacing breaks ligatures */
+  letter-spacing: 0 !important;
 }
 
 ::-webkit-scrollbar { width: 5px; }
