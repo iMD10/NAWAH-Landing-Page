@@ -97,35 +97,26 @@ export default function CtaSection() {
             </div>
           </a>
 
-          <div className="relative">
-            <div 
-              className="absolute -top-3 -end-3 text-[10px] font-bold px-3 py-1 rounded-full z-10 shadow-lg whitespace-nowrap"
-              style={{
-                color: "var(--text-badge)",
-                background: "var(--background)",
-                border: "1px solid var(--border-badge)",
-              }}
-            >
-              {tHero("playStoreComingSoon")}
+          <a
+            href="https://play.google.com/store/apps/details?id=app.nawah.family"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 hover:-translate-y-0.5 min-w-[200px]"
+            style={{
+              background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
+              color: "#ffffff",
+              boxShadow: "0 8px 32px var(--border-blue)",
+              backgroundClip: "padding-box",
+            }}
+          >
+            <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27" />
+            </svg>
+            <div className="text-left">
+              <div className="text-[10px] opacity-70 leading-none">{tHero("playStorePre")}</div>
+              <div className="text-base font-bold leading-tight">{tHero("playStore")}</div>
             </div>
-            <div
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl font-bold transition-all duration-300 opacity-60 cursor-not-allowed min-w-[200px]"
-              style={{
-                background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
-                color: "#ffffff",
-                boxShadow: "0 8px 32px var(--border-blue)",
-                backgroundClip: "padding-box",
-              }}
-            >
-              <svg className="w-8 h-8 flex-shrink-0" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27" />
-              </svg>
-              <div className="text-left">
-                <div className="text-[10px] opacity-70 leading-none">{tHero("playStorePre")}</div>
-                <div className="text-base font-bold leading-tight">{tHero("playStore")}</div>
-              </div>
-            </div>
-          </div>
+          </a>
         </div>
 
 
