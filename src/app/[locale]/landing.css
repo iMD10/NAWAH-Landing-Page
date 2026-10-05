@@ -454,6 +454,9 @@
   }
 
   .nw-day__chapters { gap: 0; }
+  #features > .nw-section { padding-block-end: 0; }
+  /* The day ends here: no need for a full screen of space after it. */
+  .nw-chapter:last-child { min-block-size: 58vh; }
   .nw-chapter {
     min-block-size: 82vh;
     align-content: center;
@@ -474,33 +477,6 @@
   display: grid;
   justify-items: center;
   gap: 1.25rem;
-}
-.nw-segmented {
-  display: inline-flex;
-  padding: 0.25rem;
-  gap: 0.25rem;
-  border-radius: var(--radius-sm);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-}
-.nw-segmented button {
-  min-block-size: 2.5rem;
-  padding-inline: 1rem;
-  border-radius: 0.55rem;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: var(--muted);
-  transition: background-color 160ms ease, color 160ms ease;
-  cursor: pointer;
-}
-.nw-segmented button:hover { color: var(--ink); }
-@media (max-width: 22rem) {
-  .nw-segmented button { padding-inline: 0.7rem; font-size: 0.875rem; }
-}
-.nw-segmented button[aria-pressed="true"] {
-  background: var(--brand-btn);
-  color: #fff;
 }
 .nw-screen-swap { display: grid; }
 .nw-screen-swap > * {
@@ -629,71 +605,230 @@
   }
 }
 
-/* ── Getting started ──────────────────────────────────── */
-.nw-steps {
-  position: relative;
+/* ── Getting started: a hands-on onboarding example ─────
+   Copy + stepper on one side, the example card on a board on the other. */
+.nw-start {
   display: grid;
-  gap: 2rem;
-  margin: clamp(2.5rem, 6vw, 4rem) 0 0;
-  padding: 0;
+  gap: 2.5rem;
+  align-items: center;
+}
+.nw-start__copy { display: grid; justify-items: start; gap: 1.1rem; }
+.nw-start__copy .nw-h2 { margin-block-start: 0.1rem; }
+
+.nw-stepper {
   list-style: none;
-  counter-reset: step;
-}
-.nw-step {
-  position: relative;
+  margin: 0.9rem 0 0;
+  padding: 0;
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 1.25rem;
-  row-gap: 0.4rem;
-  align-items: start;
+  gap: 0.35rem;
+  inline-size: 100%;
 }
-.nw-step__num {
-  grid-row: span 2;
+.nw-stepper li { position: relative; }
+/* Thread connecting the step numbers */
+.nw-stepper li + li::before {
+  content: "";
+  position: absolute;
+  inset-block-start: -0.55rem;
+  inset-inline-start: 1.85rem;
+  block-size: 0.75rem;
+  border-inline-start: 2px solid var(--line-strong);
+}
+.nw-stepper li[data-state="done"] + li::before { border-color: var(--brand); }
+.nw-stepper button {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  inline-size: 100%;
+  padding: 0.75rem 0.85rem;
+  border-radius: var(--radius-md);
+  text-align: start;
+  cursor: pointer;
+  transition: background-color 160ms ease;
+}
+.nw-stepper button:hover { background: var(--paper-2); }
+.nw-stepper [aria-current] { background: var(--surface); box-shadow: var(--shadow-sm); }
+.nw-stepper__num {
+  display: grid;
+  place-items: center;
+  inline-size: 2rem;
+  block-size: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 700;
+  flex: none;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease;
+}
+[data-state="current"] .nw-stepper__num { border-color: var(--brand); color: var(--brand-ink); }
+[data-state="done"] .nw-stepper__num { border-color: var(--brand-btn); background: var(--brand-btn); color: #fff; }
+.nw-stepper__text { display: grid; gap: 0.15rem; }
+.nw-stepper__title { font-weight: 700; font-size: 1.0625rem; color: var(--ink); }
+.nw-stepper__desc { font-size: 0.9375rem; line-height: 1.55; color: var(--muted); }
+
+.nw-start__stage {
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 5vw, 3.5rem) clamp(1rem, 4vw, 3rem);
+  min-block-size: 27rem;
+}
+.nw-start__card {
+  inline-size: min(100%, 24rem);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-md);
+  animation: nw-card-in 320ms cubic-bezier(0.22, 0.9, 0.24, 1) both;
+}
+@keyframes nw-card-in {
+  from { opacity: 0; translate: 0 0.6rem; scale: 0.98; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+.nw-start__label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--brand-ink);
+  margin-block-end: 1rem;
+}
+.nw-start__title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.375rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  outline-offset: 4px;
+}
+.nw-start__form, .nw-start__invite, .nw-start__ready { display: grid; gap: 0.75rem; }
+.nw-start__badge {
   display: grid;
   place-items: center;
   inline-size: 3.25rem;
   block-size: 3.25rem;
-  border-radius: 50%;
-  background: var(--surface);
-  border: 2px solid var(--brand);
+  border-radius: 1rem;
+  background: var(--brand-tint);
   color: var(--brand-ink);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1.25rem;
-  position: relative;
-  z-index: 1;
 }
-.nw-step__title {
+.nw-start__input {
+  inline-size: 100%;
+  min-block-size: 3rem;
+  padding-inline: 1rem;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--line-strong);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.0625rem;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+.nw-start__input::placeholder { color: var(--faint); }
+.nw-start__input:focus-visible { outline: none; border-color: var(--brand); box-shadow: 0 0 0 4px var(--brand-tint); }
+.nw-start__primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-block-size: 3rem;
+  margin-block-start: 0.35rem;
+  border-radius: var(--radius-sm);
+  background: var(--brand-btn);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 150ms ease, transform 150ms ease;
+}
+.nw-start__primary:hover { background: var(--brand-btn-hover); }
+.nw-start__primary:active { transform: scale(0.98); }
+.nw-start__secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-block-size: 2.75rem;
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+.nw-start__secondary:hover { color: var(--ink); background: var(--paper-2); }
+.nw-start__field-label { font-size: 0.8125rem; font-weight: 600; color: var(--muted); margin-block-end: -0.4rem; }
+.nw-start__link {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  font-size: 1.25rem;
+  gap: 0.5rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--brand-ink);
+}
+.nw-start__link span { min-inline-size: 0; }
+.nw-start__ready-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  color: var(--brand-ink);
+}
+/* Programmatic focus target after a step change: no ring around plain text. */
+.nw-start__title:focus { outline: none; }
+.nw-start__code {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
   font-weight: 700;
+  letter-spacing: 0.22em !important;
   color: var(--ink);
-  padding-block-start: 0.6rem;
+  text-align: start;
 }
-.nw-step__title svg { color: var(--brand-ink); flex: none; }
-.nw-step p { color: var(--muted); line-height: 1.7; max-inline-size: 32ch; }
-/* String connecting the pins */
-.nw-steps::before {
-  content: "";
-  position: absolute;
-  inset-block: 1.6rem 1.6rem;
-  inset-inline-start: 1.6rem;
-  border-inline-start: 2px dashed var(--line-strong);
+[dir="rtl"] .nw-start__code { text-align: end; }
+.nw-start__hint { font-size: 0.8125rem; color: var(--muted); }
+.nw-start__joining {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-block: 0.35rem;
 }
+.nw-start__avatars { display: flex; list-style: none; margin: 0; padding: 0; }
+.nw-start__avatars .nw-avatar {
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  font-size: 0.875rem;
+  border: 2px solid var(--surface);
+  margin-inline-start: -0.5rem;
+}
+.nw-start__avatars .nw-avatar:first-child { margin-inline-start: 0; }
+.nw-start__invite .nw-avatar { animation: nw-join 360ms cubic-bezier(0.3, 1.5, 0.5, 1) both; animation-delay: calc(0.5s + var(--i) * 0.45s); }
+.nw-start__joined { font-size: 0.875rem; font-weight: 600; color: var(--ink); animation: nw-fade-in 300ms ease 1.9s both; }
+@keyframes nw-join { from { opacity: 0; scale: 0.4; } to { opacity: 1; scale: 1; } }
+.nw-start__avatars--big .nw-avatar { inline-size: 2.75rem; block-size: 2.75rem; font-size: 1rem; }
+.nw-avatar--you { background: var(--brand-btn) !important; color: #fff !important; }
+.nw-start__starts { list-style: none; margin: 0.25rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+.nw-start__starts a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-block-size: 3rem;
+  padding-inline: 0.9rem;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  font-weight: 600;
+  color: var(--ink);
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+.nw-start__starts a:hover { border-color: var(--brand); background: var(--brand-tint); }
+.nw-start__starts a > svg:first-child { color: var(--brand-ink); }
+.nw-start__go { margin-inline-start: auto; color: var(--faint); }
+[dir="rtl"] .nw-flip-rtl { scale: -1 1; }
+
 @media (min-width: 56rem) {
-  .nw-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2.5rem; }
-  .nw-step { grid-template-columns: 1fr; row-gap: 0.75rem; }
-  .nw-step__num { grid-row: auto; margin-block-end: 0.75rem; }
-  .nw-step__title { padding-block-start: 0; }
-  .nw-steps::before {
-    inset-block: 1.6rem auto;
-    /* from the first pin to the third: column width minus half a pin */
-    inset-inline: 1.6rem calc((100% - 5rem) / 3 - 1.6rem);
-    border-inline-start: 0;
-    border-block-start: 2px dashed var(--line-strong);
-  }
+  .nw-start { grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(3rem, 6vw, 6rem); }
+  .nw-start__stage { min-block-size: 32rem; }
 }
 
 /* ── Final download board ─────────────────────────────── */
@@ -830,6 +965,10 @@
 @media (prefers-reduced-motion: reduce) {
   .nw-note-card,
   .nw-note-card__icon,
+  .nw-start__card,
+  .nw-start__invite .nw-avatar,
+  .nw-start__joined,
+  .nw-stepper__num,
   .nw-day__stage,
   .nw-day__screens,
   .nw-cta__screens .nw-phone,

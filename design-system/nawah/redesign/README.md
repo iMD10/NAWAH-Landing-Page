@@ -215,3 +215,52 @@ The owner asked for something bigger, using three.js. Both 3D pieces are built f
 - The three.js chunk is still ~239 KB gzipped and lazy. Phones run 2 canvases (hero, download ring); desktop runs 3. Only the canvases near the viewport render.
 - Checks: everything listed above for the 3D pass still passes. New results: tap-to-swap, autoplay → stop on interaction, keyboard prev/next, drag with momentum, and the reduced-motion fallback (no controls, posters visible). No overflow at 320–1440 in EN/AR. Not tested: touch-drag on a real phone (only mouse drag was automated).
 ![Hero tap-to-swap and 3D screen ring](v4-3d-ring.png)
+
+---
+
+# Navigation and onboarding pass
+
+## Problems found (rendered audit)
+
+1. **The mobile menu was not a real layer.** It extended the header with three bare links and a "Get App" button that only scrolled to the bottom of the page. There was no backdrop, the page stayed scrollable underneath, there was no motion, focus trap or current-section state, and the top bar crammed theme + language + burger into 390px.
+2. **Desktop "Get App" was a dead end.** It scrolled to a section, but a laptop can't install the app.
+3. **There was no sense of place on a long page.** The nav never showed which section you were reading.
+4. **"How it works" was the weakest section:** three text-only steps and ~250px of empty space, with nothing that made the flow concrete.
+5. **About 320px of empty space** followed the last chapter of the pinned feature story on desktop.
+
+## What changed
+
+- **Mobile menu → a modal sheet** (`role="dialog"`, `aria-modal`):
+  - Large display-type sections, each with an icon and a one-line description. The section you're reading is highlighted.
+  - A branded card with the real App Store / Google Play buttons.
+  - Labelled **Language** (العربية | English) and **Appearance** (Light | Dark) switches, moved out of the top bar.
+  - Support / Privacy / Terms links.
+  - Behaviour: focus moves in and is trapped, Escape closes and returns focus to the burger, page scroll is locked, links close the sheet, and widening to desktop closes it.
+  - Motion: the burger morphs into a close mark, the sheet slides in and its sections stagger in. All motion is off under reduced motion, and the sheet is `inert` while closed.
+- **Desktop header:**
+  - A scrollspy underline marks Features / How it works while you read them.
+  - "Get App" opens a panel with both store links and the QR hand-off (QR hidden on coarse pointers). Escape, an outside click and focus leaving the panel all close it.
+- **How it works → a hands-on onboarding example**, matching the app's verified flow (create → invite by link or code → organise):
+  1. Type your family's name.
+  2. See an invite link in the app's real `nawahfamily.com/join/CODE` format, with a code derived from the name and labelled as an example ("Your real code appears in the app"). Members join.
+  3. "Your family space is ready" offers three starting points that jump to the matching feature chapters.
+  - Focus moves to each new step, a persistent polite live region names it, and the stepper shows done / current / next.
+- **The feature story ends sooner:** the last chapter is shorter on desktop and there is no extra bottom padding.
+- Segmented-control styles moved to `globals.css`, since the header (shown on every page) uses them now.
+
+## Copy added (flag for review)
+
+- Navigation: section descriptions ("A family day in Nawah", "Get started in three steps", "Our story and the team"), Language / Appearance labels, the Get-app panel text.
+- How it works: intro line, demo labels, example placeholder ("The Ahmed family" / «عائلة الأحمد»), invite / ready / start-point strings.
+- No product claims changed. The invite link format and manual code entry come from the existing join page.
+
+## Checks (production build)
+
+- Sheet: closed = inert and hidden; open = focus on the first section and page scroll locked. Thirty Tab presses never left the header. Escape → closed, focus back on the burger, scroll restored. A link closes the sheet and navigates. The language switch moves to `/ar` with `dir="rtl"`, and the theme switch applies dark mode.
+- Desktop: the Get-app panel opens and closes on Escape. Scrollspy reports "How it Works" in that section.
+- Onboarding (EN, keyboard; AR, 390px): Enter creates the family, focus lands on the invite step, the code is derived from the name, the stepper reaches step 3, and "Make a shopping list" scrolls to the Tasks chapter.
+- All earlier checks still pass (story toggle, 3D hero, pinned story, ring, reduced-motion fallbacks). No horizontal overflow at 320 / 390 / 768 / 1024 / 1440.
+- `tsc` is clean and `next build` succeeds. ESLint shows the same 9 pre-existing findings.
+- Known and left as is: React warns in dev about the theme `<script>` in `layout.tsx` when switching language. It predates this work.
+
+![Mobile menu, Get-app panel, onboarding](v5-nav-onboarding.png)

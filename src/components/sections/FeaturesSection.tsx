@@ -172,6 +172,7 @@ export default function FeaturesSection() {
                 ref={(el) => {
                   chapters.current[i] = el;
                 }}
+                id={`feature-${c.id}`}
                 data-index={i}
                 data-id={c.id}
                 className="nw-chapter"
