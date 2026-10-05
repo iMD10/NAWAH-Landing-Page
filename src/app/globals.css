@@ -34,11 +34,11 @@
 
   /* Page & sections */
   --bg-page:    #f0f4ff;
-  --bg-hero:    radial-gradient(ellipse 130% 90% at 50% 0%, #c5d8f7 0%, #f0f4ff 55%, #e8f0ff 100%);
+  --bg-hero:    linear-gradient(180deg, #e3ecfc 0%, #f0f4ff 100%);
   --bg-card:    linear-gradient(135deg, rgba(255,255,255,0.97), rgba(235,242,255,0.9));
   --bg-card-alt: rgba(255,255,255,0.8);
   --bg-cta:     linear-gradient(135deg, #eef2ff 0%, #f5f7ff 50%, #e8efff 100%);
-  --bg-footer:  linear-gradient(180deg, #e8f0ff 0%, #dde8ff 100%);
+  --bg-footer:  #e8eefb;
 
   /* Navbar */
   --bg-nav:     rgba(245,248,255,0.96);
@@ -94,11 +94,11 @@
   --foreground: #f0eeff;
 
   --bg-page:    #13152A;
-  --bg-hero:    radial-gradient(ellipse 130% 90% at 50% 0%, #1e2a5e 0%, #13152A 55%, #0c0e1e 100%);
+  --bg-hero:    linear-gradient(180deg, #19214a 0%, #13152A 100%);
   --bg-card:    linear-gradient(135deg, rgba(19,21,42,0.95), rgba(25,35,80,0.8));
   --bg-card-alt: rgba(19,21,42,0.75);
   --bg-cta:     linear-gradient(135deg, #0c0e1e 0%, #13152A 50%, #1a2060 100%);
-  --bg-footer:  linear-gradient(180deg, #101427 0%, #0c0e1e 100%);
+  --bg-footer:  #0e1024;
 
   --bg-nav:     rgba(13,15,30,0.92);
   --bg-nav-top: rgba(13,15,30,0.55);

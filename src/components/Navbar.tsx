@@ -29,7 +29,6 @@ export default function Navbar() {
     { href: "/#features", label: t("features") },
     { href: "/#how-it-works", label: t("howItWorks") },
     { href: "/about", label: t("about") },
-    { href: "/#download", label: t("download") },
   ];
 
   return (
@@ -39,7 +38,6 @@ export default function Navbar() {
         background: scrolled ? "var(--bg-nav)" : "var(--bg-nav-top)",
         backdropFilter: "blur(20px)",
         borderBottom: scrolled ? "1px solid var(--border-nav)" : "1px solid transparent",
-        boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.1)" : "none",
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,16 +45,8 @@ export default function Navbar() {
 
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5 flex-shrink-0" onClick={() => setMenuOpen(false)}>
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center overflow-hidden"
-              style={{
-                background: "var(--color-blue)",
-                boxShadow: "0 4px 16px var(--border-blue)",
-              }}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={logoImg.src} alt="Nawah Logo" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logoImg.src} alt="Nawah Logo" className="w-9 h-9 rounded-xl object-cover" />
             <span className="hidden sm:block font-bold text-xl tracking-tight" style={{ color: "var(--foreground)" }}>
               {tBrand("name")}
             </span>
@@ -85,20 +75,12 @@ export default function Navbar() {
               <LanguageToggle />
             </div>
 
-            <a
-              href="https://apps.apple.com/tr/app/%D9%86%D9%88%D8%A7%D8%A9-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6764706130"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-semibold rounded-full transition-all duration-200 hover:scale-105"
-              style={{
-                background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
-                color: "#ffffff",
-                boxShadow: "0 4px 14px var(--border-blue)",
-                backgroundClip: "padding-box",
-              }}
+            <Link
+              href="/#download"
+              className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg text-white transition-colors duration-200 bg-[#2789D3] hover:bg-[#1f74b5]"
             >
               {t("download")}
-            </a>
+            </Link>
 
             {/* Hamburger */}
             <button
@@ -146,23 +128,15 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          
 
           <div className="mt-4 px-3">
-            <a
-              href="https://apps.apple.com/tr/app/%D9%86%D9%88%D8%A7%D8%A9-%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9-%D8%A7%D9%84%D8%B9%D8%A7%D8%A6%D9%84%D8%A9/id6764706130"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-full py-4 font-bold rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, var(--color-navy), var(--color-blue))",
-                color: "#ffffff",
-                boxShadow: "0 8px 24px var(--border-blue)",
-                backgroundClip: "padding-box",
-              }}
+            <Link
+              href="/#download"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-center w-full py-3.5 font-semibold rounded-xl text-white bg-[#2789D3]"
             >
               {t("download")}
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
