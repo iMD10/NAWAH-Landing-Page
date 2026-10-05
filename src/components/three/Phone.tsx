@@ -1,7 +1,7 @@
 "use client";
 
-import { forwardRef, useMemo } from "react";
-import { useLoader, type ThreeElements } from "@react-three/fiber";
+import { forwardRef, useMemo, useRef } from "react";
+import { useFrame, useLoader, type ThreeElements } from "@react-three/fiber";
 import * as THREE from "three";
 import { logoTextureUrl, screenTextureUrl, type ScreenKey } from "./assets";
 
@@ -68,6 +68,48 @@ const bodyMaterial = new THREE.MeshStandardMaterial({
   metalness: 0.35,
 });
 
+/* A soft diagonal light streak drawn once, cloned per phone. */
+let glintSource: THREE.CanvasTexture | null = null;
+function glintTexture() {
+  if (!glintSource) {
+    const c = document.createElement("canvas");
+    c.width = c.height = 256;
+    const ctx = c.getContext("2d")!;
+    const g = ctx.createLinearGradient(0, 256, 256, 0);
+    g.addColorStop(0, "rgba(255,255,255,0)");
+    g.addColorStop(0.44, "rgba(255,255,255,0)");
+    g.addColorStop(0.5, "rgba(255,255,255,0.2)");
+    g.addColorStop(0.55, "rgba(255,255,255,0.05)");
+    g.addColorStop(0.68, "rgba(255,255,255,0)");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 256, 256);
+    glintSource = new THREE.CanvasTexture(c);
+  }
+  const t = glintSource.clone();
+  t.needsUpdate = true;
+  return t;
+}
+
+const facing = new THREE.Vector3();
+
+/** Glass reflection that slides across the screen as the phone turns. */
+function Glint() {
+  const mesh = useRef<THREE.Mesh>(null);
+  const map = useMemo(() => glintTexture(), []);
+  useFrame(() => {
+    const m = mesh.current;
+    if (!m) return;
+    m.getWorldDirection(facing);
+    const tex = (m.material as THREE.MeshBasicMaterial).map;
+    if (tex) tex.offset.set(-facing.x * 0.9, facing.y * 0.6);
+  });
+  return (
+    <mesh ref={mesh} geometry={geometry.screen} position={[0, 0, FRONT + 0.004]}>
+      <meshBasicMaterial map={map} transparent depthWrite={false} toneMapped={false} />
+    </mesh>
+  );
+}
+
 /** Texture loader that returns screenshots ready to draw (sRGB, sharp at an angle). */
 class ScreenTextureLoader extends THREE.TextureLoader {
   load(
@@ -118,6 +160,7 @@ export const Phone = forwardRef<THREE.Group, PhoneProps>(function Phone(
       <mesh geometry={geometry.screen} position={[0, 0, FRONT + 0.002]}>
         <meshBasicMaterial ref={screenMaterialRef} map={screen} toneMapped={false} />
       </mesh>
+      <Glint />
       {logo && (
         <mesh geometry={geometry.logo} position={[0, 0.55, -FRONT - 0.002]} rotation={[0, Math.PI, 0]}>
           <meshBasicMaterial map={logo} toneMapped={false} />
@@ -140,4 +183,6 @@ export function StudioLights() {
 }
 
 export const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+export const easeInOutCubic = (t: number) =>
+  t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 export const clamp01 = (t: number) => Math.min(1, Math.max(0, t));

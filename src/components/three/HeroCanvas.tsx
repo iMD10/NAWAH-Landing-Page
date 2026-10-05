@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
-import { Phone, StudioLights, clamp01, easeOutCubic, useScreenTextures } from "./Phone";
+import { Phone, StudioLights, clamp01, easeInOutCubic, easeOutCubic, useScreenTextures } from "./Phone";
 import type { ScreenKey } from "./assets";
 
 /*
@@ -25,6 +25,9 @@ const CARDS: {
 ];
 const KEYS: ScreenKey[] = ["home", ...CARDS.map((c) => c.key)];
 const CARD_SCALE = 0.42;
+const SPIN = 0.85; // seconds for a swap turn
+
+type Spin = { start: number | null; to: ScreenKey; swapped: boolean };
 
 function Scene({ rtl, onReady }: { rtl: boolean; onReady: () => void }) {
   const { screens, logo } = useScreenTextures(KEYS);
@@ -35,6 +38,39 @@ function Scene({ rtl, onReady }: { rtl: boolean; onReady: () => void }) {
   const start = useRef<number | null>(null);
   const pointer = useRef({ x: 0, y: 0 });
   const viewport = useThree((st) => st.viewport);
+
+  // Tap a floating screen to bring it into the main phone. Slot 0 is the main
+  // phone; slots 1–4 are the cards. Both turn once and trade screens mid-turn.
+  const slots = useRef<ScreenKey[]>([...KEYS]);
+  const spins = useRef<(Spin | null)[]>(KEYS.map(() => null));
+  const materials = useRef<(THREE.MeshBasicMaterial | null)[]>([]);
+  const hovered = useRef<number | null>(null);
+  const lift = useRef(CARDS.map(() => 0));
+
+  const swap = (card: number) => {
+    const slot = card + 1;
+    if (spins.current[0] || spins.current[slot]) return;
+    const next = slots.current[slot];
+    slots.current[slot] = slots.current[0];
+    slots.current[0] = next;
+    spins.current[0] = { start: null, to: next, swapped: false };
+    spins.current[slot] = { start: null, to: slots.current[slot], swapped: false };
+  };
+
+  /** Extra yaw for a slot that is mid-swap; trades its texture at the half-turn. */
+  const spinFor = (slot: number, now: number) => {
+    const spin = spins.current[slot];
+    if (!spin) return 0;
+    if (spin.start === null) spin.start = now;
+    const p = clamp01((now - spin.start) / SPIN);
+    const mat = materials.current[slot];
+    if (p >= 0.5 && !spin.swapped && mat) {
+      mat.map = screens[spin.to];
+      spin.swapped = true;
+    }
+    if (p >= 1) spins.current[slot] = null;
+    return easeInOutCubic(p) * Math.PI * 2;
+  };
 
   useEffect(() => {
     const onMove = (e: PointerEvent) => {
@@ -47,6 +83,7 @@ function Scene({ rtl, onReady }: { rtl: boolean; onReady: () => void }) {
     return () => {
       window.removeEventListener("pointermove", onMove);
       cancelAnimationFrame(raf);
+      document.body.style.cursor = "";
     };
   }, [onReady]);
 
@@ -70,7 +107,7 @@ function Scene({ rtl, onReady }: { rtl: boolean; onReady: () => void }) {
     if (phone.current) {
       const e = easeOutCubic(clamp01(t / 1.4));
       phone.current.position.y = THREE.MathUtils.lerp(-0.7, 0, e) + Math.sin(t * 0.7) * 0.03;
-      phone.current.rotation.y = s * (-0.3 + (1 - e) * 0.9 - scroll * 0.35);
+      phone.current.rotation.y = s * (-0.3 + (1 - e) * 0.9 - scroll * 0.35 + spinFor(0, t));
       phone.current.rotation.x = 0.04;
     }
 
@@ -87,16 +124,24 @@ function Scene({ rtl, onReady }: { rtl: boolean; onReady: () => void }) {
       );
       g.rotation.set(
         c.rot[0] + (1 - e) * 0.6,
-        s * (c.rot[1] + (1 - e) * 1.4),
+        s * (c.rot[1] + (1 - e) * 1.4 + spinFor(i + 1, t)),
         s * (c.rot[2] + (1 - e) * 0.5 + Math.sin(t * 0.6 + i) * 0.015)
       );
-      g.scale.setScalar(CARD_SCALE * THREE.MathUtils.lerp(0.4, 1, e));
+      lift.current[i] = THREE.MathUtils.damp(lift.current[i], hovered.current === i ? 1 : 0, 10, dt);
+      g.scale.setScalar(CARD_SCALE * THREE.MathUtils.lerp(0.4, 1, e) * (1 + lift.current[i] * 0.08));
     });
   });
 
   return (
     <group ref={rig}>
-      <Phone ref={phone} screen={screens.home} logo={logo} />
+      <Phone
+        ref={phone}
+        screen={screens.home}
+        logo={logo}
+        screenMaterialRef={(m) => {
+          materials.current[0] = m;
+        }}
+      />
       {CARDS.map((c, i) => (
         <Phone
           key={c.key}
@@ -104,7 +149,23 @@ function Scene({ rtl, onReady }: { rtl: boolean; onReady: () => void }) {
             cards.current[i] = el;
           }}
           screen={screens[c.key]}
+          screenMaterialRef={(m) => {
+            materials.current[i + 1] = m;
+          }}
           scale={0}
+          onClick={(e) => {
+            e.stopPropagation();
+            swap(i);
+          }}
+          onPointerOver={(e) => {
+            e.stopPropagation();
+            hovered.current = i;
+            document.body.style.cursor = "pointer";
+          }}
+          onPointerOut={() => {
+            if (hovered.current === i) hovered.current = null;
+            document.body.style.cursor = "";
+          }}
         />
       ))}
     </group>

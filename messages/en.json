@@ -27,7 +27,8 @@
     "playStore": "Google Play",
     "playStoreComingSoon": "Coming Soon",
     "availability": "Free to download on iOS and Android.",
-    "screenAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events"
+    "screenAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events",
+    "stageHint": "Tap a screen to bring it forward"
   },
   "Problem": {
     "title": "Too Many Apps for Family Life?",
@@ -128,7 +129,19 @@
     "homeAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events",
     "qrTitle": "On a computer?",
     "qrText": "Scan with your phone camera to open Nawah’s page and download the app.",
-    "qrAlt": "QR code linking to nawahfamily.com"
+    "qrAlt": "QR code linking to nawahfamily.com",
+    "gallery": "Browse Nawah’s screens",
+    "prev": "Previous screen",
+    "next": "Next screen",
+    "position": "{n} of {total}",
+    "screenHome": "Home",
+    "screenEvents": "Calendar",
+    "screenTasks": "Tasks",
+    "screenList": "Shopping list",
+    "screenChat": "Family chat",
+    "screenVault": "Memory vault",
+    "screenAi": "AI assistant",
+    "dragHint": "Drag to browse"
   },
   "Footer": {
     "tagline": "One private app for your family's chats, plans, tasks, and memories.",
