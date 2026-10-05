@@ -27,13 +27,6 @@
     "playStore": "Google Play",
     "playStoreComingSoon": "قريباً",
     "availability": "التحميل مجاني على iOS و Android.",
-    "demoLabel": "مثال توضيحي",
-    "planLabel": "خطة العائلة",
-    "planTitle": "غداء الجمعة عند الجدة",
-    "planTime": "الجمعة · 1:00 م",
-    "taskLabel": "مهمة مشتركة",
-    "taskTitle": "إحضار الحلوى",
-    "taskOwner": "سارة",
     "screenAlt": "الشاشة الرئيسية في نواة وتظهر أفراد العائلة والمساعد الذكي والمواعيد القادمة"
   },
   "Problem": {
@@ -98,7 +91,8 @@
     "tasksWhen": "العصر",
     "chatWhen": "المساء",
     "vaultWhen": "نهاية الأسبوع",
-    "aiWhen": "في أي وقت"
+    "aiWhen": "في أي وقت",
+    "dayNav": "انتقل إلى لحظة من اليوم"
   },
   "Demo": {
     "caption": "مثال تفاعلي",

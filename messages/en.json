@@ -27,13 +27,6 @@
     "playStore": "Google Play",
     "playStoreComingSoon": "Coming Soon",
     "availability": "Free to download on iOS and Android.",
-    "demoLabel": "Example",
-    "planLabel": "Family plan",
-    "planTitle": "Friday lunch at grandma's",
-    "planTime": "Fri · 1:00 PM",
-    "taskLabel": "Shared task",
-    "taskTitle": "Bring dessert",
-    "taskOwner": "Sara",
     "screenAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events"
   },
   "Problem": {
@@ -98,7 +91,8 @@
     "tasksWhen": "Afternoon",
     "chatWhen": "Evening",
     "vaultWhen": "Weekend",
-    "aiWhen": "Any time"
+    "aiWhen": "Any time",
+    "dayNav": "Jump to a moment of the day"
   },
   "Demo": {
     "caption": "Interactive example",
