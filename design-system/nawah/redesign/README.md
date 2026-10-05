@@ -214,3 +214,4 @@ The owner asked for something bigger, using three.js. Both 3D pieces are built f
 - **Glass glint on every phone:** a soft light streak slides across the screen as the phone turns.
 - The three.js chunk is still ~239 KB gzipped and lazy. Phones run 2 canvases (hero, download ring); desktop runs 3. Only the canvases near the viewport render.
 - Checks: everything listed above for the 3D pass still passes. New results: tap-to-swap, autoplay → stop on interaction, keyboard prev/next, drag with momentum, and the reduced-motion fallback (no controls, posters visible). No overflow at 320–1440 in EN/AR. Not tested: touch-drag on a real phone (only mouse drag was automated).
+![Hero tap-to-swap and 3D screen ring](v4-3d-ring.png)
