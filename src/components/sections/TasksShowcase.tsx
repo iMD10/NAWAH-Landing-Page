@@ -6,6 +6,8 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import { Tick02Icon } from "@hugeicons/core-free-icons";
 import PhoneScreen from "@/components/PhoneScreen";
 
+export type TaskScreen = "tasks" | "list";
+
 const screens = [
   { id: "tasks", src: "/screenshots/tasks.png", label: "screenTasks", alt: "tasksAlt" },
   { id: "list", src: "/screenshots/step-1.png", label: "screenList", alt: "listAlt" },
@@ -13,11 +15,20 @@ const screens = [
 
 const demoItems = ["item1", "item2", "item3"] as const;
 
-/** Real task/list screens with a switcher, beside a small hands-on checklist demo. */
-export default function TasksShowcase() {
+/**
+ * Real task/list screens with a switcher, beside a small hands-on checklist demo.
+ * The screen choice is controlled by the parent so the pinned 3D phone on
+ * desktop can show it too.
+ */
+export default function TasksShowcase({
+  screen,
+  onScreenChange,
+}: {
+  screen: TaskScreen;
+  onScreenChange: (screen: TaskScreen) => void;
+}) {
   const t = useTranslations("Features");
   const tDemo = useTranslations("Demo");
-  const [screen, setScreen] = useState<(typeof screens)[number]["id"]>("tasks");
   const [done, setDone] = useState<Record<string, boolean>>({ item1: true });
   const [lastChange, setLastChange] = useState<string | null>(null);
 
@@ -41,7 +52,7 @@ export default function TasksShowcase() {
             key={s.id}
             type="button"
             aria-pressed={screen === s.id}
-            onClick={() => setScreen(s.id)}
+            onClick={() => onScreenChange(s.id)}
           >
             {t(s.label)}
           </button>

@@ -159,3 +159,45 @@ Not a problem: there was no horizontal overflow at 320 to 1440, Arabic was not c
 
 ![Story before/after, EN desktop](v2-story-en-desktop.png)
 ![Story before/after, AR mobile](v2-story-ar-mobile.png)
+
+---
+
+# Third pass: 3D (5 Oct 2026, evening)
+
+The owner asked for something bigger, using three.js. Both 3D pieces are built from the **real app screenshots**. No abstract shapes or AI decoration were added.
+
+## What it is
+
+- **Hero:** a modelled Nawah phone (extruded rounded body, bevelled edges, navy finish, brand-blue rim light) shows the real home screen. Four more real screens (calendar, chat, tasks, memory vault) fly in from scattered positions and dock around it. This is Motionin's "Assembly" idea, now in 3D. Afterwards they drift with the pointer and spread out as the hero scrolls away. On narrow stages the screens move behind the phone and peek out at its sides, so the main screen stays readable. Everything mirrors in RTL.
+- **"A family day" (desktop ≥64rem):**
+  - One phone stays pinned (sticky) while five chapters scroll past: Morning (calendar), Afternoon (tasks), Evening (chat), Weekend (memory vault), Any time (AI).
+  - At each new chapter the phone turns a full circle. The Nawah logo passes on its back, and it comes round on the next real screen. Turns accumulate, so fast scrolling doesn't snap.
+  - The board tint follows the time of day. A time rail (buttons, `aria-current="step"`) jumps between chapters.
+  - The Tasks/Shopping-list switch also turns the phone, and the hands-on checklist demo sits beside the copy.
+- **Phones and tablets (<64rem):** each chapter keeps its own 2D screen, as before. The hero still gets the 3D scene.
+- The memories band and the separate AI card were folded into the chapters.
+
+## Fallbacks and performance
+
+- `three` and `@react-three/fiber` load through `next/dynamic` with `ssr: false`. The real screenshot renders first and stays as the poster; the canvas cross-fades in only once its textures are uploaded.
+- 3D is skipped entirely, and the three.js chunk is never requested, when any of these is true: `prefers-reduced-motion`, Data Saver, or no WebGL. In that case the pinned stage cross-fades real screenshots in 2D.
+- The chunk is ~238 KB gzipped and is fetched after the page's `load` event. It is not in the initial HTML.
+- Textures go through the Next image optimizer at ~768px (WebP/AVIF), not the 0.2–1.5 MB source PNGs.
+- Each render loop pauses (`frameloop="never"`) while its canvas is away from the viewport. DPR is capped at 1.75.
+- No drei: the phone geometry, screen UVs and motion are about 150 lines of our own code.
+
+## Other fixes made on the way
+
+- `html`, `body` and `<main>` used `overflow-x: hidden`, which turns them into scroll containers and silently breaks `position: sticky`. The fix is `overflow-x: clip` on `html` and `<main>`, and none on `body`. Sideways overflow is still clipped (`scrollWidth` equals the viewport at 320–1440).
+- Removed the now-unused hero fragment copy (`Hero.planLabel` etc.).
+
+## Checks (production build)
+
+- 320, 390, 768, 1024 and 1440 in EN and AR: no horizontal overflow, and both scenes reach the "ready" state. Dark mode renders the phone legibly (rim light on navy).
+- Desktop: the active chapter, rail state, board tint and phone screen stay in sync. The Shopping-list switch turns the phone to the real list screen. Rail buttons work by keyboard (Enter) and scroll the chapter to the centre.
+- Reduced motion: 0 canvases, and the 2D stage swaps to the right screen. Phones: 1 canvas (hero), and the pinned stage is `display: none`.
+- The earlier checks still pass: story toggle (keyboard/touch/reduced motion), checklist demo, QR hidden on touch, all routes 200.
+- `tsc` is clean and `next build` succeeds. ESLint shows the same 9 pre-existing findings, none in new code.
+- Not measured: frame rate on real low-end phones, Lighthouse, and screen readers. The 3D was checked with SwiftShader (software WebGL) in headless Chromium, not on a GPU.
+
+![3D hero and pinned family-day phone](v3-3d.png)

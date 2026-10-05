@@ -110,7 +110,7 @@ export default async function RootLayout({
           <ThemeProvider>
             <NextIntlClientProvider messages={messages}>
               <Navbar />
-              <main className="flex-1 flex flex-col w-full relative overflow-x-hidden">{children}</main>
+              <main className="flex-1 flex flex-col w-full relative overflow-x-clip">{children}</main>
               <Footer />
             </NextIntlClientProvider>
           </ThemeProvider>

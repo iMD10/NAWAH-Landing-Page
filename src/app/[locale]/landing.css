@@ -125,42 +125,6 @@
   box-shadow: var(--shadow-phone), 0 0 0 1px rgb(255 255 255 / 10%);
 }
 
-/* Small illustrative fragment (always labelled as an example). */
-.nw-fragment {
-  inline-size: 15rem;
-  padding: 0.9rem 1rem 1rem;
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-md);
-}
-.nw-fragment__head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  margin-block-end: 0.6rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
-}
-.nw-fragment__label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-weight: 600;
-  color: var(--ink);
-}
-.nw-fragment__title {
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.35;
-  color: var(--ink);
-}
-.nw-fragment__meta {
-  margin-block-start: 0.3rem;
-  font-size: 0.875rem;
-  color: var(--muted);
-}
 .nw-avatar {
   display: inline-grid;
   place-items: center;
@@ -176,11 +140,11 @@
 
 /* ── Hero ─────────────────────────────────────────────── */
 .nw-hero {
-  padding-block: clamp(2rem, 5vw, 4.5rem) clamp(4rem, 8vw, 6.5rem);
+  padding-block: clamp(2rem, 5vw, 4.5rem) clamp(3.5rem, 7vw, 6rem);
 }
 .nw-hero__grid {
   display: grid;
-  gap: 3rem;
+  gap: 2.5rem;
   align-items: center;
 }
 .nw-hero__copy {
@@ -191,85 +155,46 @@
 .nw-hero__copy .nw-lead { margin-block: 1.4rem 2.2rem; }
 .nw-hero__copy .nw-note { margin-block-start: 1rem; }
 
+/* Stage: the real screenshot renders first; where 3D is allowed the canvas
+   fades in over it. The canvas overhangs the board so screens can float past
+   its edge. */
 .nw-stage {
   position: relative;
   display: grid;
-  justify-items: center;
-  padding-block-start: 2rem;
-  --phone-w: min(16.5rem, 66vw);
+  place-items: center;
+  padding-block: 2rem;
+  --phone-w: min(15rem, 60vw);
 }
 .nw-stage__board {
   position: absolute;
-  inset: 0 0 5.5rem;
+  inset-block: 0;
+  inset-inline: 4%;
 }
-.nw-stage__phone { position: relative; z-index: 2; }
-.nw-stage__fragments {
+.nw-stage__phone {
   position: relative;
-  z-index: 3;
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  inline-size: 100%;
-  margin-block-start: -4.5rem;
+  transition: opacity 500ms ease, scale 500ms ease;
 }
-.nw-stage__fragments .nw-fragment {
-  inline-size: min(15rem, 48%);
+.nw-stage__canvas {
+  position: absolute;
+  inset: -1rem -1.25rem;
+  opacity: 0;
+  transition: opacity 700ms ease;
 }
-/* On small screens one shared "Example" caption replaces the per-card tags. */
-.nw-fragment__demo { display: none; }
-.nw-stage__caption {
-  position: relative;
-  z-index: 3;
-  margin-block-start: 0.75rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
-}
-.nw-stage__plan { rotate: -2deg; }
-.nw-stage__task { rotate: 1.5deg; margin-block-start: 1.5rem; }
-
-.nw-check {
-  display: inline-grid;
-  place-items: center;
-  inline-size: 1.4rem;
-  block-size: 1.4rem;
-  border-radius: 0.45rem;
-  background: var(--brand-btn);
-  color: #fff;
-  flex: none;
-}
-.nw-task-row {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-.nw-task-row .nw-fragment__title {
-  text-decoration: line-through;
-  text-decoration-color: var(--faint);
-  color: var(--muted);
-}
+.nw-stage[data-3d="ready"] .nw-stage__phone { opacity: 0; scale: 0.96; }
+.nw-stage[data-3d="ready"] .nw-stage__canvas { opacity: 1; }
 
 @media (min-width: 64rem) {
   .nw-hero__grid {
-    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
-    gap: clamp(2rem, 5vw, 5rem);
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 4vw, 4rem);
   }
   .nw-stage {
-    --phone-w: 18.5rem;
+    --phone-w: 17rem;
     min-block-size: 40rem;
-    align-content: center;
-    padding-block: 2.5rem;
+    padding-block: 3rem;
   }
-  .nw-stage__board { inset: 0 0 0 9%; }
-  .nw-stage__fragments { display: contents; }
-  .nw-stage__caption { display: none; }
-  .nw-fragment__demo { display: inline; }
-  .nw-stage__fragments .nw-fragment { position: absolute; inline-size: 15rem; z-index: 3; }
-  /* Screen sits toward the outer edge; notes are pinned on the open side
-     and only overlap the screen's margin, never its key content. */
-  .nw-stage { justify-items: end; }
-  .nw-stage__phone { margin-inline-end: 9%; }
-  .nw-stage__plan { inset-block-start: 13%; inset-inline-start: 4%; rotate: -3deg; }
-  .nw-stage__task { inset-block-end: 13%; inset-inline-start: 7%; rotate: 2deg; margin: 0; }
+  .nw-stage__board { inset-inline: 8% 0; }
+  .nw-stage__canvas { inset: -2rem; }
 }
 
 /* ── Story: scattered → gathered ──────────────────────
@@ -389,11 +314,6 @@
     gap: clamp(3rem, 6vw, 6rem);
   }
 }
-.nw-feature-list {
-  display: grid;
-  gap: clamp(3.5rem, 8vw, 6rem);
-}
-
 /* Time of day: a quiet rule that runs from the copy toward the screen,
    so the feature rows read as one family day. */
 .nw-when {
@@ -411,25 +331,8 @@
   flex: 1;
   border-block-start: 1px solid var(--line-strong);
 }
-.nw-feature {
-  display: grid;
-  gap: 2.25rem;
-  align-items: center;
-}
 .nw-feature__copy { display: grid; gap: 1.1rem; justify-items: start; }
 .nw-feature__copy .nw-when { margin-block-end: 0.35rem; }
-.nw-feature__media {
-  position: relative;
-  display: grid;
-  justify-items: center;
-  padding: clamp(2rem, 5vw, 3.5rem) 1rem;
-  --phone-w: min(16rem, 68vw);
-}
-.nw-feature__media > .nw-board {
-  position: absolute;
-  inset: 0;
-}
-.nw-feature__media > :not(.nw-board) { position: relative; }
 
 .nw-details {
   display: grid;
@@ -448,36 +351,109 @@
 }
 .nw-details svg { flex: none; margin-block-start: 0.15rem; color: var(--brand-ink); }
 
-@media (min-width: 56rem) {
-  .nw-feature { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(3rem, 6vw, 6rem); }
-  .nw-feature[data-flip] .nw-feature__media { order: -1; }
-  .nw-feature__media { --phone-w: 17.5rem; }
-}
+/* Board tint per moment of the day */
+.nw-board[data-board="sand"] { --board: var(--sand-tint); }
+.nw-board[data-board="lavender"] { --board: var(--lavender-tint); }
+.nw-board[data-board="paper"] { --board: var(--paper-2); }
 
-/* Calmer band for memories */
-.nw-band {
-  background: var(--paper-2);
-  padding-block: clamp(4rem, 9vw, 7rem);
-  border-block: 1px solid var(--line);
-}
-
-/* Supporting AI capability: compact card, smaller screen */
-.nw-support {
+/* ── A family day: chapters + pinned stage ─────────────
+   Phones/tablets: each chapter shows its own real screen.
+   Desktop: one stage stays pinned while chapters scroll past; its phone
+   turns to each chapter's screen (3D where allowed, else a cross-fade). */
+.nw-day__stage { display: none; }
+.nw-day__chapters {
   display: grid;
-  gap: 2rem;
-  align-items: center;
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border-radius: var(--radius-lg);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  --phone-w: min(13rem, 60vw);
+  gap: clamp(3.5rem, 8vw, 6rem);
 }
-.nw-support .nw-phone { justify-self: center; }
-@media (min-width: 56rem) {
-  .nw-support { grid-template-columns: auto minmax(0, 1fr); gap: 4rem; padding-block-end: 0; overflow: hidden; }
-  .nw-support .nw-phone { align-self: end; border-end-start-radius: 0; border-end-end-radius: 0; padding-block-end: 0; max-block-size: 22rem; overflow: hidden; }
-  .nw-support .nw-phone img { border-end-start-radius: 0; border-end-end-radius: 0; }
-  .nw-support__copy { padding-block-end: 3rem; }
+.nw-chapter {
+  display: grid;
+  gap: 2.25rem;
+  align-items: center;
+}
+.nw-chapter__media {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  padding: clamp(2rem, 5vw, 3.5rem) 1rem;
+  --phone-w: min(16rem, 68vw);
+}
+.nw-chapter__media > .nw-board { position: absolute; inset: 0; }
+.nw-chapter__media > :not(.nw-board) { position: relative; }
+
+@media (min-width: 56rem) and (max-width: 63.99rem) {
+  .nw-chapter { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 3rem; }
+  .nw-chapter:nth-child(even) .nw-chapter__media { order: -1; }
+}
+
+@media (min-width: 64rem) {
+  .nw-day {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(3rem, 6vw, 6rem);
+    align-items: start;
+  }
+  .nw-day__stage {
+    position: sticky;
+    inset-block-start: calc(4.25rem + 3vh);
+    display: grid;
+    place-items: center;
+    block-size: min(calc(100vh - 4.25rem - 6vh), 46rem);
+    overflow: hidden;
+    transition: background-color 500ms ease;
+    --phone-w: 15rem;
+  }
+  .nw-day__screens { margin-block-end: 3rem; transition: opacity 500ms ease; }
+  .nw-day__canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 700ms ease;
+  }
+  .nw-day__stage[data-3d="ready"] .nw-day__screens { opacity: 0; }
+  .nw-day__stage[data-3d="ready"] .nw-day__canvas { opacity: 1; }
+
+  /* Time rail: jump between the day's moments */
+  .nw-day__rail {
+    position: absolute;
+    z-index: 2;
+    inset-block-end: 1.1rem;
+    inset-inline: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem;
+  }
+  .nw-day__rail button {
+    min-block-size: 2.25rem;
+    padding-inline: 0.8rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background-color 200ms ease, color 200ms ease;
+  }
+  .nw-day__rail button:hover { color: var(--ink); }
+  .nw-day__rail button[aria-current] {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .nw-day__chapters { gap: 0; }
+  .nw-chapter {
+    min-block-size: 82vh;
+    align-content: center;
+    padding-block: 2rem;
+  }
+  .nw-chapter__media { display: none; }
+  /* Tasks keeps its switcher and hands-on demo beside the copy; the screen
+     itself is on the pinned phone. */
+  .nw-chapter[data-id="tasks"] .nw-chapter__media { display: block; justify-items: start; padding: 0; margin-block-start: 1.75rem; }
+  .nw-chapter[data-id="tasks"] .nw-chapter__media > .nw-board,
+  .nw-chapter[data-id="tasks"] .nw-screen-swap { display: none; }
+  .nw-chapter .nw-tasks-media { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .nw-chapter .nw-tasks-media .nw-demo { margin: 0; rotate: none; inline-size: min(100%, 22rem); }
 }
 
 /* ── Tasks showcase (screen switcher + demo) ─────────── */
@@ -787,6 +763,10 @@
 @media (prefers-reduced-motion: reduce) {
   .nw-note-card,
   .nw-note-card__icon,
+  .nw-day__stage,
+  .nw-day__screens,
+  .nw-day__rail button,
+  .nw-stage__phone,
   .nw-gather__hub,
   .nw-screen-swap > *,
   .nw-demo__bar span,
