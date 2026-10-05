@@ -51,34 +51,16 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
       <div className="absolute top-8 right-8 z-20">
         <button 
           onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
-          className="flex items-center gap-2 px-5 py-3 rounded-2xl text-white font-bold transition-all hover:scale-105 active:scale-95 shadow-xl border border-white/20"
-          style={{
-            background: 'linear-gradient(135deg, var(--color-navy), var(--color-blue))',
-            boxShadow: '0 8px 24px rgba(39, 137, 211, 0.3)'
-          }}
+          className="flex items-center gap-2 px-4 py-2.5 rounded-xl text-white font-semibold transition-colors bg-[#13152A] hover:bg-[#1f2340]"
         >
           <Languages size={20} />
           {locale === 'en' ? 'العربية' : 'English'}
         </button>
       </div>
 
-      {/* Background decoration */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-blue/20 blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-lavender/20 blur-[120px]" />
-      </div>
-
-      <div className="relative z-10 max-w-md w-full glass-dark rounded-[48px] p-10 md:p-14 shadow-2xl border-white/10 overflow-hidden">
-        {/* Glow effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-48 h-1 bg-primary blur-2xl opacity-60" />
-
+      <div className="relative z-10 max-w-md w-full rounded-3xl p-10 md:p-12 bg-[#13152A] overflow-hidden">
         <div 
-          className="w-24 h-24 rounded-[28px] flex items-center justify-center mx-auto mb-10 overflow-hidden shadow-2xl transform hover:scale-105 transition-all"
-          style={{
-            background: 'linear-gradient(135deg, var(--color-navy), var(--color-blue))',
-            boxShadow: '0 20px 40px rgba(39, 137, 211, 0.4)',
-            border: '1px solid rgba(255, 255, 255, 0.1)'
-          }}
+          className="w-20 h-20 rounded-[22px] flex items-center justify-center mx-auto mb-8 overflow-hidden"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
@@ -96,18 +78,14 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
           {t.description}
         </p>
 
-        <div className={`inline-block px-10 py-5 rounded-3xl bg-white/5 border border-white/10 font-heading font-bold text-4xl tracking-[0.25em] mb-12 text-primary shadow-inner ${!code ? 'opacity-0' : 'opacity-100 animate-pulse'}`}>
+        <div className={`inline-block px-10 py-5 rounded-3xl bg-white/5 border border-white/10 font-heading font-bold text-4xl tracking-[0.25em] mb-12 text-primary ${!code ? 'opacity-0' : 'opacity-100'}`}>
           {code || 'NAWAH'}
         </div>
 
         <div className="space-y-4">
           <a 
             id="open-app" 
-            className="flex items-center justify-center w-full px-8 py-5 rounded-2xl text-white font-bold text-lg transition-all hover:scale-[1.02] active:scale-[0.98] shadow-lg" 
-            style={{
-              background: 'linear-gradient(135deg, var(--color-navy), var(--color-blue))',
-              boxShadow: '0 8px 24px rgba(39, 137, 211, 0.3)'
-            }}
+            className="flex items-center justify-center w-full px-8 py-4 rounded-xl text-white font-semibold text-lg transition-colors bg-[#2789D3] hover:bg-[#1f74b5]"
             href={`nawah://join/${code || ''}`}
           >
             {t.button}
@@ -116,7 +94,7 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <a 
               id="ios-store" 
-              className="flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm transition-all hover:bg-white/10 active:scale-[0.98]" 
+              className="flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm transition-all hover:bg-white/10 " 
               href="https://apps.apple.com/app/id6764706130"
             >
               <Apple size={20} />
@@ -124,7 +102,7 @@ export default function JoinPage({ params }: { params: Promise<{ code: string }>
             </a>
             <a 
               id="play-store" 
-              className="flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm transition-all hover:bg-white/10 active:scale-[0.98]" 
+              className="flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm transition-all hover:bg-white/10 " 
               href="https://play.google.com/store/apps/details?id=app.nawah.family"
             >
               <Play size={18} />

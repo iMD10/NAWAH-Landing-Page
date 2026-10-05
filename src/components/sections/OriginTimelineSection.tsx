@@ -19,21 +19,15 @@ export default function OriginTimelineSection() {
 
         {/* Origin story */}
         <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
           className="md:sticky md:top-24 md:self-start"
         >
-          <span
-            className="inline-block text-xs font-bold uppercase mb-4 px-4 py-1.5 rounded-full tracking-widest"
-            style={{ color: "var(--text-badge)", background: "var(--bg-badge)", border: "1px solid var(--border-badge)" }}
-          >
-            {t("originBadge")}
-          </span>
           <h2
-            className="text-3xl md:text-5xl font-black tracking-tight mb-6"
-            style={{ color: "var(--text-1)", textShadow: "0 0 40px var(--border-blue)" }}
+            className="text-3xl md:text-5xl font-extrabold tracking-tight mb-6"
+            style={{ color: "var(--text-1)" }}
           >
             {t("originTitle")}
           </h2>
@@ -44,16 +38,9 @@ export default function OriginTimelineSection() {
 
         {/* Timeline */}
         <div>
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="inline-block text-xs font-bold uppercase mb-6 px-4 py-1.5 rounded-full tracking-widest"
-            style={{ color: "var(--text-badge)", background: "var(--bg-badge)", border: "1px solid var(--border-badge)" }}
-          >
+          <h3 className="text-sm font-semibold mb-6" style={{ color: "var(--text-4)" }}>
             {t("timelineBadge")}
-          </motion.span>
+          </h3>
 
           <div className="relative">
             <div
@@ -74,9 +61,8 @@ export default function OriginTimelineSection() {
                   <div
                     className="absolute start-0 top-1.5 w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{
-                      background: "var(--bg-card)",
+                      background: "var(--bg-page)",
                       border: "2px solid var(--border-blue)",
-                      boxShadow: "0 0 12px var(--border-blue)",
                     }}
                   >
                     <div className="w-2 h-2 rounded-full" style={{ background: "var(--color-blue)" }} />

@@ -22,8 +22,8 @@ export default function MissionSection() {
         className="text-center mb-12"
       >
         <blockquote
-          className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight leading-tight max-w-4xl mx-auto"
-          style={{ color: "var(--text-1)", textShadow: "0 0 60px var(--border-blue)" }}
+          className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-balance max-w-4xl mx-auto"
+          style={{ color: "var(--text-1)" }}
         >
           &ldquo;{t("missionQuote")}&rdquo;
         </blockquote>
@@ -37,15 +37,15 @@ export default function MissionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="flex flex-col items-center p-6 rounded-[2rem] text-center"
+            className="flex flex-col items-center p-6 rounded-2xl text-center"
             style={{
-              background: "var(--bg-card)",
+              background: "var(--bg-card-alt)",
               border: "1px solid var(--border-subtle)",
             }}
           >
             <span
-              className="text-4xl md:text-5xl font-black mb-1"
-              style={{ color: "var(--color-blue)", textShadow: "0 0 30px var(--border-blue)" }}
+              className="text-3xl md:text-4xl font-extrabold mb-1"
+              style={{ color: "var(--color-blue)" }}
             >
               {t(stat.valueKey)}
             </span>

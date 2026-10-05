@@ -103,7 +103,7 @@ function MemberPhoto({
     <div
       className="w-28 h-28 rounded-full overflow-hidden flex-shrink-0 relative"
       style={{
-        boxShadow: "0 0 0 3px var(--border-blue), 0 8px 32px rgba(39,137,211,0.2)",
+        boxShadow: "0 0 0 1px var(--border-subtle)",
       }}
     >
       <div
@@ -139,19 +139,9 @@ export default function TeamSection() {
         transition={{ duration: 0.7 }}
         className="text-center mb-10"
       >
-        <span
-          className="inline-block text-xs font-bold uppercase mb-4 px-4 py-1.5 rounded-full tracking-widest"
-          style={{
-            color: "var(--text-badge)",
-            background: "var(--bg-badge)",
-            border: "1px solid var(--border-badge)",
-          }}
-        >
-          {t("badge")}
-        </span>
         <h2
-          className="text-4xl md:text-6xl font-black tracking-tight mb-6"
-          style={{ color: "var(--text-1)", textShadow: "0 0 40px var(--border-blue)" }}
+          className="text-4xl md:text-5xl font-extrabold tracking-tight mb-6"
+          style={{ color: "var(--text-1)" }}
         >
           {t("title")}
         </h2>
@@ -171,9 +161,9 @@ export default function TeamSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-40px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="group flex flex-col items-center gap-3"
+            className="flex flex-col items-center gap-3"
           >
-            <div className="relative transition-transform duration-300 group-hover:-translate-y-1">
+            <div className="relative">
               <MemberPhoto
                 src={member.photo}
                 name={locale === "ar" ? member.nameAr : member.nameEn}
@@ -196,11 +186,10 @@ export default function TeamSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("linkedinLabel")}
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 hover:text-[color:var(--text-1)]"
                   style={{
-                    background: "var(--bg-badge)",
-                    border: "1px solid var(--border-badge)",
-                    color: "var(--color-blue)",
+                    border: "1px solid var(--border-subtle)",
+                    color: "var(--text-3)",
                   }}
                 >
                   <LinkedinIcon className="w-3.5 h-3.5" />
@@ -212,11 +201,10 @@ export default function TeamSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={t("githubLabel")}
-                  className="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110"
+                  className="w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 hover:text-[color:var(--text-1)]"
                   style={{
-                    background: "var(--bg-badge)",
-                    border: "1px solid var(--border-badge)",
-                    color: "var(--text-2)",
+                    border: "1px solid var(--border-subtle)",
+                    color: "var(--text-3)",
                   }}
                 >
                   <GithubIcon className="w-3.5 h-3.5" />

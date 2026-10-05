@@ -1,7 +1,6 @@
 {
   "Brand": {
-    "name": "Nawah",
-    "badge": "Family Platform"
+    "name": "Nawah"
   },
   "Navigation": {
     "home": "Home",
@@ -14,8 +13,6 @@
     "download": "Get App"
   },
   "Hero": {
-    "name": "NAWAH",
-    "badge": "All-In-One Family Platform",
     "headline": "Your Family, Organized in One Place",
     "subtext": "Chat, plan events, manage tasks, and save memories. All in one app.",
     "cta": "Download App",
@@ -35,7 +32,6 @@
     "tasks": "Tasks"
   },
   "Features": {
-    "badge": "Features",
     "title": "Everything you need",
     "chat": "Family Chat",
     "chatDesc": "Group and private messaging designed for your inner circle.",
@@ -49,7 +45,6 @@
     "aiDesc": "Integrated smart assistant to help organize and plan."
   },
   "HowItWorks": {
-    "badge": "How It Works",
     "title": "How It Works",
     "step1": "Create your family",
     "step1Desc": "Set up a secure, private space just for your loved ones.",
@@ -64,13 +59,12 @@
     "button": "Download on the App Store"
   },
   "Footer": {
-    "tagline": "Your private space for family harmony, preserved memories, and intelligent daily organization.",
+    "tagline": "One private app for your family's chats, plans, tasks, and memories.",
     "legal": "Legal",
     "help": "Help",
     "contact": "Contact Us",
     "storeTitle": "Download",
-    "allRights": "All rights reserved.",
-    "taglineBottom": "Designed for calmer family coordination."
+    "allRights": "All rights reserved."
   },
   "Support": {
     "title": "Technical Support",
@@ -310,7 +304,6 @@
   },
   "About": {
     "metaTitle": "About",
-    "badge": "Meet the Team",
     "title": "The Team Behind Nawah",
     "description": "We're five developers who wanted to build a simpler way for families to stay connected and organized. What started as a graduation project grew into a platform used by families across the region.",
     "linkedinLabel": "LinkedIn profile",
@@ -322,7 +315,6 @@
     "statsMonthsLabel": "Months",
     "statsFeatures": "10+",
     "statsFeaturesLabel": "Core Features",
-    "originBadge": "Our Story",
     "originTitle": "How It Started",
     "originText": "We were five teammates who could not find one app that kept the family together. Different chats, scattered reminders, no shared space that felt organized and easy to use. So we built it ourselves, as a graduation project that turned into the app we use and continue building today.",
     "timelineBadge": "Our Journey",
