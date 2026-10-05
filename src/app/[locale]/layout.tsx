@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Open_Sans, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Inter, Bricolage_Grotesque, Readex_Pro } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
@@ -10,22 +10,24 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import "../globals.css";
 
+// English body
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
-const openSans = Open_Sans({
+// English headings: warm grotesque with a handmade feel
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-open-sans",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-ibm-arabic",
+// Arabic (headings and body); includes Latin so mixed text stays consistent
+const readex = Readex_Pro({
+  subsets: ["arabic", "latin"],
+  variable: "--font-readex",
   display: "swap",
 });
 
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Nawah — All-In-One Family Platform",
     description:
-      "Chat, plan founders, manage tasks, and save memories — all in one app.",
+      "Chat, plan events, manage tasks, and save memories — all in one app.",
     images: ["/og-image.png"],
     creator: "@nawahapp",
   },
@@ -86,7 +88,12 @@ export default async function RootLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir}
+      className={`${inter.variable} ${bricolage.variable} ${readex.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script
@@ -96,7 +103,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${openSans.variable} ${ibmPlexSansArabic.variable} font-sans antialiased bg-background text-foreground min-h-screen flex flex-col`}
+        className="font-sans antialiased bg-background text-foreground min-h-screen flex flex-col"
         suppressHydrationWarning
       >
         <PostHogProvider>

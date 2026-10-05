@@ -18,8 +18,8 @@ const PlayIcon = () => (
 
 /**
  * App Store / Google Play download buttons.
- * `tone="dark"` renders dark buttons (for light surfaces, inverted in dark mode);
- * `tone="light"` renders white buttons for use on dark surfaces.
+ * `tone="dark"` renders ink buttons for paper surfaces (inverted in dark mode);
+ * `tone="light"` renders white buttons for the blue download board.
  * `stacked` keeps the buttons in a single column at every width.
  */
 export default function StoreButtons({
@@ -35,8 +35,8 @@ export default function StoreButtons({
 
   const toneClass =
     tone === "light"
-      ? "bg-white text-[#13152A] hover:bg-white/90"
-      : "bg-[#13152A] text-white hover:bg-[#1f2340] dark:bg-white dark:text-[#13152A] dark:hover:bg-white/90";
+      ? "bg-white text-[#13152A] hover:bg-[#F1E7F9] focus-visible:outline-white"
+      : "bg-[#13152A] text-white hover:bg-[#262a4a] dark:bg-[#F4F1EA] dark:text-[#13152A] dark:hover:bg-white";
 
   const stores = [
     { href: APP_STORE_URL, pre: t("appStorePre"), name: t("appStore"), Icon: AppleIcon },
@@ -44,19 +44,21 @@ export default function StoreButtons({
   ];
 
   return (
-    <div className={`flex flex-col gap-3 ${stacked ? "items-start" : "sm:flex-row"} ${className}`}>
+    <div className={`flex flex-wrap gap-3 ${stacked ? "flex-col items-start" : ""} ${className}`}>
       {stores.map(({ href, pre, name, Icon }) => (
         <a
           key={href}
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center justify-center sm:justify-start gap-3 h-14 px-5 min-w-[180px] rounded-xl transition-colors duration-200 ${toneClass}`}
+          className={`inline-flex items-center gap-3 h-14 ps-4 pe-5 min-w-[11rem] rounded-[0.75rem] transition-[background-color,transform] duration-150 active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100 ${toneClass}`}
         >
           <Icon />
           <span className="text-start">
-            <span className="block text-[11px] leading-none opacity-75">{pre}</span>
-            <span className="block text-base font-semibold leading-tight mt-0.5">{name}</span>
+            <span className="block text-[11px] leading-none opacity-80">{pre}</span>
+            <span className="block text-base font-semibold leading-tight mt-1" lang="en">
+              {name}
+            </span>
           </span>
         </a>
       ))}

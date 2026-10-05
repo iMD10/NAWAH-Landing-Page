@@ -2,10 +2,16 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Cancel01Icon, Menu01Icon } from "@hugeicons/core-free-icons";
 import LanguageToggle from "./LanguageToggle";
 import ThemeToggle from "./ThemeToggle";
 import { useState, useEffect } from "react";
 import logoImg from "@/app/logo.png";
+
+const linkClass =
+  "text-[0.9375rem] font-medium text-[color:var(--muted)] hover:text-[color:var(--ink)] transition-colors duration-150";
 
 export default function Navbar() {
   const t = useTranslations("Navigation");
@@ -14,15 +20,21 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setMenuOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
     window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("keydown", onKey);
+    };
   }, []);
 
   const navLinks = [
@@ -31,113 +43,81 @@ export default function Navbar() {
     { href: "/about", label: t("about") },
   ];
 
+  const solid = scrolled || menuOpen;
+
   return (
     <header
-      className="sticky top-0 z-50 w-full transition-all duration-300"
+      className="sticky top-0 z-50 w-full transition-[background-color,border-color] duration-200"
       style={{
-        background: scrolled ? "var(--bg-nav)" : "var(--bg-nav-top)",
-        backdropFilter: "blur(20px)",
-        borderBottom: scrolled ? "1px solid var(--border-nav)" : "1px solid transparent",
+        background: solid ? "var(--bg-nav)" : "var(--bg-nav-top)",
+        backdropFilter: solid ? "saturate(140%) blur(12px)" : "none",
+        borderBottom: `1px solid ${solid ? "var(--line)" : "transparent"}`,
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-
+      <div className="mx-auto w-[min(100%-2.5rem,76rem)]">
+        <div className="flex items-center justify-between h-[4.25rem] gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0" onClick={() => setMenuOpen(false)}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={logoImg.src} alt="Nawah Logo" className="w-9 h-9 rounded-xl object-cover" />
-            <span className="hidden sm:block font-bold text-xl tracking-tight" style={{ color: "var(--foreground)" }}>
+          <Link href="/" className="flex items-center gap-2.5 flex-shrink-0 rounded-lg" onClick={() => setMenuOpen(false)}>
+            <Image src={logoImg} alt="" width={36} height={36} sizes="36px" preload className="w-9 h-9 rounded-[0.6rem]" />
+            <span className="font-heading font-bold text-xl tracking-tight text-[color:var(--ink)]">
               {tBrand("name")}
             </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav aria-label={t("primary")} className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium transition-colors duration-200"
-                style={{ color: "var(--text-nav)" }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--text-nav-hover)")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-nav)")}
-              >
+              <Link key={link.href} href={link.href} className={linkClass}>
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right side */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <div className="flex items-center gap-1.5 sm:gap-3">
-              <ThemeToggle />
-              <LanguageToggle />
-            </div>
-
+          {/* Actions */}
+          <div className="flex items-center gap-1 sm:gap-2">
+            <ThemeToggle />
+            <LanguageToggle />
             <Link
               href="/#download"
-              className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-sm font-semibold rounded-lg text-white transition-colors duration-200 bg-[#2789D3] hover:bg-[#1f74b5]"
+              className="hidden sm:inline-flex items-center justify-center h-10 px-4 ms-1 text-sm font-semibold rounded-[0.75rem] text-white bg-[color:var(--brand-btn)] hover:bg-[color:var(--brand-btn-hover)] active:scale-[0.97] transition-[background-color,transform] duration-150 motion-reduce:transition-none"
             >
               {t("download")}
             </Link>
 
-            {/* Hamburger */}
             <button
               type="button"
-              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-label={menuOpen ? t("menuClose") : t("menuOpen")}
               aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
               onClick={() => setMenuOpen((v) => !v)}
-              className="md:hidden flex flex-col justify-center items-center w-9 h-9 rounded-lg transition-colors"
-              style={{ background: menuOpen ? "var(--bg-badge)" : "transparent" }}
+              className="md:hidden grid place-items-center w-10 h-10 rounded-[0.75rem] text-[color:var(--ink)] hover:bg-[color:var(--paper-2)] transition-colors"
             >
-              <span
-                className="block w-5 h-0.5 rounded-full transition-all duration-300"
-                style={{ background: "var(--text-nav-hover)", transform: menuOpen ? "rotate(45deg) translateY(6px)" : "none" }}
-              />
-              <span
-                className="block w-5 h-0.5 rounded-full my-1 transition-all duration-300"
-                style={{ background: "var(--text-nav-hover)", opacity: menuOpen ? 0 : 1 }}
-              />
-              <span
-                className="block w-5 h-0.5 rounded-full transition-all duration-300"
-                style={{ background: "var(--text-nav-hover)", transform: menuOpen ? "rotate(-45deg) translateY(-6px)" : "none" }}
-              />
+              <HugeiconsIcon icon={menuOpen ? Cancel01Icon : Menu01Icon} size={22} strokeWidth={1.8} aria-hidden="true" />
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile drawer */}
-      <div
-        className="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
-        style={{ maxHeight: menuOpen ? "26rem" : "0", opacity: menuOpen ? 1 : 0 }}
-      >
-        <nav
-          className="flex flex-col px-4 pb-6 gap-1 pt-3"
-          style={{ borderTop: "1px solid var(--border-nav)" }}
-        >
+      <div id="mobile-menu" hidden={!menuOpen} className="md:hidden border-t border-[color:var(--line)]">
+        <nav aria-label={t("primary")} className="mx-auto w-[min(100%-2.5rem,76rem)] flex flex-col py-3 gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="text-sm font-medium py-3 px-3 rounded-xl transition-all duration-200 hover:bg-black/5 dark:hover:bg-white/5"
-              style={{ color: "var(--text-nav)" }}
+              className="text-base font-medium py-3 px-3 rounded-[0.75rem] text-[color:var(--ink)] hover:bg-[color:var(--paper-2)] transition-colors"
             >
               {link.label}
             </Link>
           ))}
-
-          <div className="mt-4 px-3">
-            <Link
-              href="/#download"
-              onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center w-full py-3.5 font-semibold rounded-xl text-white bg-[#2789D3]"
-            >
-              {t("download")}
-            </Link>
-          </div>
+          <Link
+            href="/#download"
+            onClick={() => setMenuOpen(false)}
+            className="mt-3 mb-2 flex items-center justify-center h-12 font-semibold rounded-[0.75rem] text-white bg-[color:var(--brand-btn)]"
+          >
+            {t("download")}
+          </Link>
         </nav>
       </div>
     </header>

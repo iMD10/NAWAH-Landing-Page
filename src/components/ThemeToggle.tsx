@@ -2,11 +2,17 @@
 
 import { useTheme } from "./ThemeProvider";
 import { useEffect, useState } from "react";
-import { Moon, Sun } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Moon02Icon, Sun03Icon } from "@hugeicons/core-free-icons";
+
+const buttonClass =
+  "grid place-items-center w-10 h-10 rounded-[0.75rem] text-[color:var(--muted)] hover:text-[color:var(--ink)] hover:bg-[color:var(--paper-2)] transition-colors";
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
+  const t = useTranslations("Navigation");
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -15,20 +21,18 @@ export default function ThemeToggle() {
   }, []);
 
   if (!mounted) {
-    return <div className="w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10" />;
+    return <div className="w-10 h-10" aria-hidden="true" />;
   }
 
   return (
     <button
+      type="button"
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-      className="flex items-center justify-center w-9 h-9 rounded-full bg-slate-100 dark:bg-white/10 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-white/20 transition-colors"
-      aria-label="Toggle dark mode"
+      className={buttonClass}
+      aria-label={t("themeToggle")}
+      aria-pressed={theme === "dark"}
     >
-      {theme === "dark" ? (
-        <Sun className="w-4 h-4" />
-      ) : (
-        <Moon className="w-4 h-4" />
-      )}
+      <HugeiconsIcon icon={theme === "dark" ? Sun03Icon : Moon02Icon} size={19} strokeWidth={1.8} aria-hidden="true" />
     </button>
   );
 }

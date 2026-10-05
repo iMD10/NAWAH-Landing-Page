@@ -23,7 +23,11 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 
 export default function JoinLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`${inter.variable} ${openSans.variable} ${ibmPlexSansArabic.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <meta name="theme-color" content="#2789D3" />
         <script
@@ -32,7 +36,7 @@ export default function JoinLayout({ children }: { children: React.ReactNode }) 
           }}
         />
       </head>
-      <body className={`${inter.variable} ${openSans.variable} ${ibmPlexSansArabic.variable} font-sans antialiased min-h-screen flex flex-col`}>
+      <body className={`font-sans antialiased min-h-screen flex flex-col`}>
         <ThemeProvider>
           {children}
         </ThemeProvider>

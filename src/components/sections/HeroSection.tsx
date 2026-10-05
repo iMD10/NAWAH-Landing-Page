@@ -1,99 +1,74 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { motion, useReducedMotion } from "framer-motion";
-import Image from "next/image";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Calendar03Icon, CheckListIcon, Tick02Icon } from "@hugeicons/core-free-icons";
 import StoreButtons from "@/components/StoreButtons";
-
-/* ── Phone Mockup Component ── */
-const PhoneMockup = ({
-  src,
-  alt,
-  className = "",
-  priority = false,
-}: {
-  src: string;
-  alt: string;
-  className?: string;
-  priority?: boolean;
-}) => (
-  <div
-    className={`overflow-hidden ${className || "relative"}`}
-    style={{
-      aspectRatio: "9 / 19.5",
-      borderRadius: "2.25rem",
-      border: "6px solid #13152A",
-      background: "#13152A",
-      boxShadow: "0 30px 60px -20px rgba(19,21,42,0.35)",
-    }}
-  >
-    <Image
-      src={src}
-      alt={alt}
-      fill
-      sizes="(min-width: 640px) 240px, 52vw"
-      className="object-cover"
-      style={{ borderRadius: "1.85rem" }}
-      priority={priority}
-    />
-  </div>
-);
+import PhoneScreen from "@/components/PhoneScreen";
 
 export default function HeroSection() {
   const t = useTranslations("Hero");
-  const shouldReduce = useReducedMotion();
-
-  const fadeUp = (delay: number) => ({
-    initial: shouldReduce ? false : { opacity: 0, y: 16 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, delay },
-  });
 
   return (
-    <section className="relative w-full overflow-hidden" style={{ background: "var(--bg-hero)" }}>
-      <div className="relative max-w-7xl mx-auto px-6 pt-16 pb-20 md:pt-24 md:pb-28 grid md:grid-cols-2 items-center gap-14 md:gap-8">
-        {/* Copy */}
-        <div className="flex flex-col items-center md:items-start text-center md:text-start">
-          <motion.h1
-            {...fadeUp(0)}
-            className="font-extrabold tracking-tight text-balance leading-[1.05] mb-6"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4.25rem)", color: "var(--text-1)" }}
-          >
+    <section className="nw-hero" aria-labelledby="hero-title">
+      <div className="nw-container nw-hero__grid">
+        <div className="nw-hero__copy">
+          <h1 id="hero-title" className="nw-display">
             {t("headline")}
-          </motion.h1>
-
-          <motion.p
-            {...fadeUp(0.1)}
-            className="text-lg md:text-xl leading-relaxed text-balance max-w-lg mb-10"
-            style={{ color: "var(--text-3)" }}
-          >
-            {t("subtext")}
-          </motion.p>
-
-          <motion.div {...fadeUp(0.2)}>
-            <StoreButtons />
-          </motion.div>
+          </h1>
+          <p className="nw-lead">{t("subtext")}</p>
+          <StoreButtons />
+          <p className="nw-note">{t("availability")}</p>
         </div>
 
-        {/* Screenshots */}
-        <motion.div
-          initial={shouldReduce ? false : { opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative mx-auto w-full max-w-[460px] h-[420px] sm:h-[540px]"
-        >
-          <PhoneMockup
-            src="/screenshots/chat.png"
-            alt="Nawah family chat"
-            className="absolute top-12 start-[2%] w-[42%] sm:w-[200px] opacity-95"
-          />
-          <PhoneMockup
+        {/* Product stage: one real screen, two small labelled example fragments */}
+        <div className="nw-stage">
+          <div className="nw-board nw-stage__board" aria-hidden="true" />
+          <PhoneScreen
             src="/screenshots/hero-main.png"
-            alt="Nawah home screen"
-            className="absolute top-0 end-[2%] w-[52%] sm:w-[240px] z-10"
-            priority
+            alt={t("screenAlt")}
+            className="nw-stage__phone"
+            sizes="(min-width: 1024px) 296px, 264px"
+            preload
           />
-        </motion.div>
+
+          <div className="nw-stage__fragments">
+            <div className="nw-fragment nw-stage__plan">
+              <div className="nw-fragment__head">
+                <span className="nw-fragment__label">
+                  <HugeiconsIcon icon={Calendar03Icon} size={16} strokeWidth={1.8} aria-hidden="true" />
+                  {t("planLabel")}
+                </span>
+                <span className="nw-fragment__demo">{t("demoLabel")}</span>
+              </div>
+              <p className="nw-fragment__title">{t("planTitle")}</p>
+              <p className="nw-fragment__meta">{t("planTime")}</p>
+            </div>
+
+            <div className="nw-fragment nw-stage__task">
+              <div className="nw-fragment__head">
+                <span className="nw-fragment__label">
+                  <HugeiconsIcon icon={CheckListIcon} size={16} strokeWidth={1.8} aria-hidden="true" />
+                  {t("taskLabel")}
+                </span>
+                <span className="nw-fragment__demo">{t("demoLabel")}</span>
+              </div>
+              <div className="nw-task-row">
+                <span className="nw-check" aria-hidden="true">
+                  <HugeiconsIcon icon={Tick02Icon} size={14} strokeWidth={2.5} />
+                </span>
+                <p className="nw-fragment__title">{t("taskTitle")}</p>
+              </div>
+              <div className="nw-task-row" style={{ marginBlockStart: "0.6rem" }}>
+                <span className="nw-avatar" aria-hidden="true">
+                  {t("taskOwner").slice(0, 1)}
+                </span>
+                <span className="nw-fragment__meta" style={{ margin: 0 }}>
+                  {t("taskOwner")}
+                </span>
+              </div>
+            </div>
+          </div>
+          <p className="nw-stage__caption">{t("demoLabel")}</p>
+        </div>
       </div>
     </section>
   );
