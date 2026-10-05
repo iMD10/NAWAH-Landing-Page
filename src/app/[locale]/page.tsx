@@ -6,7 +6,7 @@ import CtaSection from "@/components/sections/CtaSection";
 
 export default function Home() {
   return (
-    <div className="flex flex-col overflow-x-hidden" style={{ background: "var(--bg-page)" }}>
+    <div className="flex flex-col overflow-x-clip" style={{ background: "var(--bg-page)" }}>
       <HeroSection />
       <ProblemSection />
       <FeaturesSection />

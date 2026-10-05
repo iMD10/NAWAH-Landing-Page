@@ -20,7 +20,13 @@
     "appStore": "App Store",
     "playStorePre": "Get it on",
     "playStore": "Google Play",
-    "playStoreComingSoon": "Coming Soon"
+    "playStoreComingSoon": "Coming Soon",
+    "eyebrow": "Free on iOS & Android",
+    "notif1Title": "Groceries",
+    "notif1": "Mom added “Milk” to the list",
+    "notif2Title": "Family dinner",
+    "notif2": "Friday, 8:00 PM · 6 going",
+    "now": "now"
   },
   "Problem": {
     "title": "Too Many Apps for Family Life?",
@@ -29,7 +35,9 @@
     "calendar": "Calendar",
     "notes": "Notes",
     "photos": "Photos",
-    "tasks": "Tasks"
+    "tasks": "Tasks",
+    "kicker": "The problem",
+    "after": "One home for all of it."
   },
   "Features": {
     "title": "Everything you need",
@@ -42,7 +50,8 @@
     "vault": "Memory Vault",
     "vaultDesc": "Safely store family photos, videos, and important documents.",
     "ai": "AI Assistant",
-    "aiDesc": "Integrated smart assistant to help organize and plan."
+    "aiDesc": "Integrated smart assistant to help organize and plan.",
+    "kicker": "Inside the app"
   },
   "HowItWorks": {
     "title": "How It Works",
@@ -51,7 +60,8 @@
     "step2": "Invite members",
     "step2Desc": "Add family members with a simple link or QR code.",
     "step3": "Start organizing",
-    "step3Desc": "Chat, plan events, and manage tasks effortlessly."
+    "step3Desc": "Chat, plan events, and manage tasks effortlessly.",
+    "kicker": "Getting started"
   },
   "Cta": {
     "title": "Start your family hub today",

@@ -35,8 +35,8 @@ export default function StoreButtons({
 
   const toneClass =
     tone === "light"
-      ? "bg-white text-[#13152A] hover:bg-white/90"
-      : "bg-[#13152A] text-white hover:bg-[#1f2340] dark:bg-white dark:text-[#13152A] dark:hover:bg-white/90";
+      ? "btn-raised is-light bg-white text-[#13152A] hover:bg-[#f4f4f8]"
+      : "btn-raised bg-[#13152A] text-white hover:bg-[#1c1f3a] invert-dark dark:bg-white dark:text-[#13152A] dark:hover:bg-[#f4f4f8]";
 
   const stores = [
     { href: APP_STORE_URL, pre: t("appStorePre"), name: t("appStore"), Icon: AppleIcon },
@@ -51,7 +51,7 @@ export default function StoreButtons({
           href={href}
           target="_blank"
           rel="noopener noreferrer"
-          className={`inline-flex items-center justify-center sm:justify-start gap-3 h-14 px-5 min-w-[180px] rounded-xl transition-colors duration-200 ${toneClass}`}
+          className={`inline-flex items-center justify-center sm:justify-start gap-3 h-14 px-5 min-w-[180px] rounded-[14px] ${toneClass}`}
         >
           <Icon />
           <span className="text-start">

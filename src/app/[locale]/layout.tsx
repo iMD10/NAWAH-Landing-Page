@@ -86,7 +86,7 @@ export default async function RootLayout({
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html lang={locale} dir={dir} data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script
@@ -103,7 +103,7 @@ export default async function RootLayout({
           <ThemeProvider>
             <NextIntlClientProvider messages={messages}>
               <Navbar />
-              <main className="flex-1 flex flex-col w-full relative overflow-x-hidden">{children}</main>
+              <main className="flex-1 flex flex-col w-full relative overflow-x-clip">{children}</main>
               <Footer />
             </NextIntlClientProvider>
           </ThemeProvider>
