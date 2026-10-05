@@ -68,3 +68,94 @@ Hero, problem, feature names/descriptions, steps and CTA copy are unchanged. Add
 
 ![EN desktop](before-after-en-desktop.png)
 ![AR mobile](before-after-ar-mobile.png)
+
+---
+
+# Second pass (5 Oct 2026, later the same day)
+
+This pass started from the redesign above, which was already merged. This time the reference sites were reachable from this environment, so I inspected them and then revised the parts of the page that were still weakest. I did not rebuild the page from scratch.
+
+## Audit of the redesigned page
+
+I rendered the page locally with Playwright at 1440 (EN) and 390 (AR), viewport by viewport.
+
+Observed:
+1. **The "too many apps" story was an abstract diagram.** Five generic icon tiles circled the logo. It showed no family content and no product, which is the "decorative diagram" the brief asks to avoid. At 1440 the copy column also left about 200px of empty space under the text.
+2. **The feature section header left half the row empty.** At 1440, "Everything you need" sat on the left and the right ~700px was blank.
+3. **The feature rows read as one repeated template.** Calendar, tasks, chat and memories each used eyebrow, headline, body, two ticks, then a pastel board. Nothing tied them together as "a family day", even though the eyebrow promised one.
+4. **Vertical rhythm was loose.** The desktop page was 7,518px tall. There was about 250px of empty paper between "How it works" and the download board, and 300px or more between feature rows.
+5. **The download board gave desktop visitors nothing to act on.** Store badges are a dead end on a laptop. The repo already holds a QR code for nawahfamily.com (`public/qr.png`), but the page didn't use it.
+
+Not a problem: there was no horizontal overflow at 320 to 1440, Arabic was not clipped, and the existing hero worked well enough to keep.
+
+## Reference ledger (this pass)
+
+"Rendered" means Playwright loaded the page in Chromium. "Text" means only the server HTML or metadata was readable.
+
+| Resource | Exact entry URL | Access | Observed principle | Nawah application | Asset / licence |
+|---|---|---|---|---|---|
+| ObsidianUI: Split Showcase | obsidianui.dev/docs/split-showcase, registry `/r/split-showcase.json` | Docs rendered; **registry source read** (9.9 KB TSX). The live preview stayed blank in headless Chromium. | Two cards on either side of a dotted divider, with a spring shift on hover. It is built for partner logos, not product screens. | Two-state comparison (scattered vs together) on a dotted board. **Not installed:** it needs `motion` + `clsx` + `tailwind-merge`, and its content model (logos) doesn't fit. | MIT (repo LICENSE). No code copied. |
+| ObsidianUI: Art Gallery, Draggable Marquee | /docs/art-gallery, /docs/draggable-marquee | Docs text rendered | Drag-through lensed grid; infinite marquee with drag momentum | Rejected. Both are photo-gallery effects, and Nawah has six phone screens, not a photo set. | — |
+| Bencho | bencho.dev | Index rendered. Card previews visible (Asset swap, Todo tower list: "Reply to Nadia / Renew the domain…"). Checklist source is behind sign-up. | Everyday, concrete item text makes a micro-interaction believable | Story notes use concrete family items ("Milk, bread, Arabic coffee") instead of category names | No source used |
+| GetLayers | getlayers.ai | Home rendered (template grid, "Copy a prompt" model) | Templates sold as one coherent system | Kept the single token set; added no new colours or effects | Premium. Nothing acquired. |
+| Landdding | landdding.com/tag/mobile-app → **/l/todoist-4xmte**, **/l/givingli-aporc** | Entry metadata rendered; entry screenshots failed to load, so I rendered the linked live sites (todoist.com, givingli.com) | Todoist: the hero shows real tasks ("Dentist appointment", "Buy bread"). Givingli: warm off-white canvas, physical objects tilted around a large editorial headline. | Story notes are everyday items, tilted when scattered, on the warm paper canvas | Inspiration only |
+| Motionin: Assembly | motionin.design/gallery/assembly | Page text + meta description. The preview canvas rendered blank headless. | "A swarm of cards … assembles into one composed cluster" | The story notes drift in from where they live today and assemble into one Nawah stack, once, on scroll. The visitor can switch views. | Prompt not copied |
+| Pageflows | pageflows.com | **Blocked** (Cloudflare challenge / 403) | — | "Getting started" stays on Nawah's verified flow: create → invite (the link/QR join routes exist in `src/app/join`) → organise | — |
+| CollectUI | collectui.com, /challenges/checkbox | Rendered, but entries load client-side and only ads and directory content appeared | — | No change. The segmented control's pressed state is reused for the new toggle. | — |
+| Reelfolio | reelfolio.io | Home text read (Rise/Rolodex are editor templates); renders timed out headless | Staging static shots as a sequence | Already covered by the 240ms screen swap; no video added | Paid export; not used |
+| Inspora: Scenic Footer | inspora.design/posts/scenic-footer-section | **Blocked** (Vercel security checkpoint) | — | The download board stays; I added a practical desktop QR hand-off instead of decoration | — |
+| Backgrounds.supply | backgrounds.supply | Home rendered; /freebies 404 | — | No texture added. The existing CSS dot grid stays the one background treatment. | Not needed |
+| Fontshare | api.fontshare.com/v2/fonts | **API read**: 100 families, none list Arabic | Latin-only catalogue | Confirms the Readex Pro (Arabic) + Bricolage/Inter (Latin) pairing; no change | ITF FFL; not used |
+| Hugeicons | hugeicons.com, /docs | Rendered (React quick-start docs) | One stroke family | New story icons come from the same `@hugeicons/core-free-icons` set already installed | MIT (free set) |
+| remove.bg | remove.bg | Rendered | — | Not used. Screens are full rectangles; no cut-outs needed. | — |
+
+**Primary references for this pass:** Motionin Assembly (separate items gathering into one composition), ObsidianUI Split Showcase (two states, dotted divider), the Todoist landing page via Landdding (concrete everyday items), and Givingli via Landdding (warm canvas, tilted physical objects).
+
+## Directions considered
+
+- **A. Assemble the family's day (chosen).** Swap the icon ring for four believable family notes that move from where they live today into one Nawah stack, and give the feature rows a morning → weekend spine. It is concrete, verifiable against the screenshots, and reuses the existing motion and tokens.
+- **B. Replace the story with a large real-screen gallery** (marquee or carousel). This was rejected. The hero, features and CTA already show every real screen, so a gallery would repeat them, and marquees are hard to make accessible.
+
+## What changed
+
+- **Story section** (`ProblemSection.tsx`, `landing.css`):
+  - Four example notes: dinner question, dentist appointment, shopping items, trip photos. Each maps to a verified screen: the chat poll "وش تبون عشاء", the "موعد أسنان 12:00" event, the shopping list, and the سفريات vault folder.
+  - When scattered, each note is labelled with where it lives today ("A note on the fridge"). When assembled, it is labelled with its Nawah home ("Shared shopping list").
+  - The board plays the assembly once on scroll. A segmented toggle (`aria-pressed`) lets visitors switch views by mouse, keyboard or touch. A visitor's choice is never overridden.
+  - With reduced motion, the board renders already assembled with no transitions. Offsets mirror in RTL.
+- **Features:** each row now starts with a time-of-day rule (Morning / Afternoon / Evening / Weekend / Any time) running toward its screen. The header is two columns on desktop.
+- **Download board:** a QR hand-off ("On a computer? Scan…") appears only at ≥56rem with a fine pointer, so never on phones.
+- **Rhythm:** section padding is 6.5rem max (was 7.5), feature gap is 6rem max (was 8), and the gap before the download board is tightened. The desktop page went from 7,518px to 7,314px EN, while the story board grew.
+
+## Copy changes (flag for review)
+
+- New example copy in the story notes, labelled "Example" / "مثال توضيحي". The Gulf phrasing ("وش تبون عشاء؟", "قروب") matches the existing chat-poll detail line.
+- New time-of-day labels (EN/AR). These are framing, not product claims.
+- The QR caption says it opens Nawah's page (it encodes `https://nawahfamily.com`). It does not claim to open the store.
+- Removed the now-unused `Problem.chat/calendar/notes/photos/tasks` keys.
+- No headline, description, feature or claim copy was changed.
+
+## Checks (production build served locally)
+
+- Rendered EN/AR at 320, 390, 768 and 1440, plus dark mode (via the site's stored theme): `scrollWidth` equals the viewport width at every size, and no Arabic is clipped. Both story states were checked at 320, 390 and 1440.
+- Keyboard: the story toggle works with Enter and Space, has a visible 3px focus ring, and updates `aria-pressed`. Touch: tapping it works on iPhone 13 emulation (AR), and so does the checklist demo.
+- Reduced motion: the board never enters the scattered state, and transitions compute to `0s`.
+- Contrast: time labels are 4.9:1 (light) and 6.5:1 (dark). Note labels are 5.8:1 / 9.0:1. Scattered labels are 6.7:1.
+- Links: `/`, `/ar`, `/privacy`, `/terms`, `/support`, `/about` and `/qr.png` return 200 (`/en` 307 → `/` is the existing locale routing). App Store and Google Play URLs return 200.
+- `tsc --noEmit` is clean and `next build` succeeds. ESLint shows the same 9 pre-existing findings as the base commit, none in the files changed here.
+- The only console error is PostHog's missing key in local env (pre-existing).
+- Not done: screen-reader passes (VoiceOver/TalkBack) and Lighthouse/field performance. No new dependencies; the only new image is the existing 7.6 KB QR.
+
+## Rubric (subjective review, not user testing)
+
+| Dimension | Score | Observation |
+|---|---|---|
+| Brand fit | 4 | Warm paper, the icon's blue and navy, and Gulf-Arabic sample copy about family life. |
+| Originality | 4 | The assembling family notes and the morning-to-weekend spine are specific to Nawah. The hero is still a conventional split, kept on purpose because it works. |
+| Clarity | 4 | The story now shows *what* gets scattered and *where it lands* in the app, instead of naming categories. |
+| Craft | 4 | One radius scale, one icon set, and one segmented control reused. Calendar and chat rows still share a template, softened by the time spine. |
+| Mobile & RTL | 4 | Mobile gets a smaller sideways drift so notes stay on the board; offsets mirror in RTL. At 320 the tilted notes wrap to 2–3 lines but stay readable. |
+| Accessibility & performance | 4 | Native buttons with `aria-pressed`, nothing starts hidden, the reduced-motion path is tested, and there are no new dependencies. Screen readers untested. |
+
+![Story before/after, EN desktop](v2-story-en-desktop.png)
+![Story before/after, AR mobile](v2-story-ar-mobile.png)

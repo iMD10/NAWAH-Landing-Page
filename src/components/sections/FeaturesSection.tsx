@@ -17,6 +17,8 @@ function FeatureCopy({ id, icon }: { id: FeatureId; icon: IconSvgElement }) {
   const t = useTranslations("Features");
   return (
     <div className="nw-feature__copy">
+      {/* Where this moment sits in the family's day */}
+      <p className="nw-when">{t(`${id}When`)}</p>
       <p className="nw-eyebrow">
         <HugeiconsIcon icon={icon} size={18} strokeWidth={1.8} aria-hidden="true" />
         {t(id)}
@@ -42,10 +44,12 @@ export default function FeaturesSection() {
     <section id="features" aria-labelledby="features-title">
       <div className="nw-container nw-section" style={{ paddingBlockEnd: 0 }}>
         <header className="nw-features__head">
-          <p className="nw-eyebrow">{t("eyebrow")}</p>
-          <h2 id="features-title" className="nw-h2">
-            {t("title")}
-          </h2>
+          <div>
+            <p className="nw-eyebrow">{t("eyebrow")}</p>
+            <h2 id="features-title" className="nw-h2">
+              {t("title")}
+            </h2>
+          </div>
           <p className="nw-lead">{t("intro")}</p>
         </header>
 

@@ -11,7 +11,7 @@
 }
 
 .nw-section {
-  padding-block: clamp(4rem, 9vw, 7.5rem);
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
 }
 
 /* ── Type ─────────────────────────────────────────────── */
@@ -272,103 +272,144 @@
   .nw-stage__task { inset-block-end: 13%; inset-inline-start: 7%; rotate: 2deg; margin: 0; }
 }
 
-/* ── Story: scattered → gathered ──────────────────────── */
+/* ── Story: scattered → gathered ──────────────────────
+   The same four family notes, first spread across other places, then
+   assembled into one Nawah stack. Offsets are relative to each note's tidy
+   position, so the layout stays responsive. */
 .nw-story {
   display: grid;
   gap: 2.5rem;
   align-items: center;
 }
-.nw-story__copy .nw-body { margin-block-start: 1.25rem; }
+.nw-story__copy { display: grid; justify-items: start; gap: 1.25rem; }
+.nw-story__copy .nw-segmented { margin-block-start: 0.75rem; }
 
 .nw-gather {
   position: relative;
-  block-size: 21rem;
   overflow: hidden;
-  --ring: 6.1rem;
-}
-.nw-gather__hub {
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  translate: -50% -50%;
-  display: grid;
-  justify-items: center;
-  gap: 0.4rem;
-  z-index: 2;
-}
-[dir="rtl"] .nw-gather__hub { translate: 50% -50%; }
-.nw-gather__hub img {
-  inline-size: 5rem;
-  block-size: 5rem;
-  border-radius: 1.35rem;
-  box-shadow: 0 14px 30px -12px rgb(39 137 211 / 55%);
-}
-.nw-gather__hub span { font-weight: 700; font-size: 0.9375rem; color: var(--ink); }
-
-.nw-gather__tiles { list-style: none; margin: 0; padding: 0; }
-.nw-tile {
-  position: absolute;
-  inset-block-start: 50%;
-  inset-inline-start: 50%;
-  display: grid;
-  justify-items: center;
-  gap: 0.35rem;
-  inline-size: 4.75rem;
-  margin-block-start: -2.4rem;
-  margin-inline-start: -2.375rem;
-  font-size: 0.8125rem;
-  color: var(--muted);
-  transform: translate(calc(var(--ring) * var(--gx)), calc(var(--ring) * var(--gy)));
-  transition: transform 700ms cubic-bezier(0.22, 0.9, 0.24, 1) calc(var(--i) * 60ms);
-}
-[dir="rtl"] .nw-tile {
-  transform: translate(calc(var(--ring) * var(--gx) * -1), calc(var(--ring) * var(--gy)));
-}
-.nw-tile__icon {
   display: grid;
   place-items: center;
-  inline-size: 3.25rem;
-  block-size: 3.25rem;
-  border-radius: 1rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-  color: var(--brand-ink);
-  transition: rotate 700ms cubic-bezier(0.22, 0.9, 0.24, 1) calc(var(--i) * 60ms);
+  padding: 3.25rem 1.25rem 2rem;
+  /* Small sideways drift on phones: the notes are nearly full width. */
+  --spread-x: 1.1rem;
+  --spread-y: 2.25rem;
 }
-.nw-gather[data-state="scattered"] .nw-tile {
-  transform: translate(calc(var(--ring) * var(--sx)), calc(var(--ring) * var(--sy)));
-}
-[dir="rtl"] .nw-gather[data-state="scattered"] .nw-tile {
-  transform: translate(calc(var(--ring) * var(--sx) * -1), calc(var(--ring) * var(--sy)));
-}
-.nw-gather[data-state="scattered"] .nw-tile__icon { rotate: var(--sr); }
 .nw-gather__caption {
   position: absolute;
-  inset-block-end: 1rem;
-  inset-inline: 0;
-  text-align: center;
-  font-size: 0.875rem;
+  inset-block-start: 1.1rem;
+  inset-inline-start: 1.5rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--muted);
 }
+.nw-gather__stack {
+  inline-size: min(100%, 22rem);
+  display: grid;
+  gap: 0.6rem;
+}
+.nw-gather__hub {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-inline: 0.25rem;
+  margin-block-end: 0.2rem;
+  transition: opacity 400ms ease;
+}
+.nw-gather__hub img {
+  inline-size: 2.5rem;
+  block-size: 2.5rem;
+  border-radius: 0.75rem;
+}
+.nw-gather__hub span { font-family: var(--font-display); font-weight: 700; font-size: 1.125rem; color: var(--ink); }
+.nw-gather[data-state="scattered"] .nw-gather__hub { opacity: 0; }
+
+.nw-gather__notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+.nw-note-card {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 0.95rem;
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-sm);
+  transition:
+    translate 650ms cubic-bezier(0.22, 0.9, 0.24, 1) calc(var(--i) * 70ms),
+    rotate 650ms cubic-bezier(0.22, 0.9, 0.24, 1) calc(var(--i) * 70ms),
+    background-color 300ms ease;
+}
+.nw-note-card__icon {
+  display: grid;
+  place-items: center;
+  inline-size: 2.25rem;
+  block-size: 2.25rem;
+  border-radius: var(--radius-sm);
+  background: var(--brand-tint);
+  color: var(--brand-ink);
+  flex: none;
+  transition: background-color 300ms ease, color 300ms ease;
+}
+.nw-note-card__body { display: grid; gap: 0.1rem; min-inline-size: 0; }
+.nw-note-card__text { font-weight: 600; color: var(--ink); line-height: 1.4; }
+.nw-note-card__where { font-size: 0.8125rem; color: var(--brand-ink); font-weight: 500; }
+.nw-gather[data-state="gathered"] [data-when="scattered"],
+.nw-gather[data-state="scattered"] [data-when="gathered"] { display: none; }
+
+/* Scattered: notes drift apart and tilt; their labels say where they live today. */
+.nw-gather[data-state="scattered"] .nw-note-card {
+  translate: calc(var(--sx) * var(--spread-x)) calc(var(--sy) * var(--spread-y));
+  rotate: var(--sr);
+  background: var(--paper);
+}
+.nw-gather[data-state="scattered"] .nw-note-card__where { color: var(--muted); }
+.nw-gather[data-state="scattered"] .nw-note-card__icon { background: var(--paper-2); color: var(--muted); }
+[dir="rtl"] .nw-gather[data-state="scattered"] .nw-note-card {
+  translate: calc(var(--sx) * var(--spread-x) * -1) calc(var(--sy) * var(--spread-y));
+}
 
 @media (min-width: 40rem) {
-  .nw-gather { block-size: 24rem; --ring: 7.6rem; }
+  .nw-gather { padding-block: 3.75rem 2.75rem; --spread-x: 6rem; --spread-y: 4.5rem; }
 }
 @media (min-width: 64rem) {
   .nw-story { grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 4rem; }
+  .nw-gather { min-block-size: 32rem; --spread-x: 8rem; }
 }
 
 /* ── Features ─────────────────────────────────────────── */
 .nw-features__head {
   display: grid;
   gap: 1.1rem;
-  margin-block-end: clamp(3rem, 7vw, 5.5rem);
+  margin-block-end: clamp(3rem, 6vw, 4.5rem);
+}
+.nw-features__head .nw-h2 { margin-block-start: 1.1rem; }
+@media (min-width: 56rem) {
+  .nw-features__head {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+    align-items: end;
+    gap: clamp(3rem, 6vw, 6rem);
+  }
 }
 .nw-feature-list {
   display: grid;
-  gap: clamp(4.5rem, 10vw, 8rem);
+  gap: clamp(3.5rem, 8vw, 6rem);
+}
+
+/* Time of day: a quiet rule that runs from the copy toward the screen,
+   so the feature rows read as one family day. */
+.nw-when {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  inline-size: 100%;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--faint);
+}
+.nw-when::after {
+  content: "";
+  flex: 1;
+  border-block-start: 1px solid var(--line-strong);
 }
 .nw-feature {
   display: grid;
@@ -376,6 +417,7 @@
   align-items: center;
 }
 .nw-feature__copy { display: grid; gap: 1.1rem; justify-items: start; }
+.nw-feature__copy .nw-when { margin-block-end: 0.35rem; }
 .nw-feature__media {
   position: relative;
   display: grid;
@@ -464,6 +506,9 @@
   cursor: pointer;
 }
 .nw-segmented button:hover { color: var(--ink); }
+@media (max-width: 22rem) {
+  .nw-segmented button { padding-inline: 0.7rem; font-size: 0.875rem; }
+}
 .nw-segmented button[aria-pressed="true"] {
   background: var(--brand-btn);
   color: #fff;
@@ -663,6 +708,8 @@
 }
 
 /* ── Final download board ─────────────────────────────── */
+/* Follows "Getting started" directly, so it needs little lead-in. */
+#download.nw-section { padding-block-start: clamp(0.5rem, 2vw, 1.5rem); }
 .nw-cta {
   position: relative;
   overflow: hidden;
@@ -695,6 +742,28 @@
 }
 .nw-cta .nw-h2 { color: #fff; }
 .nw-cta__sub { margin-block: 1rem 2rem; color: #fff; font-size: 1.125rem; line-height: 1.6; }
+.nw-cta__qr { display: none; }
+@media (min-width: 56rem) and (pointer: fine) {
+  .nw-cta__qr {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-block-start: 2rem;
+    padding-block-start: 1.75rem;
+    border-block-start: 1px solid rgb(255 255 255 / 22%);
+    max-inline-size: 26rem;
+  }
+  .nw-cta__qr img {
+    inline-size: 5.5rem;
+    block-size: 5.5rem;
+    padding: 0.35rem;
+    border-radius: var(--radius-sm);
+    background: #fff;
+    flex: none;
+  }
+  .nw-cta__qr p { font-size: 0.9375rem; line-height: 1.55; color: #fff; }
+  .nw-cta__qr strong { display: block; font-weight: 700; }
+}
 .nw-cta__screens {
   position: relative;
   display: flex;
@@ -716,8 +785,9 @@
 
 /* ── Motion preferences ───────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  .nw-tile,
-  .nw-tile__icon,
+  .nw-note-card,
+  .nw-note-card__icon,
+  .nw-gather__hub,
   .nw-screen-swap > *,
   .nw-demo__bar span,
   .nw-demo__box,

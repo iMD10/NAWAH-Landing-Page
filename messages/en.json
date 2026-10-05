@@ -39,13 +39,22 @@
   "Problem": {
     "title": "Too Many Apps for Family Life?",
     "description": "Stop jumping between chat apps, shared calendars, and scattered notes. Nawah brings everything your family needs under one roof.",
-    "chat": "Chat",
-    "calendar": "Calendar",
-    "notes": "Notes",
-    "photos": "Photos",
-    "tasks": "Tasks",
     "before": "Scattered",
-    "after": "Together in Nawah"
+    "after": "Together in Nawah",
+    "viewPicker": "Show family plans",
+    "demoLabel": "Example",
+    "chatNote": "What should we have for dinner?",
+    "chatBefore": "Buried in another group chat",
+    "chatAfter": "Family chat poll",
+    "calendarNote": "Dentist appointment · Tue 12:00",
+    "calendarBefore": "A reminder on one person’s phone",
+    "calendarAfter": "Family calendar",
+    "listNote": "Milk, bread, Arabic coffee",
+    "listBefore": "A note on the fridge",
+    "listAfter": "Shared shopping list",
+    "memoryNote": "Photos from the trip",
+    "memoryBefore": "Somebody’s camera roll",
+    "memoryAfter": "Memory vault · Trips"
   },
   "Features": {
     "title": "Everything you need",
@@ -84,7 +93,12 @@
     "aiHeadline": "A helper for busy weeks",
     "aiDetail1": "Ask which tasks are still open",
     "aiDetail2": "Suggestions like “Plan our week”",
-    "aiAlt": "Nawah AI assistant listing the family's open tasks"
+    "aiAlt": "Nawah AI assistant listing the family's open tasks",
+    "eventsWhen": "Morning",
+    "tasksWhen": "Afternoon",
+    "chatWhen": "Evening",
+    "vaultWhen": "Weekend",
+    "aiWhen": "Any time"
   },
   "Demo": {
     "caption": "Interactive example",
@@ -117,7 +131,10 @@
     "button": "Download on the App Store",
     "eyebrow": "Download Nawah",
     "vaultAlt": "Nawah memory vault with folders for trips and recipes",
-    "homeAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events"
+    "homeAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events",
+    "qrTitle": "On a computer?",
+    "qrText": "Scan with your phone camera to open Nawah’s page and download the app.",
+    "qrAlt": "QR code linking to nawahfamily.com"
   },
   "Footer": {
     "tagline": "One private app for your family's chats, plans, tasks, and memories.",
