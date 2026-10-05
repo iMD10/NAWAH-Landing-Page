@@ -18,6 +18,15 @@ export default function CtaSection() {
             </h2>
             <p className="nw-cta__sub">{t("subtext")}</p>
             <StoreButtons tone="light" />
+
+            {/* Desktop visitors: hand off to the phone. Hidden on touch screens. */}
+            <div className="nw-cta__qr">
+              <Image src="/qr.png" alt={t("qrAlt")} width={370} height={370} sizes="88px" />
+              <p>
+                <strong>{t("qrTitle")}</strong>
+                {t("qrText")}
+              </p>
+            </div>
           </div>
 
           {/* Two real screens pinned to the board, cropped by its edge */}
