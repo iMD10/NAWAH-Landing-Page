@@ -10,7 +10,12 @@
     "support": "Support",
     "privacy": "Privacy Policy",
     "terms": "Terms of Service",
-    "download": "Get App"
+    "download": "Get App",
+    "menuOpen": "Open menu",
+    "menuClose": "Close menu",
+    "themeToggle": "Switch color theme",
+    "languageToggle": "Switch language to Arabic",
+    "primary": "Main"
   },
   "Hero": {
     "headline": "Your Family, Organized in One Place",
@@ -20,7 +25,16 @@
     "appStore": "App Store",
     "playStorePre": "Get it on",
     "playStore": "Google Play",
-    "playStoreComingSoon": "Coming Soon"
+    "playStoreComingSoon": "Coming Soon",
+    "availability": "Free to download on iOS and Android.",
+    "demoLabel": "Example",
+    "planLabel": "Family plan",
+    "planTitle": "Friday lunch at grandma's",
+    "planTime": "Fri · 1:00 PM",
+    "taskLabel": "Shared task",
+    "taskTitle": "Bring dessert",
+    "taskOwner": "Sara",
+    "screenAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events"
   },
   "Problem": {
     "title": "Too Many Apps for Family Life?",
@@ -29,7 +43,9 @@
     "calendar": "Calendar",
     "notes": "Notes",
     "photos": "Photos",
-    "tasks": "Tasks"
+    "tasks": "Tasks",
+    "before": "Scattered",
+    "after": "Together in Nawah"
   },
   "Features": {
     "title": "Everything you need",
@@ -42,7 +58,48 @@
     "vault": "Memory Vault",
     "vaultDesc": "Safely store family photos, videos, and important documents.",
     "ai": "AI Assistant",
-    "aiDesc": "Integrated smart assistant to help organize and plan."
+    "aiDesc": "Integrated smart assistant to help organize and plan.",
+    "eyebrow": "A family day in Nawah",
+    "intro": "Plans, lists, conversations, and memories, each where the whole family can find it.",
+    "eventsHeadline": "Every gathering on one calendar",
+    "eventsDetail1": "Hijri and Gregorian dates together",
+    "eventsDetail2": "Events and appointments in one place",
+    "eventsAlt": "Nawah calendar showing Hijri and Gregorian dates with an upcoming event",
+    "tasksHeadline": "Shared lists everyone can check off",
+    "tasksDetail1": "Assign tasks to each family member",
+    "tasksDetail2": "Shopping lists that show what's done",
+    "tasksAlt": "Nawah tasks screen with tasks grouped by family member",
+    "listAlt": "Nawah shopping list with items to check off",
+    "screenTasks": "Tasks",
+    "screenList": "Shopping list",
+    "screenPicker": "Choose a screen",
+    "chatHeadline": "Decide together in the family chat",
+    "chatDetail1": "Quick polls, like what's for dinner",
+    "chatDetail2": "Voice messages",
+    "chatAlt": "Nawah family chat with a dinner poll and a voice message",
+    "vaultHeadline": "Keep the moments worth keeping",
+    "vaultDetail1": "Folders for trips, recipes, and more",
+    "vaultDetail2": "Photos, videos, PDFs, and notes",
+    "vaultAlt": "Nawah memory vault with folders for trips and recipes",
+    "aiHeadline": "A helper for busy weeks",
+    "aiDetail1": "Ask which tasks are still open",
+    "aiDetail2": "Suggestions like “Plan our week”",
+    "aiAlt": "Nawah AI assistant listing the family's open tasks"
+  },
+  "Demo": {
+    "caption": "Interactive example",
+    "title": "Friday gathering prep",
+    "progress": "{done} of {total} done",
+    "item1": "Bring dessert",
+    "item1Owner": "Sara",
+    "item2": "Buy Arabic coffee",
+    "item2Owner": "Khalid",
+    "item3": "Set up the majlis",
+    "item3Owner": "Noura",
+    "hint": "Try checking off a task",
+    "allDone": "All set for Friday!",
+    "itemDone": "{item} done",
+    "itemUndone": "{item} not done"
   },
   "HowItWorks": {
     "title": "How It Works",
@@ -51,12 +108,16 @@
     "step2": "Invite members",
     "step2Desc": "Add family members with a simple link or QR code.",
     "step3": "Start organizing",
-    "step3Desc": "Chat, plan events, and manage tasks effortlessly."
+    "step3Desc": "Chat, plan events, and manage tasks effortlessly.",
+    "eyebrow": "Getting started"
   },
   "Cta": {
     "title": "Start your family hub today",
     "subtext": "Available on iOS and Android. Free to download.",
-    "button": "Download on the App Store"
+    "button": "Download on the App Store",
+    "eyebrow": "Download Nawah",
+    "vaultAlt": "Nawah memory vault with folders for trips and recipes",
+    "homeAlt": "Nawah home screen showing the family, the AI assistant, and upcoming events"
   },
   "Footer": {
     "tagline": "One private app for your family's chats, plans, tasks, and memories.",

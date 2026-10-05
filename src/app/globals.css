@@ -10,157 +10,147 @@
   --color-primary: #2789D3;
   --color-primary-light: #DFBCF4;
 
-  --font-sans: var(--font-open-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
 }
 
 @layer utilities {
+  /* Kept for legal/support pages: now a quiet solid surface, not a blur panel. */
   .glass {
-    background: rgba(39, 137, 211, 0.08);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(39, 137, 211, 0.2);
+    background: var(--surface);
+    border: 1px solid var(--line);
   }
   .glass-dark {
-    background: rgba(19, 21, 42, 0.85);
-    backdrop-filter: blur(24px);
-    border: 1px solid rgba(39, 137, 211, 0.2);
+    background: var(--surface);
+    border: 1px solid var(--line);
   }
 }
 
-/* ── Light mode (default) ─────────────────────────────── */
+/* ── Nawah design tokens ──────────────────────────────────
+   Brand blue and navy are sampled from the app icon (src/app/logo.png);
+   lavender is the icon's highlight. Sand is the one warm supporting tone. */
 :root {
-  --background: #f0f4ff;
-  --foreground: #13152A;
+  --paper:        #F7F4EE;
+  --paper-2:      #EFEAE1;
+  --surface:      #FFFDF9;
+  --ink:          #13152A;
+  --muted:        #4F566B;
+  --faint:        #646A7E;
+  --line:         #E3DED4;
+  --line-strong:  #D3CCBF;
 
-  /* Page & sections */
-  --bg-page:    #f0f4ff;
-  --bg-hero:    linear-gradient(180deg, #e3ecfc 0%, #f0f4ff 100%);
-  --bg-card:    linear-gradient(135deg, rgba(255,255,255,0.97), rgba(235,242,255,0.9));
-  --bg-card-alt: rgba(255,255,255,0.8);
-  --bg-cta:     linear-gradient(135deg, #eef2ff 0%, #f5f7ff 50%, #e8efff 100%);
-  --bg-footer:  #e8eefb;
+  --brand:        #2789D3;            /* fills, large marks */
+  --brand-ink:    #1A67A8;            /* brand-colored text on paper (≥ 4.5:1) */
+  --brand-btn:    #1A67A8;            /* white text on it ≥ 4.5:1 */
+  --brand-btn-hover: #155891;
+  --brand-tint:   #E2EEF8;
+  --lavender:     #DFBCF4;
+  --lavender-tint:#F1E7F9;
+  --sand:         #F0DEC4;
+  --sand-tint:    #F6ECDD;
+  --dot:          rgb(19 21 42 / 9%);
 
-  /* Navbar */
-  --bg-nav:     rgba(245,248,255,0.96);
-  --bg-nav-top: rgba(245,248,255,0.75);
-  --border-nav: rgba(39,137,211,0.2);
+  --radius-sm: 0.75rem;   /* buttons, chips, inputs */
+  --radius-md: 1.25rem;   /* cards, fragments */
+  --radius-lg: 2rem;      /* boards, panels */
 
-  /* Feature cards */
-  --bg-feat-blue:   linear-gradient(135deg, rgba(39,137,211,0.1),  rgba(255,255,255,0.95));
-  --bg-feat-purple: linear-gradient(135deg, rgba(155,111,204,0.1), rgba(255,255,255,0.95));
-  --bg-feat-lblue:  linear-gradient(135deg, rgba(91,176,232,0.08), rgba(255,255,255,0.95));
-  --bg-feat-mixed:  linear-gradient(135deg, rgba(39,137,211,0.08), rgba(155,111,204,0.05), rgba(255,255,255,0.95));
-  --border-feat-blue:   rgba(39,137,211,0.28);
-  --border-feat-purple: rgba(155,111,204,0.25);
-  --border-feat-lblue:  rgba(91,176,232,0.25);
+  --shadow-sm: 0 1px 2px rgb(19 21 42 / 6%), 0 4px 12px rgb(19 21 42 / 5%);
+  --shadow-md: 0 2px 4px rgb(19 21 42 / 4%), 0 16px 40px rgb(19 21 42 / 10%);
+  --shadow-phone: 0 2px 6px rgb(19 21 42 / 8%), 0 30px 60px -18px rgb(19 21 42 / 32%);
 
-  /* Typography */
-  --text-1: #13152A;
-  --text-2: #334155;
-  --text-3: #475569;
-  --text-4: #64748b;
-  --text-5: #94a3b8;
-  --text-nav: #475569;
-  --text-nav-hover: #13152A;
+  /* Fallbacks keep these valid in layouts that don't load every font. */
+  --font-body: var(--font-inter, ui-sans-serif), system-ui, sans-serif;
+  --font-display: var(--font-bricolage, var(--font-inter, ui-sans-serif)), system-ui, sans-serif;
 
-  /* Borders */
-  --border-blue:   rgba(39,137,211,0.3);
-  --border-purple: rgba(155,111,204,0.25);
-  --border-subtle: rgba(39,137,211,0.12);
-
-  /* Badge & ghost button */
-  --bg-badge:     rgba(39,137,211,0.08);
-  --border-badge: rgba(39,137,211,0.3);
-  --text-badge:   #2789D3;
-  --bg-ghost:     rgba(39,137,211,0.08);
-  --border-ghost: rgba(39,137,211,0.3);
-  --text-ghost:   #2789D3;
-
-  /* Icon colors */
-  --icon-lavender: #9b6fcc;
-  --icon-sky:      #4a9fd4;
-
-  /* Shimmer */
-  --shimmer-line: rgba(39,137,211,0.4);
-
-  /* Scrollbar */
-  --scrollbar-track: #e8f0ff;
-  --scrollbar-thumb: #2789D3;
+  /* Legacy tokens, mapped onto the system above so every page shares it. */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --bg-page:    var(--paper);
+  --bg-hero:    var(--paper);
+  --bg-card:    var(--surface);
+  --bg-card-alt: var(--surface);
+  --bg-footer:  var(--paper-2);
+  --bg-nav:     rgb(247 244 238 / 94%);
+  --bg-nav-top: rgb(247 244 238 / 0%);
+  --border-nav: var(--line);
+  --text-1: var(--ink);
+  --text-2: #2B3044;
+  --text-3: var(--muted);
+  --text-4: var(--muted);
+  --text-5: var(--faint);
+  --text-nav: var(--muted);
+  --text-nav-hover: var(--ink);
+  --border-blue:   var(--line);
+  --border-purple: var(--line);
+  --border-subtle: var(--line);
+  --bg-badge:     var(--brand-tint);
+  --text-badge:   var(--brand-ink);
+  --scrollbar-track: var(--paper-2);
+  --scrollbar-thumb: var(--brand);
 }
 
-/* ── Dark mode ────────────────────────────────────────── */
 .dark {
-  --background: #13152A;
-  --foreground: #f0eeff;
+  --paper:        #111327;
+  --paper-2:      #0C0E1F;
+  --surface:      #1A1D38;
+  --ink:          #F4F1EA;
+  --muted:        #B7BACB;
+  --faint:        #9599AE;
+  --line:         rgb(255 255 255 / 10%);
+  --line-strong:  rgb(255 255 255 / 18%);
 
-  --bg-page:    #13152A;
-  --bg-hero:    linear-gradient(180deg, #19214a 0%, #13152A 100%);
-  --bg-card:    linear-gradient(135deg, rgba(19,21,42,0.95), rgba(25,35,80,0.8));
-  --bg-card-alt: rgba(19,21,42,0.75);
-  --bg-cta:     linear-gradient(135deg, #0c0e1e 0%, #13152A 50%, #1a2060 100%);
-  --bg-footer:  #0e1024;
+  --brand:        #4AA3E6;
+  --brand-ink:    #8CC6F2;
+  --brand-btn:    #1F74B5;
+  --brand-btn-hover: #2582C8;
+  --brand-tint:   rgb(74 163 230 / 14%);
+  --lavender-tint:rgb(223 188 244 / 9%);
+  --sand:         rgb(240 222 196 / 18%);
+  --sand-tint:    rgb(240 222 196 / 7%);
+  --dot:          rgb(255 255 255 / 7%);
 
-  --bg-nav:     rgba(13,15,30,0.92);
-  --bg-nav-top: rgba(13,15,30,0.55);
-  --border-nav: rgba(39,137,211,0.18);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 30%);
+  --shadow-md: 0 16px 40px rgb(0 0 0 / 35%);
+  --shadow-phone: 0 30px 60px -18px rgb(0 0 0 / 60%);
 
-  --bg-feat-blue:   linear-gradient(135deg, rgba(39,137,211,0.3),   rgba(19,21,42,0.5));
-  --bg-feat-purple: linear-gradient(135deg, rgba(223,188,244,0.12), rgba(19,21,42,0.6));
-  --bg-feat-lblue:  linear-gradient(135deg, rgba(39,137,211,0.18),  rgba(19,21,42,0.6));
-  --bg-feat-mixed:  linear-gradient(135deg, rgba(39,137,211,0.2), rgba(223,188,244,0.08), rgba(19,21,42,0.6));
-  --border-feat-blue:   rgba(39,137,211,0.35);
-  --border-feat-purple: rgba(223,188,244,0.2);
-  --border-feat-lblue:  rgba(39,137,211,0.25);
-
-  --text-1: #f0eeff;
-  --text-2: rgba(223,188,244,0.8);
-  --text-3: rgba(223,188,244,0.5);
-  --text-4: rgba(223,188,244,0.42);
-  --text-5: rgba(223,188,244,0.4);
-  --text-nav: rgba(223,188,244,0.65);
-  --text-nav-hover: #DFBCF4;
-
-  --border-blue:   rgba(39,137,211,0.2);
-  --border-purple: rgba(223,188,244,0.2);
-  --border-subtle: rgba(39,137,211,0.1);
-
-  --bg-badge:     rgba(223,188,244,0.08);
-  --border-badge: rgba(223,188,244,0.3);
-  --text-badge:   #DFBCF4;
-  --bg-ghost:     rgba(223,188,244,0.07);
-  --border-ghost: rgba(223,188,244,0.3);
-  --text-ghost:   #DFBCF4;
-
-  --icon-lavender: #DFBCF4;
-  --icon-sky:      #7dd3fc;
-
-  --shimmer-line: rgba(223,188,244,0.55);
-
-  --scrollbar-track: #13152A;
-  --scrollbar-thumb: #2789D3;
+  --bg-nav:     rgb(17 19 39 / 94%);
+  --bg-nav-top: rgb(17 19 39 / 0%);
+  --text-2: #DAD8E4;
 }
 
-body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+/* Arabic: Readex Pro everywhere, no tracking (Arabic is a connected script). */
+:root:lang(ar),
+[dir="rtl"] {
+  --font-body: var(--font-readex, var(--font-ibm-arabic, ui-sans-serif)), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-readex, var(--font-ibm-arabic, ui-sans-serif)), ui-sans-serif, system-ui, sans-serif;
+}
+[dir="rtl"] * {
+  letter-spacing: 0 !important;
 }
 
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scroll-padding-top: 5rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 
-/* Arabic locale — IBM Plex Sans Arabic */
-[dir="rtl"] body,
-[dir="rtl"] * {
-  font-family: var(--font-ibm-arabic), ui-sans-serif, system-ui, sans-serif;
-  /* Arabic is a connected script — letter-spacing breaks ligatures */
-  letter-spacing: 0 !important;
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-::-webkit-scrollbar { width: 5px; }
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--scrollbar-track); }
 ::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }

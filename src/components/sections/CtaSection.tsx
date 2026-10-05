@@ -1,28 +1,32 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import Image from "next/image";
 import StoreButtons from "@/components/StoreButtons";
+import PhoneScreen from "@/components/PhoneScreen";
+import logoImg from "@/app/logo.png";
 
 export default function CtaSection() {
   const t = useTranslations("Cta");
 
   return (
-    <section id="download" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto w-full scroll-mt-16">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="rounded-3xl px-8 py-14 md:p-16 flex flex-col items-center text-center"
-        style={{ background: "linear-gradient(160deg, #13152A 0%, #1b2a55 100%)", border: "1px solid var(--border-blue)" }}
-      >
-        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-balance text-white">
-          {t("title")}
-        </h2>
-        <p className="text-lg mb-10 text-white/70">{t("subtext")}</p>
-        <StoreButtons tone="light" />
-      </motion.div>
+    <section id="download" className="nw-section" aria-labelledby="download-title">
+      <div className="nw-container">
+        <div className="nw-cta">
+          <div className="nw-cta__copy">
+            <Image src={logoImg} alt="" width={56} height={56} sizes="56px" className="nw-cta__logo" />
+            <h2 id="download-title" className="nw-h2">
+              {t("title")}
+            </h2>
+            <p className="nw-cta__sub">{t("subtext")}</p>
+            <StoreButtons tone="light" />
+          </div>
+
+          {/* Two real screens pinned to the board, cropped by its edge */}
+          <div className="nw-cta__screens">
+            <PhoneScreen src="/screenshots/hero-main.png" alt={t("homeAlt")} sizes="232px" />
+            <PhoneScreen src="/screenshots/vault.png" alt={t("vaultAlt")} sizes="232px" />
+          </div>
+        </div>
+      </div>
     </section>
   );
 }
