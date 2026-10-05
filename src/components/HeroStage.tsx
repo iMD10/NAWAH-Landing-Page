@@ -13,7 +13,7 @@ const HeroCanvas = dynamic(() => import("@/components/three/HeroCanvas"), { ssr:
  * fallback); where 3D is allowed, the three.js scene loads afterwards and
  * cross-fades in once its textures are ready.
  */
-export default function HeroStage({ screenAlt }: { screenAlt: string }) {
+export default function HeroStage({ screenAlt, hint }: { screenAlt: string; hint: string }) {
   const rtl = useLocale() === "ar";
   const can3D = useCan3D();
   const stageRef = useRef<HTMLDivElement>(null);
@@ -35,6 +35,12 @@ export default function HeroStage({ screenAlt }: { screenAlt: string }) {
         <div className="nw-stage__canvas" aria-hidden="true">
           <HeroCanvas rtl={rtl} active={near} onReady={onReady} />
         </div>
+      )}
+      {/* Pointer-only extra; every screen is also shown in the sections below. */}
+      {can3D && ready && (
+        <p className="nw-stage__hint" aria-hidden="true">
+          {hint}
+        </p>
       )}
     </div>
   );

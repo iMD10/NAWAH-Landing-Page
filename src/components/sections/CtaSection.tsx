@@ -1,7 +1,7 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import StoreButtons from "@/components/StoreButtons";
-import PhoneScreen from "@/components/PhoneScreen";
+import CtaStage from "@/components/CtaStage";
 import logoImg from "@/app/logo.png";
 
 export default function CtaSection() {
@@ -29,11 +29,8 @@ export default function CtaSection() {
             </div>
           </div>
 
-          {/* Two real screens pinned to the board, cropped by its edge */}
-          <div className="nw-cta__screens">
-            <PhoneScreen src="/screenshots/hero-main.png" alt={t("homeAlt")} sizes="232px" />
-            <PhoneScreen src="/screenshots/vault.png" alt={t("vaultAlt")} sizes="232px" />
-          </div>
+          {/* Real screens: two pinned to the board, or a browsable 3D ring of all of them */}
+          <CtaStage />
         </div>
       </div>
     </section>

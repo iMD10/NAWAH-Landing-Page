@@ -18,7 +18,7 @@ export default function HeroSection() {
         </div>
 
         {/* Product stage: the real home screen, joined in 3D by four more real screens */}
-        <HeroStage screenAlt={t("screenAlt")} />
+        <HeroStage screenAlt={t("screenAlt")} hint={t("stageHint")} />
       </div>
     </section>
   );

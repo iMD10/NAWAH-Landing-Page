@@ -201,3 +201,17 @@ The owner asked for something bigger, using three.js. Both 3D pieces are built f
 - Not measured: frame rate on real low-end phones, Lighthouse, and screen readers. The 3D was checked with SwiftShader (software WebGL) in headless Chromium, not on a GPU.
 
 ![3D hero and pinned family-day phone](v3-3d.png)
+
+## Round two of the 3D pass
+
+- **Download board: a browsable ring of every real screen** (Home, Calendar, Tasks, Shopping list, Family chat, Memory vault, AI assistant). This follows the brief's Reelfolio "Rolodex" lead.
+  - Drag or flick to turn it; it snaps to the nearest screen and keeps the flick's momentum. Prev/next buttons and a caption ("Calendar · 2 of 7") show which screen is in front.
+  - Screens dim as they turn away, and the back of the ring folds out of the way. RTL reverses the direction.
+  - It advances every 3.2s until the first interaction, then stays where the visitor left it. It also pauses on hover, on focus, and off-screen.
+  - The caption is `aria-live="polite"` only after an interaction, so autoplay is never announced. `touch-action: pan-y` keeps vertical scrolling working on phones.
+  - Fallback (reduced motion, Data Saver, no WebGL): the two pinned screens stay, with no controls.
+- **Hero is now interactive:** tapping a floating screen spins it into the main phone and sends the main phone's screen out to that card. It is pointer-only and nothing depends on it, so its hint ("Tap a screen to bring it forward") is `aria-hidden`.
+- **Glass glint on every phone:** a soft light streak slides across the screen as the phone turns.
+- The three.js chunk is still ~239 KB gzipped and lazy. Phones run 2 canvases (hero, download ring); desktop runs 3. Only the canvases near the viewport render.
+- Checks: everything listed above for the 3D pass still passes. New results: tap-to-swap, autoplay → stop on interaction, keyboard prev/next, drag with momentum, and the reduced-motion fallback (no controls, posters visible). No overflow at 320–1440 in EN/AR. Not tested: touch-drag on a real phone (only mouse drag was automated).
+![Hero tap-to-swap and 3D screen ring](v4-3d-ring.png)

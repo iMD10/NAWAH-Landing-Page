@@ -14,6 +14,9 @@ export const SCREENS = {
 
 export type ScreenKey = keyof typeof SCREENS;
 
+/** Every real screen, in the order of a family's day (download-board ring). */
+export const RING: ScreenKey[] = ["home", "events", "tasks", "list", "chat", "vault", "ai"];
+
 /*
  * Textures go through the Next image optimizer (≈768px wide WebP/AVIF)
  * instead of the 0.2–1.5 MB source PNGs.
